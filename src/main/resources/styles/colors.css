@@ -1,0 +1,34 @@
+@font-face {
+    font-family: Nunito;
+    src: url('../fonts/nunito/Nunito-Regular.ttf') format('truetype');
+}
+
+.root {
+    -white-color: #dcdcdc;
+    -black-color: #191919;
+    -gray-color: #323232;
+    -red-color: #bf2f49;
+    -blue-color: #4286e4;
+    -green-color: #28a643;
+    -yellow-color: #fda809;
+    -purple-color: #9158ef;
+    -brown-color: #492532;
+    -orange-color: #ff7f50;
+    -gold-color: #ffd700;
+    -silver-color: #c0c0c0;
+    -brass-color: #cd7f32;
+    -cyan-color: #00aaaa;
+    -magenta-color: #8b008b;
+    -olive-color: #808000;
+    -teal-color: #007878;
+    -avocado-color: #568203;
+    -sky-color: #63c5da;
+    -mauve-color: #7a4988;
+    -umber-color: #352315;
+    -transparent-color: transparent;
+
+    -fx-background: -gray-color;
+
+    -fx-font-family: 'Nunito';
+    -fx-font-size: 14px;
+}

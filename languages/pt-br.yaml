@@ -1,0 +1,16 @@
+displayOrder: 1
+languageTag: "pt-br"
+languageName: "brazilian-portuguese"
+displayName: "Português (Brasil)"
+dateFormat: "dd/MM/yyyy"
+timeFormat: "HH:mm:ss"
+datetimeFormat: "dd/MM/yyyy HH:mm:ss"
+zoneOffset: "-03:00"
+bundleLabel:
+  appCheckboxDefaultLabel: "Habilitar"
+  mainTopSavesLabel: "Jogos Salvos"
+bundleTitle:
+  mainStageWindowTitle: "Final Fantasy VII: Rebirth - Save Editor"
+bundleMessage:
+  exceptionGenericErrorMessage: "Nenhuma mensagem disponível"
+  validationGenericErrorMessage: "Valor inválido"

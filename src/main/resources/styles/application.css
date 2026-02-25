@@ -1,0 +1,119 @@
+@font-face {
+    font-family: Nunito;
+    src: url('../fonts/nunito/Nunito-Regular.ttf') format('truetype');
+}
+
+.root {
+    -white-color: #dcdcdc;
+    -black-color: #191919;
+    -gray-color: #323232;
+    -red-color: #bf2f49;
+    -blue-color: #4286e4;
+    -green-color: #28a643;
+    -yellow-color: #fda809;
+    -purple-color: #9158ef;
+    -brown-color: #492532;
+    -orange-color: #ff7f50;
+    -gold-color: #ffd700;
+    -silver-color: #c0c0c0;
+    -brass-color: #cd7f32;
+    -cyan-color: #00aaaa;
+    -magenta-color: #8b008b;
+    -olive-color: #808000;
+    -teal-color: #007878;
+    -avocado-color: #568203;
+    -sky-color: #63c5da;
+    -mauve-color: #7a4988;
+    -umber-color: #352315;
+    -transparent-color: transparent;
+
+    -fx-background: -gray-color;
+
+    -fx-font-family: 'Nunito';
+    -fx-font-size: 14px;
+}
+
+.label {
+    -fx-skin: "com.sun.javafx.scene.control.skin.LabelSkin";
+    -fx-text-fill: -white-color;
+}
+
+.text-field {
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+}
+
+.splash-scene {
+    -fx-min-height: 400px;
+    -fx-min-width: 600px;
+    -fx-max-height: 400px;
+    -fx-max-width: 600px;
+    -fx-height: 400px;
+    -fx-width: 600px;
+    -fx-border-color: -black-color;
+    -fx-border-width: 3px;
+    -fx-border-style: solid;
+}
+
+.splash-scene .splash-logo {
+    -fx-min-height: 350px;
+    -fx-min-width: 600px;
+    -fx-max-height: 350px;
+    -fx-max-width: 600px;
+    -fx-height: 350px;
+    -fx-width: 600px;
+    -fx-background-image: url("../images/splash-logo.png");
+    -fx-background-size: 80%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.splash-scene .splash-message {
+    -fx-min-height: 50px;
+    -fx-min-width: 600px;
+    -fx-max-height: 50px;
+    -fx-max-width: 600px;
+    -fx-height: 50px;
+    -fx-width: 600px;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+}
+
+.login-scene {
+    -fx-min-height: 400px;
+    -fx-min-width: 800px;
+    -fx-max-height: 400px;
+    -fx-max-width: 800px;
+    -fx-height: 400px;
+    -fx-width: 800px;
+}
+
+.login-scene .login-half {
+    -fx-min-height: 400px;
+    -fx-min-width: 400px;
+    -fx-max-height: 400px;
+    -fx-max-width: 400px;
+    -fx-height: 400px;
+    -fx-width: 400px;
+}
+
+.login-scene .login-quarter {
+    -fx-min-height: 200px;
+    -fx-min-width: 200px;
+    -fx-max-height: 200px;
+    -fx-max-width: 200px;
+    -fx-height: 200px;
+    -fx-width: 200px;
+}
+
+.login-scene .login-label {
+    -fx-padding: 30px 0 0 0;
+    -fx-min-height: 75px;
+    -fx-min-width: 400px;
+    -fx-max-height: 75px;
+    -fx-max-width: 400px;
+    -fx-height: 75px;
+    -fx-width: 400px;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+}

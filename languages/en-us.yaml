@@ -1,0 +1,16 @@
+displayOrder: 0
+languageTag: "en-us"
+languageName: "english-usa"
+displayName: "English (United States)"
+dateFormat: "MM/dd/yyyy"
+timeFormat: "hh:mm:ssa"
+datetimeFormat: "MM/dd/yyyy hh:mm:ssa"
+zoneOffset: "-05:00"
+bundleLabel:
+  appCheckboxDefaultLabel: "Enable"
+  mainTopSavesLabel: "Saved Games"
+bundleTitle:
+  mainStageWindowTitle: "Final Fantasy VII: Rebirth - Save Editor"
+bundleMessage:
+  exceptionGenericErrorMessage: "No message available"
+  validationGenericErrorMessage: "Invalid value"

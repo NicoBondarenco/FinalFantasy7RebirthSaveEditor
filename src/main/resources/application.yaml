@@ -1,0 +1,30 @@
+spring:
+
+  main:
+    web-application-type: none
+
+  threads:
+    virtual:
+      enabled: true
+
+#  database:
+#    database-driver: "h2"
+#    connection-username: "tesis"
+#    connection-password: "Tesis@130924"
+#    connection-url: "jdbc:h2:file:./databases/TesisDatabase;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE;AUTO_RECONNECT=TRUE;AUTO_SERVER=TRUE"
+#    default-schema: "public"
+#    explicit-dialect: "org.jetbrains.exposed.v1.core.vendors.H2Dialect"
+#    isolation-level: "READ_COMMITTED"
+#    fetch-size: 1000
+#    max-attempts: 5
+#    nested-transactions: true
+#    flyway-url: "jdbc:h2:file:./databases/TesisDatabase;USER=${spring.database.connection-username};PASSWORD=${spring.database.connection-password};DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE;AUTO_RECONNECT=TRUE;AUTO_SERVER=TRUE"
+#    flyway-table: "flyway_migration"
+#    flyway-location: "classpath:scripts"
+
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ} %-5p %c:%M{1}:%L - %m%n"
+  level:
+    root: INFO

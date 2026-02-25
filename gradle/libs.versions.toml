@@ -1,0 +1,326 @@
+[versions]
+kotlin = "2.3.0-Beta2"
+kotlinx-coroutines = "1.10.2"
+jvm = "JVM_25"
+jdk = "25"
+target = "VERSION_25"
+
+okhttp = "5.3.2"
+
+logback-classic = "1.5.18"
+logback-kotlin = "7.0.7"
+
+spring-kotlin = "2.3.0"
+spring-framework = "4.0.1"
+spring-dependency = "1.1.7"
+
+javafx-plugin = "0.1.0"
+
+javafx-openfx = "25.0.1"
+javafx-richtext = "0.11.7"
+javafx-weaver-spring = "2.0.1"
+javafx-oss-cssfx = "11.5.1"
+javafx-controls-controlsfx = "11.2.3"
+javafx-atlantafx-base = "2.1.0"
+javafx-ikonli-bom = "12.4.0"
+
+jackson-tools = "3.0.1"
+jackson-annotation = "3.0-rc5"
+
+h2-r2dbc-driver = "1.1.0.RELEASE"
+flyway-migration-core = "11.20.0"
+exposed-modules = "1.0.0-rc-4"
+
+junit-pioneer = "2.3.0"
+junit-jupiter = "5.12.1"
+
+mockito-core = "5.11.0"
+mockito-inline = "5.2.0"
+mockito-kotlin = "5.2.1"
+
+mockk-kotlin = "1.14.3"
+
+system-stubs = "2.1.8"
+
+skyscreamer-jsonassert = "1.5.3"
+
+[plugins]
+kotlin-lang = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+
+spring-framework-kotlin = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "spring-kotlin" }
+spring-framework-boot = { id = "org.springframework.boot", version.ref = "spring-framework" }
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency" }
+
+java-fx-openfx = { id = "org.openjfx.javafxplugin", version.ref = "javafx-plugin" }
+
+[libraries]
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-stdlib-common = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-stdlib-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-jvm = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-slf4j = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-slf4j", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-reactor = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactor", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-javafx = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-javafx", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+
+log-logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-classic" }
+log-logback-kotlin = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "logback-kotlin" }
+
+spring-boot-starter-core = { module = "org.springframework.boot:spring-boot-starter" }
+
+javafx-openfx-core = { module = "org.openjfx:javafx", version.ref = "javafx-openfx" }
+javafx-openfx-base = { module = "org.openjfx:javafx-base", version.ref = "javafx-openfx" }
+javafx-openfx-controls = { module = "org.openjfx:javafx-controls", version.ref = "javafx-openfx" }
+javafx-openfx-graphics = { module = "org.openjfx:javafx-graphics", version.ref = "javafx-openfx" }
+javafx-openfx-fxml = { module = "org.openjfx:javafx-fxml", version.ref = "javafx-openfx" }
+javafx-openfx-swing = { module = "org.openjfx:javafx-swing", version.ref = "javafx-openfx" }
+javafx-openfx-web = { module = "org.openjfx:javafx-web", version.ref = "javafx-openfx" }
+javafx-openfx-media = { module = "org.openjfx:javafx-media", version.ref = "javafx-openfx" }
+javafx-fxmisc-richtext = { module = "org.fxmisc.richtext:richtextfx", version.ref = "javafx-richtext" }
+javafx-ikonli-bom = { module = "org.kordamp.ikonli:ikonli-bom", version.ref = "javafx-ikonli-bom" }
+javafx-weaver-spring = { module = "net.rgielen:javafx-weaver-spring-boot-starter", version.ref = "javafx-weaver-spring" }
+javafx-oss-cssfx = { module = "fr.brouillard.oss:cssfx", version.ref = "javafx-oss-cssfx" }
+javafx-controls-controlsfx = { module = "org.controlsfx:controlsfx", version.ref = "javafx-controls-controlsfx" }
+javafx-atlantafx-base = { module = "io.github.mkpaz:atlantafx-base", version.ref = "javafx-atlantafx-base" }
+javafx-ikonli-javafx = { module = "org.kordamp.ikonli:ikonli-javafx" }
+javafx-ikonli-antdesignicons = { module = "org.kordamp.ikonli:ikonli-antdesignicons-pack" }
+javafx-ikonli-bootstrapicons = { module = "org.kordamp.ikonli:ikonli-bootstrapicons-pack" }
+javafx-ikonli-boxicons = { module = "org.kordamp.ikonli:ikonli-boxicons-pack" }
+javafx-ikonli-bpmn = { module = "org.kordamp.ikonli:ikonli-bpmn-pack" }
+javafx-ikonli-bytedance = { module = "org.kordamp.ikonli:ikonli-bytedance-pack" }
+javafx-ikonli-captainicon = { module = "org.kordamp.ikonli:ikonli-captainicon-pack" }
+javafx-ikonli-carbonicons = { module = "org.kordamp.ikonli:ikonli-carbonicons-pack" }
+javafx-ikonli-codicons = { module = "org.kordamp.ikonli:ikonli-codicons-pack" }
+javafx-ikonli-coreui = { module = "org.kordamp.ikonli:ikonli-coreui-pack" }
+javafx-ikonli-dashicons = { module = "org.kordamp.ikonli:ikonli-dashicons-pack" }
+javafx-ikonli-devicons = { module = "org.kordamp.ikonli:ikonli-devicons-pack" }
+javafx-ikonli-elusive = { module = "org.kordamp.ikonli:ikonli-elusive-pack" }
+javafx-ikonli-entypo = { module = "org.kordamp.ikonli:ikonli-entypo-pack" }
+javafx-ikonli-evaicons = { module = "org.kordamp.ikonli:ikonli-evaicons-pack" }
+javafx-ikonli-feather = { module = "org.kordamp.ikonli:ikonli-feather-pack" }
+javafx-ikonli-fileicons = { module = "org.kordamp.ikonli:ikonli-fileicons-pack" }
+javafx-ikonli-fluentui = { module = "org.kordamp.ikonli:ikonli-fluentui-pack" }
+javafx-ikonli-fontawesome = { module = "org.kordamp.ikonli:ikonli-fontawesome-pack" }
+javafx-ikonli-fontawesome5 = { module = "org.kordamp.ikonli:ikonli-fontawesome5-pack" }
+javafx-ikonli-fontawesome6 = { module = "org.kordamp.ikonli:ikonli-fontawesome6-pack" }
+javafx-ikonli-fontelico = { module = "org.kordamp.ikonli:ikonli-fontelico-pack" }
+javafx-ikonli-foundation = { module = "org.kordamp.ikonli:ikonli-foundation-pack" }
+javafx-ikonli-hawcons = { module = "org.kordamp.ikonli:ikonli-hawcons-pack" }
+javafx-ikonli-icomoon = { module = "org.kordamp.ikonli:ikonli-icomoon-pack" }
+javafx-ikonli-ionicons = { module = "org.kordamp.ikonli:ikonli-ionicons-pack" }
+javafx-ikonli-ionicons4 = { module = "org.kordamp.ikonli:ikonli-ionicons4-pack" }
+javafx-ikonli-jamicons = { module = "org.kordamp.ikonli:ikonli-jamicons-pack" }
+javafx-ikonli-ligaturesymbols = { module = "org.kordamp.ikonli:ikonli-ligaturesymbols-pack" }
+javafx-ikonli-lineawesome = { module = "org.kordamp.ikonli:ikonli-lineawesome-pack" }
+javafx-ikonli-linecons = { module = "org.kordamp.ikonli:ikonli-linecons-pack" }
+javafx-ikonli-maki = { module = "org.kordamp.ikonli:ikonli-maki-pack" }
+javafx-ikonli-maki2 = { module = "org.kordamp.ikonli:ikonli-maki2-pack" }
+javafx-ikonli-mapicons = { module = "org.kordamp.ikonli:ikonli-mapicons-pack" }
+javafx-ikonli-material = { module = "org.kordamp.ikonli:ikonli-material-pack" }
+javafx-ikonli-material2 = { module = "org.kordamp.ikonli:ikonli-material2-pack" }
+javafx-ikonli-materialdesign = { module = "org.kordamp.ikonli:ikonli-materialdesign-pack" }
+javafx-ikonli-materialdesign2 = { module = "org.kordamp.ikonli:ikonli-materialdesign2-pack" }
+javafx-ikonli-medicons = { module = "org.kordamp.ikonli:ikonli-medicons-pack" }
+javafx-ikonli-metrizeicons = { module = "org.kordamp.ikonli:ikonli-metrizeicons-pack" }
+javafx-ikonli-microns = { module = "org.kordamp.ikonli:ikonli-microns-pack" }
+javafx-ikonli-ociicons = { module = "org.kordamp.ikonli:ikonli-ociicons-pack" }
+javafx-ikonli-octicons = { module = "org.kordamp.ikonli:ikonli-octicons-pack" }
+javafx-ikonli-openiconic = { module = "org.kordamp.ikonli:ikonli-openiconic-pack" }
+javafx-ikonli-paymentfont = { module = "org.kordamp.ikonli:ikonli-paymentfont-pack" }
+javafx-ikonli-prestashopicons = { module = "org.kordamp.ikonli:ikonli-prestashopicons-pack" }
+javafx-ikonli-remixicon = { module = "org.kordamp.ikonli:ikonli-remixicon-pack" }
+javafx-ikonli-runestroicons = { module = "org.kordamp.ikonli:ikonli-runestroicons-pack" }
+javafx-ikonli-simpleicons = { module = "org.kordamp.ikonli:ikonli-simpleicons-pack" }
+javafx-ikonli-simplelineicons = { module = "org.kordamp.ikonli:ikonli-simplelineicons-pack" }
+javafx-ikonli-subway = { module = "org.kordamp.ikonli:ikonli-subway-pack" }
+javafx-ikonli-themify = { module = "org.kordamp.ikonli:ikonli-themify-pack" }
+javafx-ikonli-typicons = { module = "org.kordamp.ikonli:ikonli-typicons-pack" }
+javafx-ikonli-unicons = { module = "org.kordamp.ikonli:ikonli-unicons-pack" }
+javafx-ikonli-weathericons = { module = "org.kordamp.ikonli:ikonli-weathericons-pack" }
+javafx-ikonli-websymbols = { module = "org.kordamp.ikonli:ikonli-websymbols-pack" }
+javafx-ikonli-whhg = { module = "org.kordamp.ikonli:ikonli-whhg-pack" }
+javafx-ikonli-win10 = { module = "org.kordamp.ikonli:ikonli-win10-pack" }
+javafx-ikonli-zondicons = { module = "org.kordamp.ikonli:ikonli-zondicons-pack" }
+
+jackson-tools-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson-annotation" }
+jackson-tools-core = { module = "tools.jackson.core:jackson-core", version.ref = "jackson-tools" }
+jackson-tools-databind = { module = "tools.jackson.core:jackson-databind", version.ref = "jackson-tools" }
+jackson-tools-jaxb = { module = "tools.jackson.module:jackson-module-jaxb-annotations", version.ref = "jackson-tools" }
+jackson-tools-kotlin = { module = "tools.jackson.module:jackson-module-kotlin", version.ref = "jackson-tools" }
+jackson-tools-yaml = { module = "tools.jackson.dataformat:jackson-dataformat-yaml", version.ref = "jackson-tools" }
+
+h2-r2dbc-driver = { module = "io.r2dbc:r2dbc-h2", version.ref = "h2-r2dbc-driver" }
+flyway-migration-core = { module = "org.flywaydb:flyway-core", version.ref = "flyway-migration-core"}
+exposed-core-module = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed-modules" }
+exposed-jdbc-module = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed-modules" }
+exposed-dao-module = { module = "org.jetbrains.exposed:exposed-dao", version.ref = "exposed-modules" }
+exposed-java-time = { module = "org.jetbrains.exposed:exposed-java-time", version.ref = "exposed-modules" }
+exposed-crypt-module = { module = "org.jetbrains.exposed:exposed-crypt", version.ref = "exposed-modules" }
+exposed-json-module = { module = "org.jetbrains.exposed:exposed-json", version.ref = "exposed-modules" }
+exposed-kotlin-datetime = { module = "org.jetbrains.exposed:exposed-kotlin-datetime", version.ref = "exposed-modules" }
+exposed-money-module = { module = "org.jetbrains.exposed:exposed-money", version.ref = "exposed-modules" }
+
+junit-jupiter-pioneer = { module = "org.junit-pioneer:junit-pioneer", version.ref = "junit-pioneer" }
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter" }
+junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit-jupiter" }
+
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito-core" }
+mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito-core" }
+mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockito-inline" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
+
+mockk-kotlin = { module = "io.mockk:mockk", version.ref = "mockk-kotlin" }
+
+system-stubs-core = { module = "uk.org.webcompere:system-stubs-core", version.ref = "system-stubs" }
+system-stubs-jupiter = { module = "uk.org.webcompere:system-stubs-jupiter", version.ref = "system-stubs" }
+
+skyscreamer-jsonassert = { module = "org.skyscreamer:jsonassert", version.ref = "skyscreamer-jsonassert" }
+
+okhttp-core = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+okhttp-coroutines = { module = "com.squareup.okhttp3:okhttp-coroutines", version.ref = "okhttp" }
+
+[bundles]
+kotlin-stdlib-all = [
+  "kotlin-stdlib-jdk8",
+  "kotlin-stdlib-common",
+  "kotlin-stdlib-reflect",
+]
+
+kotlinx-coroutines-all = [
+  "kotlinx-coroutines-core",
+  "kotlinx-coroutines-jvm",
+  "kotlinx-coroutines-slf4j",
+  "kotlinx-coroutines-reactor",
+  "kotlinx-coroutines-javafx",
+]
+
+spring-all = [
+  "spring-boot-starter-core",
+]
+
+javafx-all = [
+  "javafx-openfx-core",
+  "javafx-openfx-base",
+  "javafx-openfx-controls",
+  "javafx-openfx-graphics",
+  "javafx-openfx-fxml",
+  "javafx-openfx-swing",
+  "javafx-openfx-web",
+  "javafx-openfx-media",
+  "javafx-fxmisc-richtext",
+  "javafx-weaver-spring",
+  "javafx-oss-cssfx",
+  "javafx-controls-controlsfx",
+  "javafx-atlantafx-base",
+  "javafx-ikonli-javafx",
+  "javafx-ikonli-antdesignicons",
+  "javafx-ikonli-bootstrapicons",
+  "javafx-ikonli-boxicons",
+  "javafx-ikonli-bpmn",
+  "javafx-ikonli-bytedance",
+  "javafx-ikonli-captainicon",
+  "javafx-ikonli-carbonicons",
+  "javafx-ikonli-codicons",
+  "javafx-ikonli-coreui",
+  "javafx-ikonli-dashicons",
+  "javafx-ikonli-devicons",
+  "javafx-ikonli-elusive",
+  "javafx-ikonli-entypo",
+  "javafx-ikonli-evaicons",
+  "javafx-ikonli-feather",
+  "javafx-ikonli-fileicons",
+  "javafx-ikonli-fluentui",
+  "javafx-ikonli-fontawesome",
+  "javafx-ikonli-fontawesome5",
+  "javafx-ikonli-fontawesome6",
+  "javafx-ikonli-fontelico",
+  "javafx-ikonli-foundation",
+  "javafx-ikonli-hawcons",
+  "javafx-ikonli-icomoon",
+  "javafx-ikonli-ionicons",
+  "javafx-ikonli-ionicons4",
+  "javafx-ikonli-jamicons",
+  "javafx-ikonli-ligaturesymbols",
+  "javafx-ikonli-lineawesome",
+  "javafx-ikonli-linecons",
+  "javafx-ikonli-maki",
+  "javafx-ikonli-maki2",
+  "javafx-ikonli-mapicons",
+  "javafx-ikonli-material",
+  "javafx-ikonli-material2",
+  "javafx-ikonli-materialdesign",
+  "javafx-ikonli-materialdesign2",
+  "javafx-ikonli-medicons",
+  "javafx-ikonli-metrizeicons",
+  "javafx-ikonli-microns",
+  "javafx-ikonli-ociicons",
+  "javafx-ikonli-octicons",
+  "javafx-ikonli-openiconic",
+  "javafx-ikonli-paymentfont",
+  "javafx-ikonli-prestashopicons",
+  "javafx-ikonli-remixicon",
+  "javafx-ikonli-runestroicons",
+  "javafx-ikonli-simpleicons",
+  "javafx-ikonli-simplelineicons",
+  "javafx-ikonli-subway",
+  "javafx-ikonli-themify",
+  "javafx-ikonli-typicons",
+  "javafx-ikonli-unicons",
+  "javafx-ikonli-weathericons",
+  "javafx-ikonli-websymbols",
+  "javafx-ikonli-whhg",
+  "javafx-ikonli-win10",
+  "javafx-ikonli-zondicons",
+  #  "javafx-centerdevice-javafxsvg",
+]
+
+jackson-all = [
+  "jackson-tools-annotations",
+  "jackson-tools-core",
+  "jackson-tools-databind",
+  "jackson-tools-jaxb",
+  "jackson-tools-kotlin",
+  "jackson-tools-yaml",
+]
+
+database-all = [
+  "h2-r2dbc-driver",
+  "flyway-migration-core",
+  "exposed-core-module",
+  "exposed-jdbc-module",
+  "exposed-dao-module",
+  "exposed-java-time",
+  "exposed-crypt-module",
+  "exposed-json-module",
+  "exposed-kotlin-datetime",
+  "exposed-money-module",
+]
+
+okhttp-all = [
+  "okhttp-core",
+  "okhttp-coroutines",
+]
+
+log-logback-all = [
+  "log-logback-classic",
+  "log-logback-kotlin",
+]
+
+junit-all = [
+  "kotlinx-coroutines-test",
+  "junit-jupiter-pioneer",
+  "junit-jupiter-api",
+  "junit-jupiter-engine",
+  "junit-jupiter-params",
+  "mockito-core",
+  "mockito-junit",
+  "mockito-inline",
+  "mockito-kotlin",
+  "mockk-kotlin",
+  "system-stubs-core",
+  "system-stubs-jupiter",
+  "skyscreamer-jsonassert",
+]

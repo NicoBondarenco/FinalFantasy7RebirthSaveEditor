@@ -1,0 +1,9 @@
+package ffviirse.domain.attribute.property
+
+import ffviirse.domain.attribute.observable.ObservableOffsetDateTimeValue
+import ffviirse.domain.attribute.readonly.ReadOnlyOffsetDateTimeProperty
+import ffviirse.domain.attribute.writable.WritableOffsetDateTimePropertyValue
+import java.time.OffsetDateTime
+import javafx.beans.property.Property
+
+interface OffsetDateTimeProperty: BaseProperty<OffsetDateTime, ObservableOffsetDateTimeValue>, ReadOnlyOffsetDateTimeProperty, WritableOffsetDateTimePropertyValue, Property<OffsetDateTime>

@@ -1,0 +1,9 @@
+package ffviirse.domain.attribute.property
+
+import ffviirse.domain.attribute.observable.ObservableZonedDateTimeValue
+import ffviirse.domain.attribute.readonly.ReadOnlyZonedDateTimeProperty
+import ffviirse.domain.attribute.writable.WritableZonedDateTimePropertyValue
+import java.time.ZonedDateTime
+import javafx.beans.property.Property
+
+interface ZonedDateTimeProperty: BaseProperty<ZonedDateTime, ObservableZonedDateTimeValue>, ReadOnlyZonedDateTimeProperty, WritableZonedDateTimePropertyValue, Property<ZonedDateTime>

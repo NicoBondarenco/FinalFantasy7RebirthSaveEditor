@@ -1,0 +1,41 @@
+.app-text-field {
+    -fx-min-height: 70px;
+    -fx-min-width: 250px;
+    -fx-max-height: 70px;
+    -fx-height: 70px;
+    -fx-width: 250px;
+}
+
+.app-text-field-label {
+    -fx-skin: "com.sun.javafx.scene.control.skin.LabelSkin";
+    -fx-text-fill: -white-color;
+    -fx-font-size: 16px;
+    -fx-min-height: 20px;
+    -fx-min-width: 250px;
+    -fx-max-height: 20px;
+    /*-fx-max-width: 250px;*/
+    -fx-height: 20px;
+    -fx-width: 250px;
+}
+
+.app-text-field-field {
+    -fx-font-size: 14px;
+    -fx-min-height: 35px;
+    -fx-min-width: 250px;
+    -fx-max-height: 35px;
+    /*-fx-max-width: 250px;*/
+    -fx-height: 35px;
+    -fx-width: 250px;
+}
+
+.app-text-field-error {
+    -fx-skin: "com.sun.javafx.scene.control.skin.LabelSkin";
+    -fx-text-fill: -red-color;
+    -fx-font-size: 13px;
+    -fx-min-height: 15px;
+    -fx-min-width: 250px;
+    -fx-max-height: 15px;
+    /*-fx-max-width: 250px;*/
+    -fx-height: 15px;
+    -fx-width: 250px;
+}
