@@ -44,8 +44,13 @@ fun Region.fixedSize(size: ComponentSize) {
     this.maxHeight = size.height
 }
 
-fun Region.solidBorder() = this.apply {
-    border = Border(BorderStroke(TEXT_COLOR.fxColor(), BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths(1.0)))
+fun Region.solidBorder(
+    top: Double = 1.0,
+    right: Double = 1.0,
+    bottom: Double = 1.0,
+    left: Double = 1.0,
+) = this.apply {
+    border = Border(BorderStroke(TEXT_COLOR.fxColor(), BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths(top, right, bottom, left)))
 }
 
 fun Region.withPadding(padding: Double) = this.withPadding(padding, padding, padding, padding)

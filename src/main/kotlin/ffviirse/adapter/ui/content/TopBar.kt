@@ -3,6 +3,7 @@ package ffviirse.adapter.ui.content
 import ffviirse.adapter.ui.component.AppComboBox
 import ffviirse.adapter.ui.extension.fixedHeight
 import ffviirse.adapter.ui.extension.fixedWidth
+import ffviirse.adapter.ui.extension.solidBorder
 import ffviirse.adapter.ui.extension.withPadding
 import ffviirse.adapter.ui.model.ComboBoxItemView
 import ffviirse.domain.context.session.SessionContext.appBundleProperty
@@ -13,7 +14,6 @@ import ffviirse.domain.i18n.I18nBundle
 import ffviirse.domain.model.response.SaveGameFile
 import ffviirse.domain.service.I18nBundleService
 import ffviirse.domain.service.SaveGameService
-import java.io.File
 import javafx.collections.ObservableList
 import javafx.scene.layout.HBox
 import javafx.scene.layout.Priority.ALWAYS
@@ -21,13 +21,13 @@ import javafx.scene.layout.Region
 import org.springframework.stereotype.Component
 
 @Component
-class MainContentTop(
+class TopBar(
     private val saveGameService: SaveGameService,
     private val i18nBundleService: I18nBundleService,
 ) : HBox() {
 
     companion object {
-        private const val PANE_HEIGHT = 75.0
+        private const val PANE_HEIGHT = 85.0
         private const val PANE_PADDING = 5.0
 
         private const val SAVE_FILES_COMBO_WIDTH = 250.0
@@ -41,6 +41,7 @@ class MainContentTop(
         fixedHeight(PANE_HEIGHT)
         withPadding(PANE_PADDING)
         children.addAll(saveFilesCombo, createSpacer(), selectLanguageCombo)
+        solidBorder(bottom = 0.0)
     }
 
     private fun createSaveFilesCombo(): AppComboBox<ComboBoxItemView<SaveGameFile>> = AppComboBox(

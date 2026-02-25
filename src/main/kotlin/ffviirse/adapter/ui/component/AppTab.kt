@@ -3,6 +3,7 @@ package com.database.tesis.adapter.ui.component
 import ffviirse.adapter.ui.extension.fixedSize
 import ffviirse.adapter.ui.theme.ThemeColor.BLUE_COLOR
 import ffviirse.adapter.ui.theme.ThemeColor.TEXT_COLOR
+import javafx.beans.property.StringProperty
 import javafx.scene.Group
 import javafx.scene.control.Label
 import javafx.scene.control.Tab
@@ -15,14 +16,18 @@ abstract class AppTab(
     title: String,
 ) : Tab() {
 
+    private val label: Label = Label(title).apply {
+        textAlignment = TextAlignment.CENTER
+        rotate = 90.0
+        textFill = TEXT_COLOR.fxColor()
+        font = Font(16.0)
+        fixedSize(100.0, 20.0)
+    }
+
+    val labelProperty: StringProperty
+        get() = label.textProperty()
+
     init {
-        val label = Label(title).apply {
-            textAlignment = TextAlignment.CENTER
-            rotate = 90.0
-            textFill = TEXT_COLOR.fxColor()
-            font = Font(16.0)
-            fixedSize(100.0, 20.0)
-        }
         val pane = StackPane(Group(label))
         this.graphic = pane
         this.selectedProperty().addListener { _, _, selected ->

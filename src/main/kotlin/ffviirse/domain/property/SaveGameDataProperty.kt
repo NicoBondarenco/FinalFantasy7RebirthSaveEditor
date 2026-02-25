@@ -1,6 +1,6 @@
 package ffviirse.domain.property
 
-import ffviirse.domain.model.entity.SaveGameData
+import ffviirse.domain.model.entity.SaveGame
 import javafx.beans.property.SimpleObjectProperty
 
-class SaveGameDataProperty(value: SaveGameData) : SimpleObjectProperty<SaveGameData>(value)
+class SaveGameDataProperty(value: SaveGame) : SimpleObjectProperty<SaveGame>(value)

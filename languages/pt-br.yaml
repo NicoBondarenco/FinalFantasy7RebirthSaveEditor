@@ -12,6 +12,8 @@ bundleLabel:
   mainTopLanguagesLabel: "Idiomas"
 bundleTitle:
   mainStageWindowTitle: "Final Fantasy VII: Rebirth - Save Editor"
+  tabGeneralDataTitle: "Geral"
+  tabPartyDataTitle: "Grupo"
 bundleMessage:
   exceptionGenericErrorMessage: "Nenhuma mensagem disponível"
   validationGenericErrorMessage: "Valor inválido"

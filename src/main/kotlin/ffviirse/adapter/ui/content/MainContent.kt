@@ -1,12 +1,14 @@
 package ffviirse.adapter.ui.content
 
 import ffviirse.adapter.ui.extension.withPadding
+import javafx.scene.layout.Priority.ALWAYS
 import javafx.scene.layout.VBox
 import org.springframework.stereotype.Component
 
 @Component
 class MainContent(
-    private val mainContentTop: MainContentTop
+    private val topBar: TopBar,
+    private val contentPane: ContentPane,
 ) : VBox() {
 
     companion object {
@@ -15,7 +17,10 @@ class MainContent(
 
     init {
         withPadding(PANE_PADDING)
-        children.add(mainContentTop)
+        children.addAll(
+            topBar,
+            contentPane.apply { setVgrow(this, ALWAYS) },
+        )
     }
 
 }

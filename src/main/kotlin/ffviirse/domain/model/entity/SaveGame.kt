@@ -3,7 +3,7 @@ package ffviirse.domain.model.entity
 import ffviirse.domain.functional.Labeled
 import java.io.File
 
-data class SaveGameData(
+data class SaveGame(
     val saveFile: File = File(""),
     val generalData: GeneralData = GeneralData(),
 ) : Labeled {

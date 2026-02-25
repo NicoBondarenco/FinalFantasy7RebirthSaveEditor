@@ -8,7 +8,7 @@ import ffviirse.domain.i18n.I18nBundle
 import ffviirse.domain.i18n.I18nBundleLabel
 import ffviirse.domain.i18n.I18nBundleMessage
 import ffviirse.domain.i18n.I18nBundleTitle
-import ffviirse.domain.model.entity.SaveGameData
+import ffviirse.domain.model.entity.SaveGame
 import ffviirse.domain.property.I18nBundleProperty
 import ffviirse.domain.property.SaveGameDataProperty
 import javafx.application.Platform
@@ -40,10 +40,10 @@ object SessionContext {
     lateinit var appContext: ApplicationContext
         private set
 
-    var currentSaveProperty: SaveGameDataProperty = SaveGameDataProperty(SaveGameData())
+    var currentSaveProperty: SaveGameDataProperty = SaveGameDataProperty(SaveGame())
         private set
 
-    val currentSave: SaveGameData
+    val currentSave: SaveGame
         get() = currentSaveProperty.value
 
     fun setContext(context: ApplicationContext) {
@@ -66,7 +66,7 @@ object SessionContext {
         appBundleProperty.value = bundle
     }
 
-    fun changeCurrentSave(saveData: SaveGameData) = Platform.runLater {
+    fun changeCurrentSave(saveData: SaveGame) = Platform.runLater {
         currentSaveProperty.value = saveData
     }
 
