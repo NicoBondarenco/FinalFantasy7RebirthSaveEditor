@@ -3,7 +3,6 @@ package com.database.tesis.adapter.ui.component
 import ffviirse.adapter.ui.extension.fixedSize
 import ffviirse.adapter.ui.theme.ThemeColor.BLUE_COLOR
 import ffviirse.adapter.ui.theme.ThemeColor.TEXT_COLOR
-import javafx.geometry.Pos
 import javafx.scene.Group
 import javafx.scene.control.Label
 import javafx.scene.control.Tab

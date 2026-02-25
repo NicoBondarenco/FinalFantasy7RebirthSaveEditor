@@ -1,7 +1,0 @@
-package ffviirse.domain.attribute.readonly.base
-
-import ffviirse.domain.attribute.observable.ObservableZonedDateTimeValue
-import ffviirse.domain.attribute.readonly.ReadOnlyZonedDateTimeProperty
-import java.time.ZonedDateTime
-
-interface ReadOnlyZonedDateTimePropertyBase : ReadOnlyPropertyBase<ZonedDateTime, ObservableZonedDateTimeValue>, ReadOnlyZonedDateTimeProperty

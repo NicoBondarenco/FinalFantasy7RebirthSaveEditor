@@ -14,7 +14,6 @@ import ffviirse.adapter.ui.theme.ThemeIcon.ALERT_HELP
 import ffviirse.adapter.ui.theme.ThemeIcon.ALERT_INFO
 import ffviirse.adapter.ui.theme.ThemeIcon.ALERT_SUCCESS
 import ffviirse.adapter.ui.theme.ThemeIcon.ALERT_WARNING
-import ffviirse.domain.context.session.SessionContext
 import ffviirse.domain.context.session.SessionContext.appStage
 import org.controlsfx.control.Notifications
 

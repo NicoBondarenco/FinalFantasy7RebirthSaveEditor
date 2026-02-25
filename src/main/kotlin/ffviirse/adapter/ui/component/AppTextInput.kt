@@ -1,14 +1,13 @@
 package ffviirse.adapter.ui.component
 
 import ffviirse.adapter.ui.extension.fixedHeight
-import ffviirse.domain.context.session.SessionContext.appBundle
 import ffviirse.domain.context.session.SessionContext.appMessage
 import javafx.beans.property.Property
 import javafx.scene.control.TextArea
 import javafx.scene.control.TextField
 import javafx.scene.control.TextInputControl
 
-class AppTextInput<T: TextInputControl> private constructor(
+class AppTextInput<T : TextInputControl> private constructor(
     override val inputField: T,
     mainHeight: Double,
     fieldHeight: Double,

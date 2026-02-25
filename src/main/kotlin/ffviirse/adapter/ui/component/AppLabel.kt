@@ -7,7 +7,7 @@ import javafx.scene.text.Font
 
 class AppLabel(
     text: String
-): Label("${text}:") {
+) : Label("${text}:") {
 
     companion object {
         private const val LABEL_FONT = 15.0

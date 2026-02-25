@@ -1,7 +1,6 @@
 package ffviirse.adapter.ui.component
 
 import ffviirse.adapter.ui.extension.fixedHeight
-import ffviirse.domain.context.session.SessionContext.appBundle
 import ffviirse.domain.context.session.SessionContext.appMessage
 import ffviirse.domain.functional.Labeled
 import javafx.beans.property.Property

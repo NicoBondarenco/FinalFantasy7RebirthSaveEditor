@@ -1,7 +1,0 @@
-package ffviirse.domain.attribute.readonly.base
-
-import ffviirse.domain.attribute.observable.ObservableLocalDateTimeValue
-import ffviirse.domain.attribute.readonly.ReadOnlyLocalDateTimeProperty
-import java.time.LocalDateTime
-
-interface ReadOnlyLocalDateTimePropertyBase : ReadOnlyPropertyBase<LocalDateTime, ObservableLocalDateTimeValue>, ReadOnlyLocalDateTimeProperty

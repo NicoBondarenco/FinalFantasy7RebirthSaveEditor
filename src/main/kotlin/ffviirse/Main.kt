@@ -12,6 +12,7 @@ import ffviirse.domain.context.session.SessionContext.setContext
 import ffviirse.domain.context.session.SessionContext.setStage
 import javafx.application.Application
 import javafx.application.Platform
+import javafx.beans.binding.Bindings
 import javafx.scene.Scene
 import javafx.stage.Stage
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -51,9 +52,12 @@ class Main : Application() {
         height = DEFAULT_INITIAL_HEIGHT
         title = appTitle.mainStageWindowTitle
         isResizable = false
-        appBundleProperty.addListener { _, _, newBundle ->
-            this.title = newBundle.bundleTitle.mainStageWindowTitle
-        }
+        titleProperty().bind(
+            Bindings.createStringBinding(
+                { appTitle.mainStageWindowTitle },
+                appBundleProperty
+            )
+        )
     }
 
 }

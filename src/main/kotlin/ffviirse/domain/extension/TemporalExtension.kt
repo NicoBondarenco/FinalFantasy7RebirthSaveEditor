@@ -1,5 +1,6 @@
 package ffviirse.domain.extension
 
+import java.time.Duration
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
@@ -66,4 +67,10 @@ fun <T : Temporal> T.asZonedDateTime(): ZonedDateTime = when (this) {
     is OffsetDateTime -> this.toZonedDateTime()
     is ZonedDateTime -> this
     else -> throw IllegalArgumentException("Unsupported temporal type: ${this::class.simpleName}")
+}
+
+fun Duration.format(
+    hourPadding: Int = 0
+): String = (hourPadding.takeIf { it in 1..9 }?.let { "%0${hourPadding}d" } ?: "%d").let {
+    "$it:%02d:%02d".format(toHours(), toMinutesPart(), toSecondsPart())
 }

@@ -21,3 +21,5 @@ fun <T> String.parseOrNull(parser: (String) -> T?): T? = try {
 } catch (e: Exception) {
     null
 }
+
+fun String.onlyNumbers(): String = this.filter { it.isDigit() }

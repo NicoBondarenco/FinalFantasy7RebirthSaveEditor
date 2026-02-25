@@ -9,6 +9,7 @@ zoneOffset: "-05:00"
 bundleLabel:
   appCheckboxDefaultLabel: "Enable"
   mainTopSavesLabel: "Saved Games"
+  mainTopLanguagesLabel: "Languages"
 bundleTitle:
   mainStageWindowTitle: "Final Fantasy VII: Rebirth - Save Editor"
 bundleMessage:

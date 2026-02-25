@@ -1,7 +1,0 @@
-package ffviirse.domain.attribute.readonly.base
-
-import ffviirse.domain.attribute.observable.ObservableOffsetDateTimeValue
-import ffviirse.domain.attribute.readonly.ReadOnlyOffsetDateTimeProperty
-import java.time.OffsetDateTime
-
-interface ReadOnlyOffsetDateTimePropertyBase : ReadOnlyPropertyBase<OffsetDateTime, ObservableOffsetDateTimeValue>, ReadOnlyOffsetDateTimeProperty

@@ -4,7 +4,6 @@ import ffviirse.domain.context.application.ApplicationConstant.BACKUP_PATH
 import ffviirse.domain.context.application.ExternalProperties
 import ffviirse.domain.context.session.SessionContext.changeBundle
 import ffviirse.domain.i18n.I18nBundle
-import java.io.File
 import java.nio.file.Paths
 import org.springframework.context.ApplicationListener
 import org.springframework.context.event.ContextRefreshedEvent
@@ -23,8 +22,8 @@ class StartupConfiguration(
 
     private fun changeBundle() {
         val bundle = applicationBundles.firstOrNull {
-            it.languageTag == externalProperties.localeTag
-        }?: applicationBundles.minByOrNull { it.displayOrder }!!
+            it.languageTag.lowercase() == externalProperties.localeTag.lowercase()
+        } ?: applicationBundles.minByOrNull { it.displayOrder }!!
         changeBundle(bundle)
     }
 

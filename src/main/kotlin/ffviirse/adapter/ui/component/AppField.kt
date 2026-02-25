@@ -4,9 +4,10 @@ import ffviirse.adapter.ui.extension.fixedHeight
 import ffviirse.adapter.ui.extension.transparentBackground
 import ffviirse.adapter.ui.extension.withPadding
 import ffviirse.adapter.ui.theme.ThemeColor
-import ffviirse.domain.context.session.SessionContext.appBundle
 import ffviirse.domain.context.session.SessionContext.appMessage
 import ffviirse.domain.extension.nullString
+import java.util.concurrent.Callable
+import javafx.beans.Observable
 import javafx.beans.binding.Bindings
 import javafx.beans.property.BooleanProperty
 import javafx.beans.property.Property
@@ -70,7 +71,7 @@ abstract class AppField<T, F : Control>(
     val isValid: Boolean get() = isValidProperty.value
 
     private val fieldLabel: AppLabel = fieldLabel()
-    val labelProperty: StringProperty
+    open val labelProperty: StringProperty
         get() = fieldLabel.textProperty()
 
     val errorProperty: StringProperty = SimpleStringProperty(nullString()).apply {
@@ -87,6 +88,14 @@ abstract class AppField<T, F : Control>(
         set(value) {
             fieldValueProperty.value = value
         }
+
+    fun bindLabel(observable: Observable, callable: Callable<String>) {
+        labelProperty.bind(Bindings.createStringBinding({ "${callable.call()}:" }, observable))
+    }
+
+    fun bindErrorMessage(observable: Observable, callable: Callable<String>) {
+        errorProperty.bind(Bindings.createStringBinding(callable, observable))
+    }
 
     protected fun initField() {
         spacing = MAIN_SPACING

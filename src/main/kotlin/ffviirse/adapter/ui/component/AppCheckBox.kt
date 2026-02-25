@@ -1,10 +1,10 @@
 package ffviirse.adapter.ui.component
 
 import ffviirse.adapter.ui.extension.fixedHeight
-import ffviirse.domain.context.session.SessionContext.appBundle
 import ffviirse.domain.context.session.SessionContext.appLabel
 import ffviirse.domain.context.session.SessionContext.appMessage
 import javafx.beans.property.Property
+import javafx.beans.property.StringProperty
 import javafx.scene.control.CheckBox
 
 class AppCheckBox(
@@ -18,6 +18,9 @@ class AppCheckBox(
     override val valueRetriever: (CheckBox) -> Boolean = { it.isSelected }
 
     override val fieldValueProperty: Property<Boolean> = inputField.selectedProperty()
+
+    override val labelProperty: StringProperty
+        get() = inputField.textProperty()
 
     init {
         initField()

@@ -8,18 +8,19 @@ import ffviirse.domain.i18n.I18nBundle
 import ffviirse.domain.i18n.I18nBundleLabel
 import ffviirse.domain.i18n.I18nBundleMessage
 import ffviirse.domain.i18n.I18nBundleTitle
+import ffviirse.domain.model.entity.SaveGameData
+import ffviirse.domain.property.I18nBundleProperty
+import ffviirse.domain.property.SaveGameDataProperty
 import javafx.application.Platform
-import javafx.beans.property.SimpleObjectProperty
 import javafx.stage.Stage
 import org.springframework.context.ApplicationContext
 
 object SessionContext {
 
-    val appBundleProperty: SimpleObjectProperty<I18nBundle> = SimpleObjectProperty(I18nBundle())
+    val appBundleProperty: I18nBundleProperty = I18nBundleProperty(I18nBundle())
 
-    var appBundle: I18nBundle
-        get() = appBundleProperty.get()
-        private set(value) = appBundleProperty.set(value)
+    val appBundle: I18nBundle
+        get() = appBundleProperty.value
 
     val appLabel: I18nBundleLabel
         get() = appBundle.bundleLabel
@@ -39,6 +40,12 @@ object SessionContext {
     lateinit var appContext: ApplicationContext
         private set
 
+    var currentSaveProperty: SaveGameDataProperty = SaveGameDataProperty(SaveGameData())
+        private set
+
+    val currentSave: SaveGameData
+        get() = currentSaveProperty.value
+
     fun setContext(context: ApplicationContext) {
         if (!::appContext.isInitialized) {
             appContext = context
@@ -55,10 +62,12 @@ object SessionContext {
         }
     }
 
-    fun changeBundle(bundle: I18nBundle) {
-        Platform.runLater {
-            appBundle = bundle
-        }
+    fun changeBundle(bundle: I18nBundle) = Platform.runLater {
+        appBundleProperty.value = bundle
+    }
+
+    fun changeCurrentSave(saveData: SaveGameData) = Platform.runLater {
+        currentSaveProperty.value = saveData
     }
 
 }

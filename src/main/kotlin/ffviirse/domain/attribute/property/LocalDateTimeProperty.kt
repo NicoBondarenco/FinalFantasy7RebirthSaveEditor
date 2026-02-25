@@ -1,9 +1,0 @@
-package ffviirse.domain.attribute.property
-
-import ffviirse.domain.attribute.observable.ObservableLocalDateTimeValue
-import ffviirse.domain.attribute.readonly.ReadOnlyLocalDateTimeProperty
-import ffviirse.domain.attribute.writable.WritableLocalDateTimePropertyValue
-import java.time.LocalDateTime
-import javafx.beans.property.Property
-
-interface LocalDateTimeProperty: BaseProperty<LocalDateTime, ObservableLocalDateTimeValue>, ReadOnlyLocalDateTimeProperty, WritableLocalDateTimePropertyValue, Property<LocalDateTime>
