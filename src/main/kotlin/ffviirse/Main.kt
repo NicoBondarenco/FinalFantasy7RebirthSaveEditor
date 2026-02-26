@@ -7,7 +7,7 @@ import ffviirse.configuration.handler.ExceptionHandler
 import ffviirse.domain.context.application.ApplicationConstant.DEFAULT_INITIAL_HEIGHT
 import ffviirse.domain.context.application.ApplicationConstant.DEFAULT_INITIAL_WIDTH
 import ffviirse.domain.context.session.SessionContext.appBundleProperty
-import ffviirse.domain.context.session.SessionContext.appTitle
+import ffviirse.domain.context.session.SessionContext.bundleMainApplication
 import ffviirse.domain.context.session.SessionContext.setContext
 import ffviirse.domain.context.session.SessionContext.setStage
 import javafx.application.Application
@@ -50,11 +50,11 @@ class Main : Application() {
         scene = Scene(applicationContext.bean<MainContent>())
         width = DEFAULT_INITIAL_WIDTH
         height = DEFAULT_INITIAL_HEIGHT
-        title = appTitle.mainStageWindowTitle
+        title = bundleMainApplication.mainStageWindowTitle
         isResizable = false
         titleProperty().bind(
             Bindings.createStringBinding(
-                { appTitle.mainStageWindowTitle },
+                { bundleMainApplication.mainStageWindowTitle },
                 appBundleProperty
             )
         )

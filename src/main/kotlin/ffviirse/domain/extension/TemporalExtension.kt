@@ -74,3 +74,11 @@ fun Duration.format(
 ): String = (hourPadding.takeIf { it in 1..9 }?.let { "%0${hourPadding}d" } ?: "%d").let {
     "$it:%02d:%02d".format(toHours(), toMinutesPart(), toSecondsPart())
 }
+
+fun String.toDuration(): Duration {
+    val parts = this.split(":").takeIf {
+        it.size == 3
+    } ?: throw IllegalArgumentException("Invalid format: '$this'. Expected HH:mm:ss")
+
+    return Duration.ofHours(parts[0].toLong()).plusMinutes(parts[1].toLong()).plusSeconds(parts[2].toLong())
+}

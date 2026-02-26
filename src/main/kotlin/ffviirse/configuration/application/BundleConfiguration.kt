@@ -1,7 +1,6 @@
 package ffviirse.configuration.application
 
 import ffviirse.domain.context.application.ApplicationConstant.LANGUAGES_PATH
-import ffviirse.domain.context.session.SessionContext.changeBundle
 import ffviirse.domain.i18n.I18nBundle
 import java.io.File
 import java.io.FileFilter

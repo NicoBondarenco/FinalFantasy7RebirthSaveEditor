@@ -1,14 +1,14 @@
 package ffviirse.adapter.ui.component
 
 import ffviirse.adapter.ui.extension.fixedHeight
-import ffviirse.domain.context.session.SessionContext.appMessage
+import ffviirse.domain.context.session.SessionContext.bundleMainApplication
 import javafx.beans.property.BooleanProperty
 import javafx.beans.property.Property
 import javafx.scene.control.Spinner
 
 class AppIntSpinner(
     inputLabel: String,
-    errorMessage: String = appMessage.validationGenericErrorMessage,
+    errorMessage: String = bundleMainApplication.validationGenericErrorMessage,
     isEditable: Boolean = true,
     inputValidation: (Int) -> Boolean = { true }
 ) : AppField<Int, Spinner<Int>>(inputLabel, errorMessage, DEFAULT_HEIGHT, inputValidation) {

@@ -7,10 +7,12 @@ import ffviirse.adapter.ui.extension.solidBorder
 import ffviirse.adapter.ui.extension.withPadding
 import ffviirse.adapter.ui.model.ComboBoxItemView
 import ffviirse.domain.context.session.SessionContext.appBundleProperty
-import ffviirse.domain.context.session.SessionContext.appLabel
+import ffviirse.domain.context.session.SessionContext.bundleTopBar
+import ffviirse.domain.context.session.SessionContext.currentSaveGame
 import ffviirse.domain.extension.asObservable
 import ffviirse.domain.extension.onlyNumbers
 import ffviirse.domain.i18n.I18nBundle
+import ffviirse.domain.model.mapper.toSaveGame
 import ffviirse.domain.model.response.SaveGameFile
 import ffviirse.domain.service.I18nBundleService
 import ffviirse.domain.service.SaveGameService
@@ -46,10 +48,10 @@ class TopBar(
 
     private fun createSaveFilesCombo(): AppComboBox<ComboBoxItemView<SaveGameFile>> = AppComboBox(
         itemList = saveFiles(),
-        inputLabel = appLabel.mainTopSavesLabel,
+        inputLabel = bundleTopBar.mainTopSavesLabel,
     ).apply {
         fixedWidth(SAVE_FILES_COMBO_WIDTH)
-        bindLabel(appBundleProperty) { appLabel.mainTopSavesLabel }
+        bindLabel(appBundleProperty) { bundleTopBar.mainTopSavesLabel }
         fieldValue = ComboBoxItemView()
         fieldValueProperty.addListener { _, _, newValue ->
             newValue.itemValue?.let { saveGameService.selectSaveGame(it) }
@@ -66,15 +68,15 @@ class TopBar(
 
     private fun createSelectLanguageCombo(): AppComboBox<I18nBundle> = AppComboBox(
         itemList = i18nBundleService.availableBundles().asObservable(),
-        inputLabel = appLabel.mainTopLanguagesLabel,
+        inputLabel = bundleTopBar.mainTopLanguagesLabel,
     ).apply {
         fixedWidth(CURRENT_LANGUAGE_COMBO_WIDTH)
-        bindLabel(appBundleProperty) { appLabel.mainTopLanguagesLabel }
+        bindLabel(appBundleProperty) { bundleTopBar.mainTopLanguagesLabel }
         fieldValueProperty.bindBidirectional(appBundleProperty)
     }
 
     private fun createSpacer(): Region = Region().apply {
-        HBox.setHgrow(this, ALWAYS)
+        setHgrow(this, ALWAYS)
     }
 
 }

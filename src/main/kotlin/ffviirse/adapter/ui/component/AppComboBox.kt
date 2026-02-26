@@ -1,7 +1,7 @@
 package ffviirse.adapter.ui.component
 
 import ffviirse.adapter.ui.extension.fixedHeight
-import ffviirse.domain.context.session.SessionContext.appMessage
+import ffviirse.domain.context.session.SessionContext.bundleMainApplication
 import ffviirse.domain.functional.Labeled
 import javafx.beans.property.Property
 import javafx.collections.ObservableList
@@ -11,7 +11,7 @@ import javafx.util.StringConverter
 class AppComboBox<T>(
     itemList: ObservableList<T>,
     inputLabel: String,
-    errorMessage: String = appMessage.validationGenericErrorMessage,
+    errorMessage: String = bundleMainApplication.validationGenericErrorMessage,
     itemConverter: StringConverter<T>? = null,
     inputValidation: (T) -> Boolean = { true }
 ) : AppField<T, ComboBox<T>>(inputLabel, errorMessage, DEFAULT_HEIGHT, inputValidation) {

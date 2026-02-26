@@ -20,9 +20,10 @@ data class I18nBundle(
     val timeFormat: DateTimeFormatter = ISO_LOCAL_TIME,
     val datetimeFormat: DateTimeFormatter = ISO_LOCAL_DATE_TIME,
     val zoneOffset: ZoneOffset = UTC,
-    val bundleLabel: I18nBundleLabel = I18nBundleLabel(),
-    val bundleTitle: I18nBundleTitle = I18nBundleTitle(),
-    val bundleMessage: I18nBundleMessage = I18nBundleMessage(),
-): Labeled {
+    val bundleMainApplication: I18nBundleMainApplication = I18nBundleMainApplication(),
+    val bundleTopBar: I18nBundleTopBar = I18nBundleTopBar(),
+    val bundleContentPane: I18nBundleContentPane = I18nBundleContentPane(),
+    val bundleGeneralTab: I18nBundleGeneralTab = I18nBundleGeneralTab(),
+) : Labeled {
     override val label: String = displayName
 }

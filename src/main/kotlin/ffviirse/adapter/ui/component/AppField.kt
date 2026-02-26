@@ -4,7 +4,7 @@ import ffviirse.adapter.ui.extension.fixedHeight
 import ffviirse.adapter.ui.extension.transparentBackground
 import ffviirse.adapter.ui.extension.withPadding
 import ffviirse.adapter.ui.theme.ThemeColor
-import ffviirse.domain.context.session.SessionContext.appMessage
+import ffviirse.domain.context.session.SessionContext.bundleMainApplication
 import ffviirse.domain.extension.nullString
 import java.util.concurrent.Callable
 import javafx.beans.Observable
@@ -23,7 +23,7 @@ import javafx.scene.text.Font
 
 abstract class AppField<T, F : Control>(
     protected val inputLabel: String,
-    protected val errorMessage: String = appMessage.validationGenericErrorMessage,
+    protected val errorMessage: String = bundleMainApplication.validationGenericErrorMessage,
     protected val mainHeight: Double = DEFAULT_HEIGHT,
     protected val inputValidation: (T) -> Boolean = { true }
 ) : VBox() {

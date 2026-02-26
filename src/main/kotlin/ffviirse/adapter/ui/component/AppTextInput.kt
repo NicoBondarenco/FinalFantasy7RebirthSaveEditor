@@ -1,7 +1,7 @@
 package ffviirse.adapter.ui.component
 
 import ffviirse.adapter.ui.extension.fixedHeight
-import ffviirse.domain.context.session.SessionContext.appMessage
+import ffviirse.domain.context.session.SessionContext.bundleMainApplication
 import javafx.beans.property.Property
 import javafx.scene.control.TextArea
 import javafx.scene.control.TextField
@@ -26,7 +26,7 @@ class AppTextInput<T : TextInputControl> private constructor(
 
         fun textField(
             inputLabel: String,
-            errorMessage: String = appMessage.validationGenericErrorMessage,
+            errorMessage: String = bundleMainApplication.validationGenericErrorMessage,
             inputValidation: (String) -> Boolean = { true }
         ): AppTextInput<TextField> = AppTextInput(
             inputField = TextField(),
@@ -39,7 +39,7 @@ class AppTextInput<T : TextInputControl> private constructor(
 
         fun textArea(
             inputLabel: String,
-            errorMessage: String = appMessage.validationGenericErrorMessage,
+            errorMessage: String = bundleMainApplication.validationGenericErrorMessage,
             inputValidation: (String) -> Boolean = { true }
         ): AppTextInput<TextArea> = AppTextInput(
             inputField = TextArea().apply {

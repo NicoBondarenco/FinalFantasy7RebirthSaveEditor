@@ -14,13 +14,17 @@ class ContentPane(
     private val context: ApplicationContext
 ) : TabPane() {
 
+    private val appTabs: List<AppTab> = this.context.beans<AppTab>().values.sortedBy { it.position }
+
     init {
         tabClosingPolicy = UNAVAILABLE
         side = LEFT
         isRotateGraphic = true
-        tabs.addAll(this.context.beans<AppTab>().values.sortedBy { it.position })
+        tabs.addAll(appTabs)
         solidBorder()
     }
 
+    val isValid: Boolean
+        get() = appTabs.all { it.isValid }
 
 }

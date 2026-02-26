@@ -1,15 +1,14 @@
 package ffviirse.adapter.ui.component
 
 import ffviirse.adapter.ui.extension.fixedHeight
-import ffviirse.domain.context.session.SessionContext.appLabel
-import ffviirse.domain.context.session.SessionContext.appMessage
+import ffviirse.domain.context.session.SessionContext.bundleMainApplication
 import javafx.beans.property.Property
 import javafx.beans.property.StringProperty
 import javafx.scene.control.CheckBox
 
 class AppCheckBox(
     inputLabel: String,
-    errorMessage: String = appMessage.validationGenericErrorMessage,
+    errorMessage: String = bundleMainApplication.validationGenericErrorMessage,
     inputValidation: (Boolean) -> Boolean = { true }
 ) : AppField<Boolean, CheckBox>(inputLabel, errorMessage, DEFAULT_HEIGHT, inputValidation) {
 
@@ -26,7 +25,7 @@ class AppCheckBox(
         initField()
     }
 
-    private fun checkBox(): CheckBox = CheckBox(appLabel.appCheckboxDefaultLabel).apply {
+    private fun checkBox(): CheckBox = CheckBox(bundleMainApplication.appCheckboxDefaultLabel).apply {
         maxWidth = MAIN_WIDTH
         fixedHeight(INPUT_HEIGHT)
         focusedProperty().addListener { _, _, focused ->
