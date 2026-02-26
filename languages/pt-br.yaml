@@ -19,7 +19,7 @@ bundleContentPane:
   tabPartyDataTitle: "Grupo"
 bundleGeneralTab:
   paneGeneralDataTitle: "Geral"
-  panePartyLevelTitle: "Nível do Grupo"
+  paneMenuChapterTitle: "Menus e Capítulos"
   paneEnemySkillsTitle: "Habilidades de Inimigos"
   paneCharactersOutfitsTitle: "Roupas dos Personagens"
   fieldPlayTimeLabel: "Tempo de Jogo"
@@ -44,5 +44,6 @@ bundleGeneralTab:
   fieldChapterTwelveLabel: "Capítulo 12 - Uma Chave de Ouro"
   fieldChapterThirteenLabel: "Capítulo 13 - Onde os Anjos Temem Pisar"
   fieldChapterFourteenLabel: "Capítulo 14 - Fim do Mundo"
-
+  fieldPartyLevelLabel: "Nível do Grupo"
+  fieldPartyExperienceLabel: "Exp. do Grupo"
 

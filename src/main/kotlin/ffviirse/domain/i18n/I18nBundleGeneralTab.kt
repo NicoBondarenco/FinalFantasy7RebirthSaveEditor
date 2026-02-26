@@ -4,7 +4,7 @@ import ffviirse.domain.extension.nullString
 
 data class I18nBundleGeneralTab(
     val paneGeneralDataTitle: String = nullString(),
-    val panePartyLevelTitle: String = nullString(),
+    val paneMenuChapterTitle: String = nullString(),
     val paneEnemySkillsTitle: String = nullString(),
     val paneCharactersOutfitsTitle: String = nullString(),
     val fieldPlayTimeLabel: String = nullString(),
@@ -29,4 +29,6 @@ data class I18nBundleGeneralTab(
     val fieldChapterTwelveLabel: String = nullString(),
     val fieldChapterThirteenLabel: String = nullString(),
     val fieldChapterFourteenLabel: String = nullString(),
+    val fieldPartyLevelLabel: String = nullString(),
+    val fieldPartyExperienceLabel: String = nullString(),
 )

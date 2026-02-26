@@ -34,4 +34,5 @@ data class GeneralDataContext(
     val chapterTwelve: BooleanProperty = SimpleBooleanProperty(false),
     val chapterThirteen: BooleanProperty = SimpleBooleanProperty(false),
     val chapterFourteen: BooleanProperty = SimpleBooleanProperty(false),
+    val groupExperience: IntProperty = IntProperty(0),
 )

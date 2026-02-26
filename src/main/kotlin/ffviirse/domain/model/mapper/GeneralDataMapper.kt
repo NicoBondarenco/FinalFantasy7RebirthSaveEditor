@@ -29,6 +29,7 @@ fun ByteBuffer.generalData(bytes: ByteArray): GeneralData = this.playDuration().
         chapterTwelve = bytes.unlockedMenu(0x448CA, 1),
         chapterThirteen = bytes.unlockedMenu(0x448CA, 2),
         chapterFourteen = bytes.unlockedMenu(0x448CA, 3),
+        groupExperience = this.getInt(0x4EEC4),
     )
 }
 

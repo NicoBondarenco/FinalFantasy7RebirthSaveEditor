@@ -5,8 +5,8 @@ object ApplicationConstant {
     //    const val DEFAULT_INITIAL_WIDTH = 1366.0
 //    const val DEFAULT_INITIAL_HEIGHT = 768.0
 
-    const val DEFAULT_INITIAL_WIDTH = 1500.0
-    const val DEFAULT_INITIAL_HEIGHT = 850.0
+    const val DEFAULT_INITIAL_WIDTH = 1600.0
+    const val DEFAULT_INITIAL_HEIGHT = 900.0
 
     const val CONFIGURATION_FILE = "application.config"
 

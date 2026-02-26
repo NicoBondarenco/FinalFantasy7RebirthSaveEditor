@@ -36,6 +36,7 @@ fun GeneralDataContext.update(generalData: GeneralData) {
     chapterTwelve.value = generalData.chapterTwelve
     chapterThirteen.value = generalData.chapterThirteen
     chapterFourteen.value = generalData.chapterFourteen
+    groupExperience.value = generalData.groupExperience
 }
 
 fun SaveGameContext.toSaveGame(): SaveGame = SaveGame(
@@ -67,4 +68,5 @@ fun GeneralDataContext.toGeneralData(): GeneralData = GeneralData(
     chapterTwelve = chapterTwelve.value,
     chapterThirteen = chapterThirteen.value,
     chapterFourteen = chapterFourteen.value,
+    groupExperience = groupExperience.value,
 )

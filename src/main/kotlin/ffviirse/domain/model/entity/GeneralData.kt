@@ -26,4 +26,5 @@ data class GeneralData(
     val chapterTwelve: Boolean = false,
     val chapterThirteen: Boolean = false,
     val chapterFourteen: Boolean = false,
+    val groupExperience: Int = 0,
 )

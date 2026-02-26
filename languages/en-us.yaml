@@ -19,7 +19,7 @@ bundleContentPane:
   tabPartyDataTitle: "Party"
 bundleGeneralTab:
   paneGeneralDataTitle: "General"
-  panePartyLevelTitle: "Party Level"
+  paneMenuChapterTitle: "Menus and Chapters"
   paneEnemySkillsTitle: "Enemy Skills"
   paneCharactersOutfitsTitle: "Characters Outfits"
   fieldPlayTimeLabel: "Playtime"
@@ -44,3 +44,5 @@ bundleGeneralTab:
   fieldChapterTwelveLabel: "Chapter 12: A Golden Key"
   fieldChapterThirteenLabel: "Chapter 13: Where Angels Fear to Tread"
   fieldChapterFourteenLabel: "Chapter 14: End of the World"
+  fieldPartyLevelLabel: "Group Level"
+  fieldPartyExperienceLabel: "Grup Exp."

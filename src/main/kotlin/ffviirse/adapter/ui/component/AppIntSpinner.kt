@@ -10,6 +10,8 @@ class AppIntSpinner(
     inputLabel: String,
     errorMessage: String = bundleMainApplication.validationGenericErrorMessage,
     isEditable: Boolean = true,
+    val minValue: Int = 0,
+    val maxValue: Int = Int.MAX_VALUE,
     inputValidation: (Int) -> Boolean = { true }
 ) : AppField<Int, Spinner<Int>>(inputLabel, errorMessage, DEFAULT_HEIGHT, inputValidation) {
 
@@ -31,7 +33,7 @@ class AppIntSpinner(
 
     private fun spinner(
         editable: Boolean
-    ): Spinner<Int> = Spinner<Int>(0, Int.MAX_VALUE, 0, 1).apply {
+    ): Spinner<Int> = Spinner<Int>(minValue, maxValue, 0, 1).apply {
         maxWidth = MAIN_WIDTH
         fixedHeight(INPUT_HEIGHT)
         isEditable = editable
