@@ -1,7 +1,9 @@
 package ffviirse.domain.service
 
+import ffviirse.domain.context.application.ApplicationConstant.BACKUP_PATH
 import ffviirse.domain.context.application.ExternalProperties
 import ffviirse.domain.context.session.SessionContext.changeCurrentSave
+import ffviirse.domain.extension.fileCurrentDateTime
 import ffviirse.domain.model.entity.SaveGame
 import ffviirse.domain.model.mapper.generalData
 import ffviirse.domain.model.response.SaveGameFile
@@ -9,11 +11,14 @@ import java.io.File
 import java.io.FileFilter
 import java.nio.ByteBuffer
 import java.nio.ByteOrder.LITTLE_ENDIAN
+import java.nio.file.Paths
 import org.springframework.stereotype.Service
+import tools.jackson.databind.ObjectMapper
 
 @Service
 class SaveGameService(
-    private val externalProperties: ExternalProperties
+    private val externalProperties: ExternalProperties,
+    private val objectMapper: ObjectMapper,
 ) {
 
     companion object {
@@ -40,6 +45,11 @@ class SaveGameService(
         )
 
         changeCurrentSave(saveData)
+    }
+
+    fun exportSave(saveGame: SaveGame) {
+        val backupDir = Paths.get(BACKUP_PATH).toFile()
+        File(backupDir, "${fileCurrentDateTime()}.json").writeText(objectMapper.writeValueAsString(saveGame))
     }
 
     private fun File.isValidSave(): Boolean = this.exists() &&

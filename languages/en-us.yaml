@@ -14,6 +14,8 @@ bundleMainApplication:
 bundleTopBar:
   mainTopSavesLabel: "Saved Games"
   mainTopLanguagesLabel: "Languages"
+bundleBottomBar:
+  mainBottomSaveLabel: "Save"
 bundleContentPane:
   tabGeneralDataTitle: "General"
   tabPartyDataTitle: "Party"
@@ -44,5 +46,14 @@ bundleGeneralTab:
   fieldChapterTwelveLabel: "Chapter 12: A Golden Key"
   fieldChapterThirteenLabel: "Chapter 13: Where Angels Fear to Tread"
   fieldChapterFourteenLabel: "Chapter 14: End of the World"
-  fieldPartyLevelLabel: "Group Level"
-  fieldPartyExperienceLabel: "Grup Exp."
+  fieldPartyLevelLabel: "Party Level"
+  fieldPartyExperienceLabel: "Party Exp."
+  fieldEnemySkillLabel: "Enemy Skill"
+  skillNoSkillLabel: " "
+  skillRancidBreathLabel: "Rancid Breath"
+  skillPlasmaDischargeLabel: "Plasma Discharge"
+  skillMindBlastLabel: "Mind Blast"
+  skillGorgonShieldLabel: "Gorgon Shield"
+  skillSoothingBreezeLabel: "Soothing Breeze"
+  skillSelfDestructLabel: "Self-Destruct"
+  skillSonicBoomLabel: "Sonic Boom"

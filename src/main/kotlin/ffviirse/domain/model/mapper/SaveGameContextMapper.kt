@@ -37,6 +37,13 @@ fun GeneralDataContext.update(generalData: GeneralData) {
     chapterThirteen.value = generalData.chapterThirteen
     chapterFourteen.value = generalData.chapterFourteen
     groupExperience.value = generalData.groupExperience
+    rancidBreath.value = generalData.rancidBreath
+    plasmaDischarge.value = generalData.plasmaDischarge
+    mindBlast.value = generalData.mindBlast
+    gorgonShield.value = generalData.gorgonShield
+    soothingBreeze.value = generalData.soothingBreeze
+    selfDestruct.value = generalData.selfDestruct
+    sonicBoom.value = generalData.sonicBoom
 }
 
 fun SaveGameContext.toSaveGame(): SaveGame = SaveGame(
@@ -69,4 +76,11 @@ fun GeneralDataContext.toGeneralData(): GeneralData = GeneralData(
     chapterThirteen = chapterThirteen.value,
     chapterFourteen = chapterFourteen.value,
     groupExperience = groupExperience.value,
+    rancidBreath = rancidBreath.value,
+    plasmaDischarge = plasmaDischarge.value,
+    mindBlast = mindBlast.value,
+    gorgonShield = gorgonShield.value,
+    soothingBreeze = soothingBreeze.value,
+    selfDestruct = selfDestruct.value,
+    sonicBoom = sonicBoom.value,
 )

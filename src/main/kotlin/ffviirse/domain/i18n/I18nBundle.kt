@@ -22,6 +22,7 @@ data class I18nBundle(
     val zoneOffset: ZoneOffset = UTC,
     val bundleMainApplication: I18nBundleMainApplication = I18nBundleMainApplication(),
     val bundleTopBar: I18nBundleTopBar = I18nBundleTopBar(),
+    val bundleBottomBar: I18nBundleBottomBar = I18nBundleBottomBar(),
     val bundleContentPane: I18nBundleContentPane = I18nBundleContentPane(),
     val bundleGeneralTab: I18nBundleGeneralTab = I18nBundleGeneralTab(),
 ) : Labeled {

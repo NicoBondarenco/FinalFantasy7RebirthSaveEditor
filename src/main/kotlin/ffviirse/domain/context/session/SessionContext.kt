@@ -5,6 +5,7 @@ import com.sun.javafx.stage.StageHelper
 import ffviirse.adapter.ui.theme.ThemeApplication
 import ffviirse.adapter.ui.theme.ThemeApplication.Companion.DARK
 import ffviirse.domain.i18n.I18nBundle
+import ffviirse.domain.i18n.I18nBundleBottomBar
 import ffviirse.domain.i18n.I18nBundleContentPane
 import ffviirse.domain.i18n.I18nBundleGeneralTab
 import ffviirse.domain.i18n.I18nBundleMainApplication
@@ -30,6 +31,9 @@ object SessionContext {
 
     val bundleTopBar: I18nBundleTopBar
         get() = appBundle.bundleTopBar
+
+    val bundleBottomBar: I18nBundleBottomBar
+        get() = appBundle.bundleBottomBar
 
     val bundleContentPane: I18nBundleContentPane
         get() = appBundle.bundleContentPane

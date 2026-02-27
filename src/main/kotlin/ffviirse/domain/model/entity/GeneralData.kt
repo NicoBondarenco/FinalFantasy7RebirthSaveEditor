@@ -1,5 +1,7 @@
 package ffviirse.domain.model.entity
 
+import ffviirse.domain.model.value.EnemySkill
+import ffviirse.domain.model.value.EnemySkill.NO_SKILL
 import java.time.Duration
 
 data class GeneralData(
@@ -27,4 +29,11 @@ data class GeneralData(
     val chapterThirteen: Boolean = false,
     val chapterFourteen: Boolean = false,
     val groupExperience: Int = 0,
+    val rancidBreath: Boolean = false,
+    val plasmaDischarge: Boolean = false,
+    val mindBlast: Boolean = false,
+    val gorgonShield: Boolean = false,
+    val soothingBreeze: Boolean = false,
+    val selfDestruct: Boolean = false,
+    val sonicBoom: Boolean = false,
 )

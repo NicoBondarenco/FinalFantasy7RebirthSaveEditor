@@ -1,10 +1,19 @@
 package ffviirse.domain.model.mapper
 
 import ffviirse.domain.model.entity.GeneralData
+import ffviirse.domain.model.value.EnemySkill
+import ffviirse.domain.model.value.EnemySkill.GORGON_SHIELD
+import ffviirse.domain.model.value.EnemySkill.MIND_BLAST
+import ffviirse.domain.model.value.EnemySkill.PLASMA_DISCHARGE
+import ffviirse.domain.model.value.EnemySkill.RANCID_BREATH
+import ffviirse.domain.model.value.EnemySkill.SELF_DESTRUCT
+import ffviirse.domain.model.value.EnemySkill.SONIC_BOOM
+import ffviirse.domain.model.value.EnemySkill.SOOTHING_BREEZE
 import java.nio.ByteBuffer
 import java.time.Duration
 
 fun ByteBuffer.generalData(bytes: ByteArray): GeneralData = this.playDuration().let {
+    val enemySkills = this.enemySkillSet()
     GeneralData(
         playTime = it,
         playHours = it.toHours(),
@@ -30,7 +39,20 @@ fun ByteBuffer.generalData(bytes: ByteArray): GeneralData = this.playDuration().
         chapterThirteen = bytes.unlockedMenu(0x448CA, 2),
         chapterFourteen = bytes.unlockedMenu(0x448CA, 3),
         groupExperience = this.getInt(0x4EEC4),
+        rancidBreath = enemySkills.contains(RANCID_BREATH),
+        plasmaDischarge = enemySkills.contains(PLASMA_DISCHARGE),
+        mindBlast = enemySkills.contains(MIND_BLAST),
+        gorgonShield = enemySkills.contains(GORGON_SHIELD),
+        soothingBreeze = enemySkills.contains(SOOTHING_BREEZE),
+        selfDestruct = enemySkills.contains(SELF_DESTRUCT),
+        sonicBoom = enemySkills.contains(SONIC_BOOM),
     )
+}
+
+private fun ByteBuffer.enemySkillSet(): Set<EnemySkill> = this.let { buffer ->
+    listOf(0x4472C, 0x44730, 0x44734, 0x44738, 0x4473C, 0x44740, 0x44744).map {
+        EnemySkill.byFileValue(buffer.getInt(it))
+    }.distinct().toSet()
 }
 
 private fun ByteBuffer.playDuration(): Duration = Duration.ofSeconds(this.getLong(0x3C30) and 0xFFFFFFFFL)

@@ -8,11 +8,9 @@ import ffviirse.adapter.ui.extension.withPadding
 import ffviirse.adapter.ui.model.ComboBoxItemView
 import ffviirse.domain.context.session.SessionContext.appBundleProperty
 import ffviirse.domain.context.session.SessionContext.bundleTopBar
-import ffviirse.domain.context.session.SessionContext.currentSaveGame
 import ffviirse.domain.extension.asObservable
 import ffviirse.domain.extension.onlyNumbers
 import ffviirse.domain.i18n.I18nBundle
-import ffviirse.domain.model.mapper.toSaveGame
 import ffviirse.domain.model.response.SaveGameFile
 import ffviirse.domain.service.I18nBundleService
 import ffviirse.domain.service.SaveGameService

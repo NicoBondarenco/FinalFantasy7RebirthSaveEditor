@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component
 class MainContent(
     private val topBar: TopBar,
     private val contentPane: ContentPane,
+    private val bottomBar: BottomBar,
 ) : VBox() {
 
     companion object {
@@ -20,6 +21,7 @@ class MainContent(
         children.addAll(
             topBar,
             contentPane.apply { setVgrow(this, ALWAYS) },
+            bottomBar,
         )
     }
 

@@ -14,6 +14,8 @@ bundleMainApplication:
 bundleTopBar:
   mainTopSavesLabel: "Jogos Salvos"
   mainTopLanguagesLabel: "Idiomas"
+bundleBottomBar:
+  mainBottomSaveLabel: "Salvar"
 bundleContentPane:
   tabGeneralDataTitle: "Geral"
   tabPartyDataTitle: "Grupo"
@@ -46,4 +48,13 @@ bundleGeneralTab:
   fieldChapterFourteenLabel: "Capítulo 14 - Fim do Mundo"
   fieldPartyLevelLabel: "Nível do Grupo"
   fieldPartyExperienceLabel: "Exp. do Grupo"
+  fieldEnemySkillLabel: "Habil. Inimiga"
+  skillNoSkillLabel: " "
+  skillRancidBreathLabel: "Hálito Râncido"
+  skillPlasmaDischargeLabel: "Descarga de Plasma"
+  skillMindBlastLabel: "Explosão Mental"
+  skillGorgonShieldLabel: "Escudo de Górgona"
+  skillSoothingBreezeLabel: "Brisa Suave"
+  skillSelfDestructLabel: "Autodestruição"
+  skillSonicBoomLabel: "Estrondo Sônico"
 

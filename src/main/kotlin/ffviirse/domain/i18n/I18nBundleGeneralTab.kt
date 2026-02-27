@@ -31,4 +31,13 @@ data class I18nBundleGeneralTab(
     val fieldChapterFourteenLabel: String = nullString(),
     val fieldPartyLevelLabel: String = nullString(),
     val fieldPartyExperienceLabel: String = nullString(),
+    val fieldEnemySkillLabel: String = nullString(),
+    val skillNoSkillLabel: String = nullString(),
+    val skillRancidBreathLabel: String = nullString(),
+    val skillPlasmaDischargeLabel: String = nullString(),
+    val skillMindBlastLabel: String = nullString(),
+    val skillGorgonShieldLabel: String = nullString(),
+    val skillSoothingBreezeLabel: String = nullString(),
+    val skillSelfDestructLabel: String = nullString(),
+    val skillSonicBoomLabel: String = nullString(),
 )

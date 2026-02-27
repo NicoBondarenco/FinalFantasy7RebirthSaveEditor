@@ -34,7 +34,6 @@ class TabGeneralData : AppTab(1, bundleContentPane.tabGeneralDataTitle) {
 
     companion object {
         private const val CONTENT_PADDING = 10.0
-
         private val groupLevels = intArrayOf(0, 140, 330, 570, 860, 1200, 1590, 2030, 2520, 3125)
     }
 
@@ -50,13 +49,13 @@ class TabGeneralData : AppTab(1, bundleContentPane.tabGeneralDataTitle) {
         spacing = CONTENT_PADDING
         children.addAll(
             createTitledPane(widthProperty(), { bundleGeneralTab.paneGeneralDataTitle }) {
-                createGeneralPane()
+                createGeneralDataPane()
             },
             createTitledPane(widthProperty(), { bundleGeneralTab.paneMenuChapterTitle }) {
                 createMenuChapterPane()
             },
             createTitledPane(widthProperty(), { bundleGeneralTab.paneEnemySkillsTitle }) {
-
+                createEnemySkillPane()
             },
             createTitledPane(widthProperty(), { bundleGeneralTab.paneCharactersOutfitsTitle }) {
 
@@ -77,7 +76,7 @@ class TabGeneralData : AppTab(1, bundleContentPane.tabGeneralDataTitle) {
         paneContent()
     }
 
-    private fun TitledPane.createGeneralPane() {
+    private fun TitledPane.createGeneralDataPane() {
         content = VBox().apply {
             withPadding(CONTENT_PADDING)
             alignment = Pos.TOP_LEFT
@@ -136,6 +135,22 @@ class TabGeneralData : AppTab(1, bundleContentPane.tabGeneralDataTitle) {
         }
     }
 
+    private fun TitledPane.createEnemySkillPane() {
+        content = VBox().apply {
+            withPadding(CONTENT_PADDING)
+            alignment = Pos.TOP_LEFT
+            children.addAll(
+                createCheckBox(currentGeneralData.rancidBreath) { bundleGeneralTab.skillRancidBreathLabel },
+                createCheckBox(currentGeneralData.plasmaDischarge) { bundleGeneralTab.skillPlasmaDischargeLabel },
+                createCheckBox(currentGeneralData.mindBlast) { bundleGeneralTab.skillMindBlastLabel },
+                createCheckBox(currentGeneralData.gorgonShield) { bundleGeneralTab.skillGorgonShieldLabel },
+                createCheckBox(currentGeneralData.soothingBreeze) { bundleGeneralTab.skillSoothingBreezeLabel },
+                createCheckBox(currentGeneralData.selfDestruct) { bundleGeneralTab.skillSelfDestructLabel },
+                createCheckBox(currentGeneralData.sonicBoom) { bundleGeneralTab.skillSonicBoomLabel },
+            )
+        }
+    }
+
     private fun createPartyExperienceField(): HBox = HBox().apply {
         spacing = CONTENT_PADDING
 
@@ -179,8 +194,7 @@ class TabGeneralData : AppTab(1, bundleContentPane.tabGeneralDataTitle) {
                 if (!editingGroupExperience.value) {
                     try {
                         editingGroupExperience.value = true
-                        val minExp = groupLevels.filter { it > newValue }.minOfOrNull { it } ?: groupLevels.max()
-                        levelField.fieldValueProperty.value = groupLevels.indexOf(minExp)
+                        levelField.fieldValueProperty.value = calculateGroupLevel(newValue)
                     } finally {
                         editingGroupExperience.value = false
                     }
@@ -214,5 +228,11 @@ class TabGeneralData : AppTab(1, bundleContentPane.tabGeneralDataTitle) {
         fixedHeight(25.0)
         VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
     }
+
+    private fun calculateGroupLevel(
+        experience: Int
+    ): Int = groupLevels.indexOfLast {
+        experience >= it
+    }.plus(1).coerceIn(1, groupLevels.size)
 
 }

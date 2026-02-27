@@ -1,7 +1,10 @@
 package ffviirse.domain.model.context
 
 import ffviirse.domain.extension.format
+import ffviirse.domain.model.value.EnemySkill
+import ffviirse.domain.model.value.EnemySkill.NO_SKILL
 import ffviirse.domain.property.DurationProperty
+import ffviirse.domain.property.EnemySkillProperty
 import ffviirse.domain.property.IntProperty
 import ffviirse.domain.property.LongProperty
 import java.time.Duration
@@ -35,4 +38,11 @@ data class GeneralDataContext(
     val chapterThirteen: BooleanProperty = SimpleBooleanProperty(false),
     val chapterFourteen: BooleanProperty = SimpleBooleanProperty(false),
     val groupExperience: IntProperty = IntProperty(0),
+    val rancidBreath: BooleanProperty = SimpleBooleanProperty(false),
+    val plasmaDischarge: BooleanProperty = SimpleBooleanProperty(false),
+    val mindBlast: BooleanProperty = SimpleBooleanProperty(false),
+    val gorgonShield: BooleanProperty = SimpleBooleanProperty(false),
+    val soothingBreeze: BooleanProperty = SimpleBooleanProperty(false),
+    val selfDestruct: BooleanProperty = SimpleBooleanProperty(false),
+    val sonicBoom: BooleanProperty = SimpleBooleanProperty(false),
 )
