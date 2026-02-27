@@ -44,6 +44,13 @@ fun GeneralDataContext.update(generalData: GeneralData) {
     soothingBreeze.value = generalData.soothingBreeze
     selfDestruct.value = generalData.selfDestruct
     sonicBoom.value = generalData.sonicBoom
+    cloudOutfit.value = generalData.cloudOutfit
+    barretOutfit.value = generalData.barretOutfit
+    tifaOutfit.value = generalData.tifaOutfit
+    aerithOutfit.value = generalData.aerithOutfit
+    redOutfit.value = generalData.redOutfit
+    yuffieOutfit.value = generalData.yuffieOutfit
+    caitOutfit.value = generalData.caitOutfit
 }
 
 fun SaveGameContext.toSaveGame(): SaveGame = SaveGame(
@@ -83,4 +90,11 @@ fun GeneralDataContext.toGeneralData(): GeneralData = GeneralData(
     soothingBreeze = soothingBreeze.value,
     selfDestruct = selfDestruct.value,
     sonicBoom = sonicBoom.value,
+    cloudOutfit = cloudOutfit.value,
+    barretOutfit = barretOutfit.value,
+    tifaOutfit = tifaOutfit.value,
+    aerithOutfit = aerithOutfit.value,
+    redOutfit = redOutfit.value,
+    yuffieOutfit = yuffieOutfit.value,
+    caitOutfit = caitOutfit.value,
 )

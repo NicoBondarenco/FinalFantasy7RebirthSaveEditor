@@ -1,6 +1,7 @@
 package ffviirse.adapter.ui.content
 
 import ffviirse.adapter.ui.extension.fixedHeight
+import ffviirse.adapter.ui.extension.fixedWidth
 import ffviirse.adapter.ui.extension.solidBorder
 import ffviirse.adapter.ui.extension.withPadding
 import ffviirse.domain.context.session.SessionContext.appBundleProperty
@@ -23,7 +24,7 @@ class BottomBar(
 ) : HBox() {
 
     companion object {
-        private const val PANE_HEIGHT = 85.0
+        private const val PANE_HEIGHT = 60.0
         private const val PANE_PADDING = 5.0
 
         private const val SAVE_FILE_BUTTON_WIDTH = 150.0
@@ -42,6 +43,7 @@ class BottomBar(
     private fun createSaveButton(): Button = Button(nullString()).apply {
         textProperty().bind(Bindings.createStringBinding({ bundleBottomBar.mainBottomSaveLabel }, appBundleProperty))
         disableProperty().bind(saveButtonActive)
+        fixedWidth(SAVE_FILE_BUTTON_WIDTH)
         setOnAction {
             if (!saveButtonActive.value) {
                 try {

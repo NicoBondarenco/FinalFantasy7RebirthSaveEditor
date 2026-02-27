@@ -3,6 +3,7 @@ package ffviirse.adapter.ui.component
 import ffviirse.adapter.ui.extension.fixedHeight
 import ffviirse.domain.context.session.SessionContext.bundleMainApplication
 import ffviirse.domain.functional.Labeled
+import javafx.beans.property.ObjectProperty
 import javafx.beans.property.Property
 import javafx.collections.ObservableList
 import javafx.scene.control.ComboBox
@@ -31,6 +32,9 @@ class AppComboBox<T>(
     override val valueRetriever: (ComboBox<T>) -> T = { it.value }
 
     override val fieldValueProperty: Property<T> = inputField.valueProperty()
+
+    val itemsProperty: ObjectProperty<ObservableList<T>>
+        get() = inputField.itemsProperty()
 
     init {
         initField()

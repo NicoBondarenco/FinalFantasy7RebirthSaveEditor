@@ -1,7 +1,13 @@
 package ffviirse.domain.model.entity
 
-import ffviirse.domain.model.value.EnemySkill
-import ffviirse.domain.model.value.EnemySkill.NO_SKILL
+import ffviirse.domain.model.value.MemberOutfit
+import ffviirse.domain.model.value.MemberOutfit.AERITH_INDEPENDENT_FLORIST
+import ffviirse.domain.model.value.MemberOutfit.BARRET_AVALANCHE_LEADER
+import ffviirse.domain.model.value.MemberOutfit.CAIT_FORTUNE_TELLER
+import ffviirse.domain.model.value.MemberOutfit.CLOUD_EX_SOLDIER
+import ffviirse.domain.model.value.MemberOutfit.REDXIII_LABORATORY_ESCAPEE
+import ffviirse.domain.model.value.MemberOutfit.TIFA_SEVENTH_HEAVEN
+import ffviirse.domain.model.value.MemberOutfit.YUFFIE_MATERIA_HUNTER
 import java.time.Duration
 
 data class GeneralData(
@@ -36,4 +42,11 @@ data class GeneralData(
     val soothingBreeze: Boolean = false,
     val selfDestruct: Boolean = false,
     val sonicBoom: Boolean = false,
+    val cloudOutfit: MemberOutfit = CLOUD_EX_SOLDIER,
+    val barretOutfit: MemberOutfit = TIFA_SEVENTH_HEAVEN,
+    val tifaOutfit: MemberOutfit = BARRET_AVALANCHE_LEADER,
+    val aerithOutfit: MemberOutfit = AERITH_INDEPENDENT_FLORIST,
+    val redOutfit: MemberOutfit = REDXIII_LABORATORY_ESCAPEE,
+    val yuffieOutfit: MemberOutfit = YUFFIE_MATERIA_HUNTER,
+    val caitOutfit: MemberOutfit = CAIT_FORTUNE_TELLER,
 )

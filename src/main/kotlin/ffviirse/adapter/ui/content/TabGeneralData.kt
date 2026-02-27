@@ -1,6 +1,7 @@
 package ffviirse.adapter.ui.content
 
 import com.database.tesis.adapter.ui.component.AppTab
+import ffviirse.adapter.ui.component.AppComboBox
 import ffviirse.adapter.ui.component.AppIntSpinner
 import ffviirse.adapter.ui.component.AppTextInput.Companion.textField
 import ffviirse.adapter.ui.extension.fixedHeight
@@ -11,7 +12,18 @@ import ffviirse.domain.context.session.SessionContext.appBundleProperty
 import ffviirse.domain.context.session.SessionContext.bundleContentPane
 import ffviirse.domain.context.session.SessionContext.bundleGeneralTab
 import ffviirse.domain.context.session.SessionContext.currentGeneralData
+import ffviirse.domain.extension.asObservable
 import ffviirse.domain.extension.nullString
+import ffviirse.domain.model.value.MemberOutfit
+import ffviirse.domain.model.value.PartyMember
+import ffviirse.domain.model.value.PartyMember.AERITH_GAINSBOROUGH
+import ffviirse.domain.model.value.PartyMember.BARRET_WALLACE
+import ffviirse.domain.model.value.PartyMember.CAIT_SITH
+import ffviirse.domain.model.value.PartyMember.CLOUD_STRIFE
+import ffviirse.domain.model.value.PartyMember.RED_XIII
+import ffviirse.domain.model.value.PartyMember.TIFA_LOCKHART
+import ffviirse.domain.model.value.PartyMember.YUFFIE_KISARAGI
+import ffviirse.domain.property.MemberOutfitProperty
 import java.util.concurrent.Callable
 import javafx.beans.binding.Bindings
 import javafx.beans.property.BooleanProperty
@@ -58,7 +70,7 @@ class TabGeneralData : AppTab(1, bundleContentPane.tabGeneralDataTitle) {
                 createEnemySkillPane()
             },
             createTitledPane(widthProperty(), { bundleGeneralTab.paneCharactersOutfitsTitle }) {
-
+                createMemberOutfitPane()
             },
         )
     }
@@ -149,6 +161,38 @@ class TabGeneralData : AppTab(1, bundleContentPane.tabGeneralDataTitle) {
                 createCheckBox(currentGeneralData.sonicBoom) { bundleGeneralTab.skillSonicBoomLabel },
             )
         }
+    }
+
+    private fun TitledPane.createMemberOutfitPane() {
+        content = VBox().apply {
+            withPadding(CONTENT_PADDING)
+            alignment = Pos.TOP_LEFT
+            children.addAll(
+                createOutfitComboBox(CLOUD_STRIFE, currentGeneralData.cloudOutfit),
+                createOutfitComboBox(TIFA_LOCKHART, currentGeneralData.tifaOutfit),
+                createOutfitComboBox(BARRET_WALLACE, currentGeneralData.barretOutfit),
+                createOutfitComboBox(AERITH_GAINSBOROUGH, currentGeneralData.aerithOutfit),
+                createOutfitComboBox(RED_XIII, currentGeneralData.redOutfit),
+                createOutfitComboBox(YUFFIE_KISARAGI, currentGeneralData.yuffieOutfit),
+                createOutfitComboBox(CAIT_SITH, currentGeneralData.caitOutfit),
+            )
+        }
+    }
+
+    private fun createOutfitComboBox(
+        member: PartyMember,
+        property: MemberOutfitProperty
+    ): AppComboBox<MemberOutfit> = AppComboBox(
+        inputLabel = member.label,
+        itemList = listOf<MemberOutfit>().asObservable()
+    ).apply {
+        itemsProperty.bind(
+            Bindings.createObjectBinding(
+                { MemberOutfit.entries.filter { it.partyMember == member }.asObservable() },
+                appBundleProperty
+            )
+        )
+        fieldValueProperty.bindBidirectional(property)
     }
 
     private fun createPartyExperienceField(): HBox = HBox().apply {

@@ -9,6 +9,15 @@ import ffviirse.domain.model.value.EnemySkill.RANCID_BREATH
 import ffviirse.domain.model.value.EnemySkill.SELF_DESTRUCT
 import ffviirse.domain.model.value.EnemySkill.SONIC_BOOM
 import ffviirse.domain.model.value.EnemySkill.SOOTHING_BREEZE
+import ffviirse.domain.model.value.MemberOutfit
+import ffviirse.domain.model.value.PartyMember
+import ffviirse.domain.model.value.PartyMember.AERITH_GAINSBOROUGH
+import ffviirse.domain.model.value.PartyMember.BARRET_WALLACE
+import ffviirse.domain.model.value.PartyMember.CAIT_SITH
+import ffviirse.domain.model.value.PartyMember.CLOUD_STRIFE
+import ffviirse.domain.model.value.PartyMember.RED_XIII
+import ffviirse.domain.model.value.PartyMember.TIFA_LOCKHART
+import ffviirse.domain.model.value.PartyMember.YUFFIE_KISARAGI
 import java.nio.ByteBuffer
 import java.time.Duration
 
@@ -46,7 +55,23 @@ fun ByteBuffer.generalData(bytes: ByteArray): GeneralData = this.playDuration().
         soothingBreeze = enemySkills.contains(SOOTHING_BREEZE),
         selfDestruct = enemySkills.contains(SELF_DESTRUCT),
         sonicBoom = enemySkills.contains(SONIC_BOOM),
+        cloudOutfit = bytes.memberOutfit(CLOUD_STRIFE),
+        barretOutfit = bytes.memberOutfit(BARRET_WALLACE),
+        tifaOutfit = bytes.memberOutfit(TIFA_LOCKHART),
+        aerithOutfit = bytes.memberOutfit(AERITH_GAINSBOROUGH),
+        redOutfit = bytes.memberOutfit(RED_XIII),
+        yuffieOutfit = bytes.memberOutfit(YUFFIE_KISARAGI),
+        caitOutfit = bytes.memberOutfit(CAIT_SITH),
     )
+}
+
+private fun ByteArray.memberOutfit(member: PartyMember): MemberOutfit = MemberOutfit.entries.filter {
+    it.partyMember == member && !it.defaultOutfit
+}.firstOrNull {
+    val byte = this[it.fileValue].toInt() and 0xFF
+    (byte and (1 shl it.fileBit)) != 0
+} ?: MemberOutfit.entries.first {
+    it.partyMember == member && it.defaultOutfit
 }
 
 private fun ByteBuffer.enemySkillSet(): Set<EnemySkill> = this.let { buffer ->
