@@ -6,6 +6,7 @@ import ffviirse.domain.context.session.SessionContext.changeCurrentSave
 import ffviirse.domain.extension.fileCurrentDateTime
 import ffviirse.domain.model.entity.SaveGame
 import ffviirse.domain.model.mapper.generalData
+import ffviirse.domain.model.mapper.writeSaveFile
 import ffviirse.domain.model.response.SaveGameFile
 import java.io.File
 import java.io.FileFilter
@@ -49,7 +50,10 @@ class SaveGameService(
 
     fun exportSave(saveGame: SaveGame) {
         val backupDir = Paths.get(BACKUP_PATH).toFile()
-        File(backupDir, "${fileCurrentDateTime()}.json").writeText(objectMapper.writeValueAsString(saveGame))
+        val savesDir = Paths.get(externalProperties.saveDirectory).toFile()
+        val fileName = fileCurrentDateTime()
+        File(backupDir, "${fileName}.json").writeText(objectMapper.writeValueAsString(saveGame))
+        File(savesDir, "${fileName}.sav").writeBytes(saveGame.writeSaveFile())
     }
 
     private fun File.isValidSave(): Boolean = this.exists() &&

@@ -90,3 +90,4 @@ test-output/
 /assets.bkp/
 /databases/jsons/
 /application.config
+/backup/
