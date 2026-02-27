@@ -3,6 +3,7 @@ package ffviirse.adapter.ui.content
 import com.database.tesis.adapter.ui.component.AppTab
 import ffviirse.adapter.ui.component.AppComboBox
 import ffviirse.adapter.ui.component.AppIntSpinner
+import ffviirse.adapter.ui.component.AppLabel
 import ffviirse.adapter.ui.component.AppTextInput.Companion.textField
 import ffviirse.adapter.ui.extension.fixedHeight
 import ffviirse.adapter.ui.extension.solidBorder
@@ -32,6 +33,7 @@ import javafx.beans.property.SimpleBooleanProperty
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.control.CheckBox
+import javafx.scene.control.ComboBox
 import javafx.scene.control.Label
 import javafx.scene.control.TitledPane
 import javafx.scene.layout.HBox
@@ -39,6 +41,7 @@ import javafx.scene.layout.Pane
 import javafx.scene.layout.Priority.ALWAYS
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
+import javafx.util.StringConverter
 import org.springframework.stereotype.Component
 
 @Component
@@ -168,31 +171,45 @@ class TabGeneralData : AppTab(1, bundleContentPane.tabGeneralDataTitle) {
             withPadding(CONTENT_PADDING)
             alignment = Pos.TOP_LEFT
             children.addAll(
-                createOutfitComboBox(CLOUD_STRIFE, currentGeneralData.cloudOutfit),
-                createOutfitComboBox(TIFA_LOCKHART, currentGeneralData.tifaOutfit),
-                createOutfitComboBox(BARRET_WALLACE, currentGeneralData.barretOutfit),
-                createOutfitComboBox(AERITH_GAINSBOROUGH, currentGeneralData.aerithOutfit),
-                createOutfitComboBox(RED_XIII, currentGeneralData.redOutfit),
-                createOutfitComboBox(YUFFIE_KISARAGI, currentGeneralData.yuffieOutfit),
-                createOutfitComboBox(CAIT_SITH, currentGeneralData.caitOutfit),
+                createOutfitSelect(CLOUD_STRIFE, currentGeneralData.cloudOutfit),
+                createOutfitSelect(TIFA_LOCKHART, currentGeneralData.tifaOutfit),
+                createOutfitSelect(BARRET_WALLACE, currentGeneralData.barretOutfit),
+                createOutfitSelect(AERITH_GAINSBOROUGH, currentGeneralData.aerithOutfit),
+                createOutfitSelect(RED_XIII, currentGeneralData.redOutfit),
+                createOutfitSelect(YUFFIE_KISARAGI, currentGeneralData.yuffieOutfit),
+                createOutfitSelect(CAIT_SITH, currentGeneralData.caitOutfit),
             )
         }
     }
 
-    private fun createOutfitComboBox(
+    private fun createOutfitSelect(
         member: PartyMember,
         property: MemberOutfitProperty
-    ): AppComboBox<MemberOutfit> = AppComboBox(
-        inputLabel = member.label,
-        itemList = listOf<MemberOutfit>().asObservable()
-    ).apply {
-        itemsProperty.bind(
-            Bindings.createObjectBinding(
-                { MemberOutfit.entries.filter { it.partyMember == member }.asObservable() },
-                appBundleProperty
-            )
+    ): VBox = VBox().apply {
+        withPadding(0.0)
+        spacing = 2.0
+        maxWidth = Double.MAX_VALUE
+        children.addAll(
+            AppLabel(member.label).apply {
+                maxWidth = Double.MAX_VALUE
+                font = Font.font(15.0)
+                fixedHeight(20.0)
+            },
+            ComboBox<MemberOutfit>().apply {
+                itemsProperty().bind(
+                    Bindings.createObjectBinding(
+                        { MemberOutfit.entries.filter { it.partyMember == member }.asObservable() },
+                        appBundleProperty
+                    )
+                )
+                VBox.setMargin(this, Insets(0.0, 0.0, 5.0, 0.0))
+                valueProperty().bindBidirectional(property)
+                converter = object : StringConverter<MemberOutfit?>() {
+                    override fun toString(item: MemberOutfit?): String = item?.label ?: nullString()
+                    override fun fromString(string: String): MemberOutfit? = MemberOutfit.entries.firstOrNull { it.label == string }
+                }
+            }
         )
-        fieldValueProperty.bindBidirectional(property)
     }
 
     private fun createPartyExperienceField(): HBox = HBox().apply {
