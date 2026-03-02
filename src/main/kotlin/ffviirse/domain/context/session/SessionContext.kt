@@ -12,6 +12,7 @@ import ffviirse.domain.i18n.I18nBundleMainApplication
 import ffviirse.domain.i18n.I18nBundlePartyTab
 import ffviirse.domain.i18n.I18nBundleTopBar
 import ffviirse.domain.model.context.GeneralDataContext
+import ffviirse.domain.model.context.PartyInfoContext
 import ffviirse.domain.model.context.SaveGameContext
 import ffviirse.domain.model.entity.SaveGame
 import ffviirse.domain.model.mapper.update
@@ -58,6 +59,9 @@ object SessionContext {
 
     val currentGeneralData: GeneralDataContext
         get() = currentSaveGame.generalData
+
+    val currentPartyContext: PartyInfoContext
+        get() = currentSaveGame.partyInfo
 
     fun setContext(context: ApplicationContext) {
         if (!::appContext.isInitialized) {

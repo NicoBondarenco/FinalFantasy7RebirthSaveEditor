@@ -91,3 +91,4 @@ test-output/
 /databases/jsons/
 /application.config
 /backup/
+/.output.txt

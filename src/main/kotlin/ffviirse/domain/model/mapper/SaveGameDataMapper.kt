@@ -12,7 +12,7 @@ fun SaveGameFile.toSaveGameData(): SaveGame {
     return SaveGame(
         saveFile = this.saveFile,
         generalData = buffer.generalData(bytes),
-        partyInfo = buffer.partyInfo(),
+        partyInfo = buffer.partyInfo(bytes),
     )
 }
 

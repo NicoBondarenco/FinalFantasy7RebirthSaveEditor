@@ -5,9 +5,18 @@ import ffviirse.adapter.ui.component.AppIntSpinner
 import ffviirse.adapter.ui.extension.withPadding
 import ffviirse.domain.context.session.SessionContext.appBundleProperty
 import ffviirse.domain.context.session.SessionContext.bundleContentPane
-import ffviirse.domain.context.session.SessionContext.bundleGeneralTab
-import ffviirse.domain.context.session.SessionContext.currentGeneralData
+import ffviirse.domain.context.session.SessionContext.bundlePartyTab
+import ffviirse.domain.context.session.SessionContext.currentPartyContext
+import ffviirse.domain.extension.nullString
+import ffviirse.domain.model.context.CharacterInfoContext
 import ffviirse.domain.model.value.PartyMember
+import ffviirse.domain.model.value.PartyMember.AERITH_GAINSBOROUGH
+import ffviirse.domain.model.value.PartyMember.BARRET_WALLACE
+import ffviirse.domain.model.value.PartyMember.CAIT_SITH
+import ffviirse.domain.model.value.PartyMember.CLOUD_STRIFE
+import ffviirse.domain.model.value.PartyMember.RED_XIII
+import ffviirse.domain.model.value.PartyMember.TIFA_LOCKHART
+import ffviirse.domain.model.value.PartyMember.YUFFIE_KISARAGI
 import javafx.beans.binding.Bindings
 import javafx.beans.property.BooleanProperty
 import javafx.beans.property.SimpleBooleanProperty
@@ -15,6 +24,7 @@ import javafx.geometry.Pos
 import javafx.scene.control.Tab
 import javafx.scene.control.TabPane
 import javafx.scene.control.TabPane.TabClosingPolicy.UNAVAILABLE
+import javafx.scene.control.TitledPane
 import javafx.scene.layout.HBox
 import javafx.scene.layout.Priority.ALWAYS
 import javafx.scene.layout.VBox
@@ -28,6 +38,7 @@ class TabPartyData : AppTab(2, bundleContentPane.tabPartyDataTitle) {
         private const val CONTENT_PADDING = 10.0
 
         private const val MIN_LEVEL = 15
+        private const val MAX_LEVEL = 70
 
         private val characterLevels = intArrayOf(
             7200, 7365, 8059, 8827, 9849, 11382, 13374, 15565, 17493, 19517,
@@ -48,51 +59,61 @@ class TabPartyData : AppTab(2, bundleContentPane.tabPartyDataTitle) {
 
     private fun createTabPane(): TabPane = TabPane().apply {
         tabClosingPolicy = UNAVAILABLE
-        tabs.addAll(PartyMember.entries.sortedBy { it.fileIndex }.map { createMemberTab(it) })
+        tabs.addAll(PartyMember.entries.sortedBy { it.fileIndex }.map { it.createMemberTab() })
     }
 
-    private fun createMemberTab(member: PartyMember): Tab = Tab().apply {
-        text = member.label
+    private fun PartyMember.createMemberTab(): Tab = Tab().also { tab ->
+        tab.text = this.label
+        tab.content = this.createMemberContent()
     }
 
-    private fun createMemberContent(): VBox = VBox().apply {
-        withPadding(CONTENT_PADDING)
-        spacing = CONTENT_PADDING
-        alignment = Pos.TOP_LEFT
+    private fun PartyMember.createMemberContent(): VBox = VBox().also { pane ->
+        pane.withPadding(CONTENT_PADDING)
+        pane.spacing = CONTENT_PADDING
+        pane.alignment = Pos.TOP_LEFT
+        pane.children.addAll(this.createDataContent())
     }
 
-    private fun createDataContent(): VBox = VBox().apply {
-        withPadding(0.0)
-        spacing = CONTENT_PADDING
-        alignment = Pos.TOP_LEFT
-        children.addAll(
+    private fun PartyMember.createDataContent(): TitledPane = VBox().also { pane ->
+        pane.withPadding(0.0)
+        pane.spacing = CONTENT_PADDING
+        pane.alignment = Pos.TOP_LEFT
+        pane.children.addAll(
             createExperienceContent()
         )
+    }.let {
+        TitledPane().apply {
+            textProperty().bind(Bindings.createStringBinding({ bundlePartyTab.paneCharacterStatusTitle }))
+            content = it
+        }
     }
 
-    private fun createExperienceContent(): HBox = HBox().apply {
-        withPadding(0.0)
-        spacing = CONTENT_PADDING
-        alignment = Pos.TOP_LEFT
+    private fun PartyMember.createExperienceContent(): HBox = HBox().also { pane ->
+        pane.withPadding(0.0)
+        pane.spacing = CONTENT_PADDING
+        pane.alignment = Pos.TOP_LEFT
+
+        val character = this.characterInfo
 
         lateinit var levelField: AppIntSpinner
         lateinit var expField: AppIntSpinner
 
         levelField = AppIntSpinner(
-            inputLabel = bundleGeneralTab.fieldPartyLevelLabel,
-            minValue = 1,
-            maxValue = 10,
-            inputValidation = { it in 1..10 },
+            inputLabel = nullString(),
+            minValue = MIN_LEVEL,
+            maxValue = MAX_LEVEL,
+            inputValidation = { it in MIN_LEVEL..MAX_LEVEL },
         ).apply {
-            bindLabel(appBundleProperty) { bundleGeneralTab.fieldPartyLevelLabel }
+            bindLabel(appBundleProperty) { bundlePartyTab.fieldCharacterLevelLabel }
             maxWidth = Double.MAX_VALUE
+            fieldValueProperty.bindBidirectional(character.characterLevel)
             validatableFields.add(this)
             HBox.setHgrow(this, ALWAYS)
             fieldValueProperty.addListener { _, _, newValue ->
                 if (!editingCharacterExperience.value) {
                     try {
                         editingCharacterExperience.value = true
-                        expField.fieldValueProperty.value = characterLevels[newValue - 1 - MIN_LEVEL]
+                        expField.fieldValueProperty.value = characterLevels[newValue - MIN_LEVEL]
                     } finally {
                         editingCharacterExperience.value = false
                     }
@@ -101,14 +122,14 @@ class TabPartyData : AppTab(2, bundleContentPane.tabPartyDataTitle) {
         }
 
         expField = AppIntSpinner(
-            inputLabel = bundleGeneralTab.fieldPartyExperienceLabel,
-            minValue = 0,
-            maxValue = 3125,
+            inputLabel = nullString(),
+            minValue = characterLevels.min(),
+            maxValue = characterLevels.max(),
             inputValidation = { it in 0..3125 },
         ).apply {
-            bindLabel(appBundleProperty) { bundleGeneralTab.fieldPartyExperienceLabel }
+            bindLabel(appBundleProperty) { bundlePartyTab.fieldCharacterExperienceLabel }
             maxWidth = Double.MAX_VALUE
-            fieldValueProperty.bindBidirectional(currentGeneralData.groupExperience)
+            fieldValueProperty.bindBidirectional(character.characterExperience)
             validatableFields.add(this)
             HBox.setHgrow(this, ALWAYS)
             fieldValueProperty.addListener { _, _, newValue ->
@@ -123,7 +144,7 @@ class TabPartyData : AppTab(2, bundleContentPane.tabPartyDataTitle) {
             }
         }
 
-        children.addAll(levelField, expField)
+        pane.children.addAll(levelField, expField)
     }
 
     private fun createHpMpContent(): HBox = HBox().apply {
@@ -134,6 +155,17 @@ class TabPartyData : AppTab(2, bundleContentPane.tabPartyDataTitle) {
         experience: Int
     ): Int = characterLevels.indexOfLast {
         experience >= it
-    }.plus(1).coerceIn(1, characterLevels.size).plus(MIN_LEVEL)
+    }.plus(1).coerceIn(1, characterLevels.size).plus(MIN_LEVEL - 1)
+
+    private val PartyMember.characterInfo: CharacterInfoContext
+        get() = when (this) {
+            CLOUD_STRIFE -> currentPartyContext.cloudStrife
+            TIFA_LOCKHART -> currentPartyContext.tifaLockhart
+            BARRET_WALLACE -> currentPartyContext.barretWallace
+            AERITH_GAINSBOROUGH -> currentPartyContext.aerithGainsborough
+            RED_XIII -> currentPartyContext.redXiii
+            YUFFIE_KISARAGI -> currentPartyContext.yuffieKisaragi
+            CAIT_SITH -> currentPartyContext.caitSith
+        }
 
 }

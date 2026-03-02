@@ -16,7 +16,15 @@ class BundleConfiguration {
     fun applicationBundles(
         yamlMapper: YAMLMapper,
     ): Set<I18nBundle> = languageFiles().map {
-        yamlMapper.readValue(it, I18nBundle::class.java)
+        try {
+            yamlMapper.readValue(it, I18nBundle::class.java)
+        } catch (e: Exception) {
+            val bytes = it.readBytes()
+            val lineError: String = (1500..1572).map { c ->
+                bytes[c].toInt().toChar()
+            }.joinToString("")
+            throw e
+        }
     }.toSet()
 
     private fun languageFiles(): List<File> = Paths.get(LANGUAGES_PATH).toFile().listFiles(FileFilter {
