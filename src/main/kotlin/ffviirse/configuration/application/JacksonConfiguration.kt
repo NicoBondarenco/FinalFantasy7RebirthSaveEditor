@@ -42,15 +42,15 @@ class JacksonConfiguration {
         extraModules: Set<JacksonModule>,
     ): T = this.addModules(extraModules)
         .addModule(
-        KotlinModule.Builder()
-            .withReflectionCacheSize(512)
-            .configure(NullToEmptyCollection, false)
-            .configure(NullToEmptyMap, false)
-            .configure(NullIsSameAsDefault, false)
-            .configure(SingletonSupport, false)
-            .configure(StrictNullChecks, false)
-            .build()
-    ).propertyNamingStrategy(namingStrategy)
+            KotlinModule.Builder()
+                .withReflectionCacheSize(512)
+                .configure(NullToEmptyCollection, false)
+                .configure(NullToEmptyMap, false)
+                .configure(NullIsSameAsDefault, false)
+                .configure(SingletonSupport, false)
+                .configure(StrictNullChecks, false)
+                .build()
+        ).propertyNamingStrategy(namingStrategy)
         .changeDefaultVisibility {
             it.withVisibility(ALL, ANY)
         }

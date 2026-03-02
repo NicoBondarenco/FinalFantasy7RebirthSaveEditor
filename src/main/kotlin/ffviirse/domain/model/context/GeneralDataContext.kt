@@ -1,9 +1,6 @@
 package ffviirse.domain.model.context
 
 import ffviirse.domain.extension.format
-import ffviirse.domain.model.value.EnemySkill
-import ffviirse.domain.model.value.EnemySkill.NO_SKILL
-import ffviirse.domain.model.value.MemberOutfit
 import ffviirse.domain.model.value.MemberOutfit.AERITH_INDEPENDENT_FLORIST
 import ffviirse.domain.model.value.MemberOutfit.BARRET_AVALANCHE_LEADER
 import ffviirse.domain.model.value.MemberOutfit.CAIT_FORTUNE_TELLER
@@ -11,8 +8,6 @@ import ffviirse.domain.model.value.MemberOutfit.CLOUD_EX_SOLDIER
 import ffviirse.domain.model.value.MemberOutfit.REDXIII_LABORATORY_ESCAPEE
 import ffviirse.domain.model.value.MemberOutfit.TIFA_SEVENTH_HEAVEN
 import ffviirse.domain.model.value.MemberOutfit.YUFFIE_MATERIA_HUNTER
-import ffviirse.domain.property.DurationProperty
-import ffviirse.domain.property.EnemySkillProperty
 import ffviirse.domain.property.IntProperty
 import ffviirse.domain.property.LongProperty
 import ffviirse.domain.property.MemberOutfitProperty

@@ -25,6 +25,7 @@ data class I18nBundle(
     val bundleBottomBar: I18nBundleBottomBar = I18nBundleBottomBar(),
     val bundleContentPane: I18nBundleContentPane = I18nBundleContentPane(),
     val bundleGeneralTab: I18nBundleGeneralTab = I18nBundleGeneralTab(),
+    val bundlePartyTab: I18nBundlePartyTab = I18nBundlePartyTab(),
 ) : Labeled {
     override val label: String = displayName
 }

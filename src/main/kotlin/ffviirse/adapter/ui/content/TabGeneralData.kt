@@ -1,7 +1,6 @@
 package ffviirse.adapter.ui.content
 
 import com.database.tesis.adapter.ui.component.AppTab
-import ffviirse.adapter.ui.component.AppComboBox
 import ffviirse.adapter.ui.component.AppIntSpinner
 import ffviirse.adapter.ui.component.AppLabel
 import ffviirse.adapter.ui.component.AppTextInput.Companion.textField

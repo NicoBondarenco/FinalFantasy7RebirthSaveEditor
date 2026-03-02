@@ -12,5 +12,11 @@ fun SaveGameFile.toSaveGameData(): SaveGame {
     return SaveGame(
         saveFile = this.saveFile,
         generalData = buffer.generalData(bytes),
+        partyInfo = buffer.partyInfo(),
     )
+}
+
+fun ByteArray.isBitSet(offset: Int, bit: Int): Boolean {
+    val byte = this[offset].toInt() and 0xFF
+    return (byte and (1 shl bit)) != 0
 }

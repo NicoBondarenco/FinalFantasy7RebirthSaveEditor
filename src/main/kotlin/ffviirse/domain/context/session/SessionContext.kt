@@ -9,6 +9,7 @@ import ffviirse.domain.i18n.I18nBundleBottomBar
 import ffviirse.domain.i18n.I18nBundleContentPane
 import ffviirse.domain.i18n.I18nBundleGeneralTab
 import ffviirse.domain.i18n.I18nBundleMainApplication
+import ffviirse.domain.i18n.I18nBundlePartyTab
 import ffviirse.domain.i18n.I18nBundleTopBar
 import ffviirse.domain.model.context.GeneralDataContext
 import ffviirse.domain.model.context.SaveGameContext
@@ -40,6 +41,9 @@ object SessionContext {
 
     val bundleGeneralTab: I18nBundleGeneralTab
         get() = appBundle.bundleGeneralTab
+
+    val bundlePartyTab: I18nBundlePartyTab
+        get() = appBundle.bundlePartyTab
 
     var appTheme: ThemeApplication = DARK
         private set

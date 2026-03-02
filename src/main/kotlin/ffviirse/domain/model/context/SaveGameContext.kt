@@ -6,4 +6,5 @@ import java.io.File
 data class SaveGameContext(
     val saveFile: FileProperty = FileProperty(File("")),
     val generalData: GeneralDataContext = GeneralDataContext(),
+    val partyInfo: PartyInfoContext = PartyInfoContext(),
 )

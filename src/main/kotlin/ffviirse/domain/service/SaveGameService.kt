@@ -5,13 +5,11 @@ import ffviirse.domain.context.application.ExternalProperties
 import ffviirse.domain.context.session.SessionContext.changeCurrentSave
 import ffviirse.domain.extension.fileCurrentDateTime
 import ffviirse.domain.model.entity.SaveGame
-import ffviirse.domain.model.mapper.generalData
+import ffviirse.domain.model.mapper.toSaveGameData
 import ffviirse.domain.model.mapper.writeSaveFile
 import ffviirse.domain.model.response.SaveGameFile
 import java.io.File
 import java.io.FileFilter
-import java.nio.ByteBuffer
-import java.nio.ByteOrder.LITTLE_ENDIAN
 import java.nio.file.Paths
 import org.springframework.stereotype.Service
 import tools.jackson.databind.ObjectMapper
@@ -37,14 +35,7 @@ class SaveGameService(
             changeCurrentSave(SaveGame())
             return
         }
-        val bytes = saveGame.saveFile.readBytes()
-        val buffer = ByteBuffer.wrap(bytes).order(LITTLE_ENDIAN)
-
-        val saveData = SaveGame(
-            saveFile = saveGame.saveFile,
-            generalData = buffer.generalData(bytes),
-        )
-
+        val saveData = saveGame.toSaveGameData()
         changeCurrentSave(saveData)
     }
 
