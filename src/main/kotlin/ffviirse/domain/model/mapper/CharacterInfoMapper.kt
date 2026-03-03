@@ -55,6 +55,7 @@ fun ByteBuffer.characterData(
         characterLuck = buffer.getInt(characterOffset + characterLuckOffset),
         characterSpeed = buffer.getInt(characterOffset + characterSpeedOffset),
         criticalHrate = buffer.getInt(characterOffset + criticalHrateOffset),
+        weaponLevel = buffer.getInt(characterOffset + weaponLevelOffset),
         characterWeapon = buffer.getInt(characterOffset + characterWeaponOffset),
         characterArmor = buffer.getInt(characterOffset + characterArmorOffset),
         characterSummon = buffer.getInt(characterOffset + characterSummonOffset),

@@ -87,6 +87,7 @@ class TabGeneralData : AppTab(1, bundleContentPane.tabGeneralDataTitle) {
         solidBorder()
         maxWidth = Double.MAX_VALUE
         HBox.setHgrow(this, ALWAYS)
+        isCollapsible = false
         paneContent()
     }
 

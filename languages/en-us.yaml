@@ -90,6 +90,7 @@ bundleGeneralTab:
   caitCourtJesterLabel: "Court Jester"
 bundlePartyTab:
   paneCharacterStatusTitle: "Status"
+  paneCharacterAttributesTitle: "Attributes"
   paneCharacterEquipmentTitle: "Equipment"
   paneWeaponMateriaTitle: "Weapon Materia"
   paneArmorMateriaTitle: "Armor Materia"

@@ -22,6 +22,7 @@ data class CharacterInfo(
     val characterLuck: Int = 0,
     val characterSpeed: Int = 0,
     val criticalHrate: Int = 0,
+    val weaponLevel: Int = 0,
     val characterWeapon: Int = 0,
     val characterArmor: Int = 0,
     val characterSummon: Int = 0,

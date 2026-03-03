@@ -92,6 +92,7 @@ val characterSpiritOffset: Int = 0x7C
 val characterLuckOffset: Int = 0x68
 val characterSpeedOffset: Int = 0x80
 val criticalHrateOffset: Int = 0x6C
+val weaponLevelOffset: Int = 0xEC
 val characterWeaponOffset: Int = 0xCC
 val characterArmorOffset: Int = 0xD0
 val characterSummonOffset: Int = 0xD4

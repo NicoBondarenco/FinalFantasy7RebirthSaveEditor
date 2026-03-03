@@ -28,6 +28,7 @@ data class CharacterInfoContext(
     val characterLuck: IntProperty = IntProperty(0),
     val characterSpeed: IntProperty = IntProperty(0),
     val criticalHrate: IntProperty = IntProperty(0),
+    val weaponLevel: IntProperty = IntProperty(0),
     val characterWeapon: IntProperty = IntProperty(0),
     val characterArmor: IntProperty = IntProperty(0),
     val characterSummon: IntProperty = IntProperty(0),

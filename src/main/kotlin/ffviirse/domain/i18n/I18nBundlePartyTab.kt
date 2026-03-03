@@ -4,6 +4,7 @@ import ffviirse.domain.extension.nullString
 
 data class I18nBundlePartyTab(
     val paneCharacterStatusTitle: String = nullString(),
+    val paneCharacterAttributesTitle: String = nullString(),
     val paneCharacterEquipmentTitle: String = nullString(),
     val paneWeaponMateriaTitle: String = nullString(),
     val paneArmorMateriaTitle: String = nullString(),

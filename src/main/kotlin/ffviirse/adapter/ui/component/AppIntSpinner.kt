@@ -37,11 +37,21 @@ class AppIntSpinner(
         maxWidth = MAIN_WIDTH
         fixedHeight(INPUT_HEIGHT)
         isEditable = editable
+        skinProperty().addListener { _, _, newSkin ->
+            if (newSkin != null) {
+                lookup(".increment-arrow-button")?.isDisable = !editable
+                lookup(".decrement-arrow-button")?.isDisable = !editable
+            }
+        }
         focusedProperty().addListener { _, _, focused ->
             isValidProperty.value = focused || inputValidation(this.value)
             if (!focused) {
                 increment(0)
             }
+        }
+        disableProperty().addListener { _, _, newValue ->
+            lookup(".increment-arrow-button")?.isDisable = newValue
+            lookup(".decrement-arrow-button")?.isDisable = newValue
         }
     }
 

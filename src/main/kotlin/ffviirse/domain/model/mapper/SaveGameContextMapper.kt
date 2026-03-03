@@ -88,6 +88,7 @@ fun CharacterInfoContext.update(characterInfo: CharacterInfo) {
     characterLuck.value = characterInfo.characterLuck
     characterSpeed.value = characterInfo.characterSpeed
     criticalHrate.value = characterInfo.criticalHrate
+    weaponLevel.value = characterInfo.weaponLevel
     characterWeapon.value = characterInfo.characterWeapon
     characterArmor.value = characterInfo.characterArmor
     characterSummon.value = characterInfo.characterSummon
@@ -209,6 +210,7 @@ fun CharacterInfoContext.toCharacterInfo(): CharacterInfo = CharacterInfo(
     characterLuck = characterLuck.value,
     characterSpeed = characterSpeed.value,
     criticalHrate = criticalHrate.value,
+    weaponLevel = weaponLevel.value,
     characterWeapon = characterWeapon.value,
     characterArmor = characterArmor.value,
     characterSummon = characterSummon.value,

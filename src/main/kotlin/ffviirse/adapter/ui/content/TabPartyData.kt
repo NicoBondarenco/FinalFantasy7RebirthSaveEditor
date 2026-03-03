@@ -2,7 +2,13 @@ package ffviirse.adapter.ui.content
 
 import com.database.tesis.adapter.ui.component.AppTab
 import ffviirse.adapter.ui.component.AppIntSpinner
+import ffviirse.adapter.ui.component.AppLabel
+import ffviirse.adapter.ui.extension.fixedHeight
+import ffviirse.adapter.ui.extension.fixedSize
+import ffviirse.adapter.ui.extension.fixedWidth
+import ffviirse.adapter.ui.extension.solidBorder
 import ffviirse.adapter.ui.extension.withPadding
+import ffviirse.adapter.ui.theme.ThemeColor.TEXT_COLOR
 import ffviirse.domain.context.session.SessionContext.appBundleProperty
 import ffviirse.domain.context.session.SessionContext.bundleContentPane
 import ffviirse.domain.context.session.SessionContext.bundlePartyTab
@@ -17,17 +23,22 @@ import ffviirse.domain.model.value.PartyMember.CLOUD_STRIFE
 import ffviirse.domain.model.value.PartyMember.RED_XIII
 import ffviirse.domain.model.value.PartyMember.TIFA_LOCKHART
 import ffviirse.domain.model.value.PartyMember.YUFFIE_KISARAGI
+import ffviirse.domain.property.IntProperty
+import java.util.concurrent.Callable
 import javafx.beans.binding.Bindings
 import javafx.beans.property.BooleanProperty
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.geometry.Pos
+import javafx.scene.control.Label
 import javafx.scene.control.Tab
 import javafx.scene.control.TabPane
 import javafx.scene.control.TabPane.TabClosingPolicy.UNAVAILABLE
 import javafx.scene.control.TitledPane
 import javafx.scene.layout.HBox
+import javafx.scene.layout.Pane
 import javafx.scene.layout.Priority.ALWAYS
 import javafx.scene.layout.VBox
+import javafx.scene.text.Font
 import org.springframework.stereotype.Component
 
 @Component
@@ -39,6 +50,15 @@ class TabPartyData : AppTab(2, bundleContentPane.tabPartyDataTitle) {
 
         private const val MIN_LEVEL = 15
         private const val MAX_LEVEL = 70
+
+        private const val MIN_HP = 1
+        private const val MAX_HP = 9999
+
+        private const val MIN_MP = 1
+        private const val MAX_MP = 999
+
+        private const val MIN_RELATIONSHIP = 0
+        private const val MAX_RELATIONSHIP = 150
 
         private val characterLevels = intArrayOf(
             7200, 7365, 8059, 8827, 9849, 11382, 13374, 15565, 17493, 19517,
@@ -67,30 +87,57 @@ class TabPartyData : AppTab(2, bundleContentPane.tabPartyDataTitle) {
         tab.content = this.createMemberContent()
     }
 
-    private fun PartyMember.createMemberContent(): VBox = VBox().also { pane ->
+    private fun PartyMember.createMemberContent(): HBox = HBox().also { pane ->
         pane.withPadding(CONTENT_PADDING)
         pane.spacing = CONTENT_PADDING
         pane.alignment = Pos.TOP_LEFT
-        pane.children.addAll(this.createDataContent())
+        pane.children.addAll(
+            this.createStatusContent(),
+            this.createAttributesContent(),
+        )
     }
 
-    private fun PartyMember.createDataContent(): TitledPane = VBox().also { pane ->
-        pane.withPadding(0.0)
-        pane.spacing = CONTENT_PADDING
-        pane.alignment = Pos.TOP_LEFT
-        pane.children.addAll(
-            createExperienceContent()
-        )
-    }.let {
-        TitledPane().apply {
-            textProperty().bind(Bindings.createStringBinding({ bundlePartyTab.paneCharacterStatusTitle }))
-            content = it
-        }
+    private fun Pane.toTitledPane(
+        callable: Callable<String>,
+    ): TitledPane = TitledPane().apply {
+        textProperty().bind(Bindings.createStringBinding(callable, appBundleProperty))
+        solidBorder()
+        content = this@toTitledPane
+        isCollapsible = false
     }
+
+    private fun PartyMember.createStatusContent(): TitledPane = VBox().also { pane ->
+        pane.withPadding(0.0)
+        pane.spacing = 0.0
+        pane.alignment = Pos.TOP_LEFT
+
+        val character = this.characterInfo
+
+        pane.children.addAll(
+            createExperienceContent(),
+            createHpMpContent(
+                MIN_HP,
+                MAX_HP,
+                character.characterHpcurrent,
+                character.characterHpmax,
+                { bundlePartyTab.fieldCurrentHpLabel },
+                { bundlePartyTab.fieldMaxHpLabel }),
+            createHpMpContent(
+                MIN_MP,
+                MAX_MP,
+                character.characterMpcurrent,
+                character.characterMpmax,
+                { bundlePartyTab.fieldCurrentMpLabel },
+                { bundlePartyTab.fieldMaxMpLabel }),
+        )
+        if (this.hasRelationship) {
+            pane.children.add(this.createRelationshipContent())
+        }
+    }.toTitledPane { bundlePartyTab.paneCharacterStatusTitle }
 
     private fun PartyMember.createExperienceContent(): HBox = HBox().also { pane ->
         pane.withPadding(0.0)
-        pane.spacing = CONTENT_PADDING
+        pane.spacing = 0.0
         pane.alignment = Pos.TOP_LEFT
 
         val character = this.characterInfo
@@ -147,8 +194,145 @@ class TabPartyData : AppTab(2, bundleContentPane.tabPartyDataTitle) {
         pane.children.addAll(levelField, expField)
     }
 
-    private fun createHpMpContent(): HBox = HBox().apply {
+    private fun createHpMpContent(
+        minValue: Int,
+        maxValue: Int,
+        currentProperty: IntProperty,
+        maxProperty: IntProperty,
+        callableCurrent: Callable<String>,
+        callableMax: Callable<String>,
+    ): HBox = HBox().apply {
+        withPadding(0.0)
+        spacing = 0.0
+        alignment = Pos.TOP_LEFT
 
+        children.addAll(
+            AppIntSpinner(
+                inputLabel = nullString(),
+                minValue = minValue,
+                maxValue = maxValue,
+                inputValidation = { it in minValue..maxValue },
+            ).apply {
+                bindLabel(appBundleProperty, callableCurrent)
+                maxWidth = Double.MAX_VALUE
+                fieldValueProperty.bindBidirectional(currentProperty)
+                validatableFields.add(this)
+                HBox.setHgrow(this, ALWAYS)
+            },
+            AppIntSpinner(
+                inputLabel = nullString(),
+                minValue = minValue,
+                maxValue = maxValue,
+                inputValidation = { it in minValue..maxValue },
+                isEditable = false,
+            ).apply {
+                bindLabel(appBundleProperty, callableMax)
+                maxWidth = Double.MAX_VALUE
+                fieldValueProperty.bindBidirectional(maxProperty)
+                validatableFields.add(this)
+                HBox.setHgrow(this, ALWAYS)
+            },
+        )
+    }
+
+    private fun PartyMember.createRelationshipContent(): AppIntSpinner = AppIntSpinner(
+        inputLabel = nullString(),
+        minValue = MIN_RELATIONSHIP,
+        maxValue = MAX_RELATIONSHIP,
+        inputValidation = { it in MIN_RELATIONSHIP..MAX_RELATIONSHIP },
+    ).apply {
+        bindLabel(appBundleProperty) { bundlePartyTab.fieldCharacterRelationshipLabel }
+        maxWidth = Double.MAX_VALUE
+        fieldValueProperty.bindBidirectional(this@createRelationshipContent.characterInfo.characterRelationship)
+        validatableFields.add(this)
+        HBox.setHgrow(this, ALWAYS)
+    }
+
+    private fun PartyMember.createAttributesContent(): TitledPane = VBox().also { pane ->
+        pane.withPadding(CONTENT_PADDING)
+        pane.spacing = CONTENT_PADDING
+        pane.alignment = Pos.TOP_LEFT
+
+        val character = this.characterInfo
+
+        pane.children.addAll(
+            createAttributeLine(
+                character.characterAttack,
+                character.characterDefense,
+                { bundlePartyTab.fieldPhysicalAttackLabel },
+                { bundlePartyTab.fieldPhysicalDefenseLabel },
+            ),
+            createAttributeLine(
+                character.characterMattack,
+                character.characterMdefense,
+                { bundlePartyTab.fieldMagicalAttackLabel },
+                { bundlePartyTab.fieldMagicalDefenseLabel },
+            ),
+            createAttributeLine(
+                character.characterStrength,
+                character.characterMagic,
+                { bundlePartyTab.fieldStrengthValueLabel },
+                { bundlePartyTab.fieldMagicValueLabel },
+            ),
+            createAttributeLine(
+                character.characterVitality,
+                character.characterSpirit,
+                { bundlePartyTab.fieldVitalityValueLabel },
+                { bundlePartyTab.fieldSpiritValueLabel },
+            ),
+            createAttributeLine(
+                character.characterSpeed,
+                character.characterLuck,
+                { bundlePartyTab.fieldSpeedValueLabel },
+                { bundlePartyTab.fieldLuckValueLabel },
+            ),
+            createAttributeLine(
+                character.criticalHrate,
+                character.weaponLevel,
+                { bundlePartyTab.fieldCriticalRateLabel },
+                { bundlePartyTab.fieldWeaponLevelLabel },
+            ),
+        )
+    }.toTitledPane { bundlePartyTab.paneCharacterAttributesTitle }
+
+    private fun createAttributeLine(
+        rightProperty: IntProperty,
+        leftProperty: IntProperty,
+        rightCallable: Callable<String>,
+        leftCallable: Callable<String>,
+    ): HBox = HBox().apply {
+        withPadding(0.0)
+        spacing = CONTENT_PADDING
+        alignment = Pos.TOP_LEFT
+
+        children.addAll(
+            createAttributeLabel(rightProperty, rightCallable),
+            createAttributeLabel(leftProperty, leftCallable),
+        )
+    }
+
+    private fun createAttributeLabel(
+        valueProperty: IntProperty,
+        valueCallable: Callable<String>,
+    ): VBox = VBox().apply {
+        withPadding(0.0)
+        spacing = 2.0
+        alignment = Pos.TOP_LEFT
+
+        val width = 120.0
+
+        children.addAll(
+            AppLabel(nullString()).apply {
+                textProperty().bind(Bindings.createStringBinding(valueCallable, appBundleProperty))
+                fixedWidth(width)
+            },
+            Label(nullString()).apply {
+                textProperty().bind(valueProperty.asString())
+                textFill = TEXT_COLOR.fxColor()
+                font = Font.font(12.0)
+                fixedSize(width, 15.0)
+            }
+        )
     }
 
     private fun calculateCharacterLevel(
