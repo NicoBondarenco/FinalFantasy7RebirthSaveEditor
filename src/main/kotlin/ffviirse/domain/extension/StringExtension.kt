@@ -16,6 +16,8 @@ fun String.toSnakeCase(): String = this.replace("(?<=.)[A-Z]".toRegex(), "_$0").
 
 fun String.toDashCase(): String = this.replace("(?<=.)[A-Z]".toRegex(), "-$0").lowercase()
 
+fun String.snakeToCamelCase(): String = "_([a-zA-Z])".toRegex().replace(lowercase()) { it.groupValues[1].uppercase() }
+
 fun <T> String.parseOrNull(parser: (String) -> T?): T? = try {
     parser(this)
 } catch (e: Exception) {

@@ -1,0 +1,1813 @@
+package ffviirse.domain.model.value
+
+import ffviirse.domain.context.session.SessionContext.bundlePartyTab
+import ffviirse.domain.functional.Labeled
+import ffviirse.domain.model.mapper.gilMoneyDataItemOffset
+import ffviirse.domain.model.mapper.moogleMedalMinigameTokenOffset
+import ffviirse.domain.model.mapper.goldenPlumeChocoboTokenOffset
+import ffviirse.domain.model.mapper.grasslandsAreaDataPointsOffset
+import ffviirse.domain.model.mapper.junonRegionDataPointsOffset
+import ffviirse.domain.model.mapper.corelRegionDataPointsOffset
+import ffviirse.domain.model.mapper.gongagaRegionDataPointsOffset
+import ffviirse.domain.model.mapper.cosmoRegionDataPointsOffset
+import ffviirse.domain.model.mapper.nibelRegionDataPointsOffset
+import ffviirse.domain.model.mapper.meridianOceanDataPointsOffset
+import ffviirse.domain.model.mapper.goldSaucerAreaPointOffset
+import ffviirse.domain.model.mapper.potionHpCommonItemOffset
+import ffviirse.domain.model.mapper.hiPotionCommonItemOffset
+import ffviirse.domain.model.mapper.megaPotionCommonItemOffset
+import ffviirse.domain.model.mapper.gigaPotionCommonItemOffset
+import ffviirse.domain.model.mapper.xPotionCommonItemOffset
+import ffviirse.domain.model.mapper.mixedPotionCommonItemOffset
+import ffviirse.domain.model.mapper.mixedHiPotionItemOffset
+import ffviirse.domain.model.mapper.mistPotionCommonItemOffset
+import ffviirse.domain.model.mapper.mistHiPotionItemOffset
+import ffviirse.domain.model.mapper.mistMegaPotionItemOffset
+import ffviirse.domain.model.mapper.mistGigaPotionItemOffset
+import ffviirse.domain.model.mapper.etherMpCommonItemOffset
+import ffviirse.domain.model.mapper.hiEtherCommonItemOffset
+import ffviirse.domain.model.mapper.dryEtherCommonItemOffset
+import ffviirse.domain.model.mapper.turboEtherCommonItemOffset
+import ffviirse.domain.model.mapper.elixirAllCommonItemOffset
+import ffviirse.domain.model.mapper.phoenixDownCommonItemOffset
+import ffviirse.domain.model.mapper.phoenixDraftCommonItemOffset
+import ffviirse.domain.model.mapper.maidensKissCommonItemOffset
+import ffviirse.domain.model.mapper.antidoteStatusCommonItemOffset
+import ffviirse.domain.model.mapper.smellingSaltsCommonItemOffset
+import ffviirse.domain.model.mapper.echoMistCommonItemOffset
+import ffviirse.domain.model.mapper.goldNeedleCommonItemOffset
+import ffviirse.domain.model.mapper.adrenalineStatusCommonItemOffset
+import ffviirse.domain.model.mapper.sedativeStatusCommonItemOffset
+import ffviirse.domain.model.mapper.remedyStatusCommonItemOffset
+import ffviirse.domain.model.mapper.celerisStatusCommonItemOffset
+import ffviirse.domain.model.mapper.grenadeAttackUsableItemOffset
+import ffviirse.domain.model.mapper.armorPiercingGrenadeItemOffset
+import ffviirse.domain.model.mapper.hazardousMaterialCommonItemOffset
+import ffviirse.domain.model.mapper.spiderwebStatusCommonItemOffset
+import ffviirse.domain.model.mapper.molotovCocktailCommonItemOffset
+import ffviirse.domain.model.mapper.orbGravityCommonItemOffset
+import ffviirse.domain.model.mapper.cushionRestCommonItemOffset
+import ffviirse.domain.model.mapper.sageMaterialTransmmuterItemOffset
+import ffviirse.domain.model.mapper.oreganoMaterialTransmmuterItemOffset
+import ffviirse.domain.model.mapper.saintLucheLeafMaterialOffset
+import ffviirse.domain.model.mapper.pearlGingerRootMaterialOffset
+import ffviirse.domain.model.mapper.marjoramMaterialTransmmuterItemOffset
+import ffviirse.domain.model.mapper.ironOreMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.zincOreMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.chromiteOreMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.leaTitaniumMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.tourmalineMaterialTransmmuterItemOffset
+import ffviirse.domain.model.mapper.amethystMaterialTransmmuterItemOffset
+import ffviirse.domain.model.mapper.mossAgateMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.crimsoniteCrystalMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.moonstoneMaterialTransmmuterItemOffset
+import ffviirse.domain.model.mapper.mythrilOreMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.numinousAshesMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.cosmotiteOreMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.goldDustMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.timberMaterialTransmmuterItemOffset
+import ffviirse.domain.model.mapper.ancientBarkMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.divineHeartwoodMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.mellowOakMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.condorCedarMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.sycamoreWoodMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.gongagaPineMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.baobabWoodMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.ashWoodMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.laurelMaterialTransmmuterItemOffset
+import ffviirse.domain.model.mapper.mistSeedsMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.beastPeltMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.exquisiteBeastHideMaterialOffset
+import ffviirse.domain.model.mapper.beastBoneMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.exquisiteBeastSpineMaterialOffset
+import ffviirse.domain.model.mapper.planetsBlessingMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.planetsFavorMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.planetsBenisonMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.planetsSplendorMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.etherOnionMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.planetsMercyMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.planetsSpiritMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.rubyMaterialTransmmuterItemOffset
+import ffviirse.domain.model.mapper.emeraldMaterialTransmmuterItemOffset
+import ffviirse.domain.model.mapper.sapphireMaterialTransmmuterItemOffset
+import ffviirse.domain.model.mapper.beastTalonMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.astralRemnantMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.slimyMalboroTendrilTransmmuterOffset
+import ffviirse.domain.model.mapper.heavyJabberwockHornTransmmuterOffset
+import ffviirse.domain.model.mapper.argentKingZuFeatherOffset
+import ffviirse.domain.model.mapper.quetzalcoatlTalonMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.mindflayerCrownMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.tonberryKingsRobeTransmmuterOffset
+import ffviirse.domain.model.mapper.greatMalboroTendrilTransmmuterOffset
+import ffviirse.domain.model.mapper.jabberwockHornMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.kingZuFeatherTransmmuterOffset
+import ffviirse.domain.model.mapper.sinisterQuetzalcoatlTalonTransmmuterOffset
+import ffviirse.domain.model.mapper.vileMindlayerCrownTransmmuterOffset
+import ffviirse.domain.model.mapper.tonberryKingsWretchedRobeOffset
+import ffviirse.domain.model.mapper.goldTalonMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.burnishedCrownMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.resplendentRobeMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.gildedTentacleMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.aureateHornMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.lustrousFeatherMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.darkMatterMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.pirateRelicAlphaTransmmuterOffset
+import ffviirse.domain.model.mapper.pirateRelicBetaTransmmuterOffset
+import ffviirse.domain.model.mapper.pirateRelicGammaTransmmuterOffset
+import ffviirse.domain.model.mapper.pirateRelicDeltaTransmmuterOffset
+import ffviirse.domain.model.mapper.pirateJetsamMaterialTransmmuterOffset
+import ffviirse.domain.model.mapper.metalBracerMemberArmorOffset
+import ffviirse.domain.model.mapper.leatherBangleMemberArmorOffset
+import ffviirse.domain.model.mapper.copperBracerMemberArmorOffset
+import ffviirse.domain.model.mapper.huntersBangleMemberArmorOffset
+import ffviirse.domain.model.mapper.boneBraceletMemberArmorOffset
+import ffviirse.domain.model.mapper.woodspriteArmletMemberArmorOffset
+import ffviirse.domain.model.mapper.enhancedCopperBracerArmorOffset
+import ffviirse.domain.model.mapper.enhancedHuntersBangleArmorOffset
+import ffviirse.domain.model.mapper.enhancedBoneBraceletArmorOffset
+import ffviirse.domain.model.mapper.enhancedWoodspriteArmletArmorOffset
+import ffviirse.domain.model.mapper.owlBracerMemberArmorOffset
+import ffviirse.domain.model.mapper.beastmanArmbandMemberArmorOffset
+import ffviirse.domain.model.mapper.sailorsBracerMemberArmorOffset
+import ffviirse.domain.model.mapper.elphadunkBangleMemberArmorOffset
+import ffviirse.domain.model.mapper.wisefoxBraceletMemberArmorOffset
+import ffviirse.domain.model.mapper.goldCoralArmletArmorOffset
+import ffviirse.domain.model.mapper.enhancedSailorsBracerArmorOffset
+import ffviirse.domain.model.mapper.enhancedElphadunkBangleArmorOffset
+import ffviirse.domain.model.mapper.enhancedWisefoxBraceletArmorOffset
+import ffviirse.domain.model.mapper.enhancedGoldCoralArmletOffset
+import ffviirse.domain.model.mapper.queensguardBangleMemberArmorOffset
+import ffviirse.domain.model.mapper.warmagesArmbandMemberArmorOffset
+import ffviirse.domain.model.mapper.fortressBracerMemberArmorOffset
+import ffviirse.domain.model.mapper.abyssalBangleMemberArmorOffset
+import ffviirse.domain.model.mapper.oldebeastBraceletMemberArmorOffset
+import ffviirse.domain.model.mapper.beguilingArmletMemberArmorOffset
+import ffviirse.domain.model.mapper.enhancedFortressBracerArmorOffset
+import ffviirse.domain.model.mapper.enhancedAbyssalBangleArmorOffset
+import ffviirse.domain.model.mapper.enhancedOldebeastBraceletArmorOffset
+import ffviirse.domain.model.mapper.enhancedBeguilingArmletArmorOffset
+import ffviirse.domain.model.mapper.swallowsongBracerMemberArmorOffset
+import ffviirse.domain.model.mapper.illusionistsArmbandMemberArmorOffset
+import ffviirse.domain.model.mapper.crucibleBracerMemberArmorOffset
+import ffviirse.domain.model.mapper.outlawBangleMemberArmorOffset
+import ffviirse.domain.model.mapper.crocodileBraceletMemberArmorOffset
+import ffviirse.domain.model.mapper.witchsArmletMemberArmorOffset
+import ffviirse.domain.model.mapper.enhancedCrucibleBracerArmorOffset
+import ffviirse.domain.model.mapper.enhancedOutlawBangleArmorOffset
+import ffviirse.domain.model.mapper.enhancedCrocodileBraceletArmorOffset
+import ffviirse.domain.model.mapper.enhancedWitchsArmletArmorOffset
+import ffviirse.domain.model.mapper.sageArmbandMemberArmorOffset
+import ffviirse.domain.model.mapper.bigHornBraceletArmorOffset
+import ffviirse.domain.model.mapper.commandersBracerMemberArmorOffset
+import ffviirse.domain.model.mapper.roadWarriorBangleArmorOffset
+import ffviirse.domain.model.mapper.snailshellBraceletMemberArmorOffset
+import ffviirse.domain.model.mapper.spirithoundArmletMemberArmorOffset
+import ffviirse.domain.model.mapper.enhancedCommandersBracerArmorOffset
+import ffviirse.domain.model.mapper.enhancedRoadWarriorBangleOffset
+import ffviirse.domain.model.mapper.enhancedSnailshellBraceletArmorOffset
+import ffviirse.domain.model.mapper.enhancedSpirithoundArmletArmorOffset
+import ffviirse.domain.model.mapper.backboneBraceletMemberArmorOffset
+import ffviirse.domain.model.mapper.celestialBangleMemberArmorOffset
+import ffviirse.domain.model.mapper.resplendentBracerMemberArmorOffset
+import ffviirse.domain.model.mapper.garmBangleMemberArmorOffset
+import ffviirse.domain.model.mapper.varvadosBraceletMemberArmorOffset
+import ffviirse.domain.model.mapper.yggdrasilArmletMemberArmorOffset
+import ffviirse.domain.model.mapper.enhancedResplendentBracerArmorOffset
+import ffviirse.domain.model.mapper.enhancedGarmBangleArmorOffset
+import ffviirse.domain.model.mapper.enhancedVarvadosBraceletArmorOffset
+import ffviirse.domain.model.mapper.enhancedYggdrasilArmletArmorOffset
+import ffviirse.domain.model.mapper.valkyrianBangleMemberArmorOffset
+import ffviirse.domain.model.mapper.hadesArmletMemberArmorOffset
+import ffviirse.domain.model.mapper.cetranBracerMemberArmorOffset
+import ffviirse.domain.model.mapper.cetranBangleMemberArmorOffset
+import ffviirse.domain.model.mapper.cetranArmbandMemberArmorOffset
+import ffviirse.domain.model.mapper.cetranArmletMemberArmorOffset
+import ffviirse.domain.model.mapper.chocoboArmbandMemberArmorOffset
+import ffviirse.domain.model.mapper.midgarBangleMkIiOffset
+import ffviirse.domain.model.mapper.orchidBraceletMemberArmorOffset
+import ffviirse.domain.model.mapper.shinraBangleMkIiOffset
+import ffviirse.domain.model.mapper.itemTransmuterKeyItemOffset
+import ffviirse.domain.model.mapper.chadModuleKeyItemOffset
+import ffviirse.domain.model.mapper.itemChocowhistleKeyItemOffset
+import ffviirse.domain.model.mapper.majesticGlamourMemberOutfitOffset
+import ffviirse.domain.model.mapper.shiningSpiritMemberOutfitOffset
+import ffviirse.domain.model.mapper.pinkMermaidMemberOutfitOffset
+import ffviirse.domain.model.mapper.oceanChocoboMemberOutfitOffset
+import ffviirse.domain.model.mapper.wildSurfMemberOutfitOffset
+import ffviirse.domain.model.mapper.floralDelightMemberOutfitOffset
+import ffviirse.domain.model.mapper.rentBirdMembershipKeyOffset
+import ffviirse.domain.model.mapper.companionCardForCloudOffset
+import ffviirse.domain.model.mapper.companionCardForAerithOffset
+import ffviirse.domain.model.mapper.companionCardForTifaOffset
+import ffviirse.domain.model.mapper.ticketDelAmor7Offset
+import ffviirse.domain.model.mapper.ticketDelAmor77Offset
+import ffviirse.domain.model.mapper.gysahlGreensKeyItemOffset
+import ffviirse.domain.model.mapper.grapplingHookKeyItemOffset
+import ffviirse.domain.model.mapper.sylkisGreensKeyItemOffset
+import ffviirse.domain.model.mapper.cliffSideKeyItemOffset
+import ffviirse.domain.model.mapper.grapplingGunKeyItemOffset
+import ffviirse.domain.model.mapper.cloudStrigeFolioItemOffset
+import ffviirse.domain.model.mapper.barretWallaceFolioItemOffset
+import ffviirse.domain.model.mapper.tifaLockhartFolioItemOffset
+import ffviirse.domain.model.mapper.aerithGainsboroughFolioItemOffset
+import ffviirse.domain.model.mapper.redXiiiFolioItemOffset
+import ffviirse.domain.model.mapper.yuffieKisaragiFolioItemOffset
+import ffviirse.domain.model.mapper.caitSithFolioItemOffset
+import ffviirse.domain.model.mapper.storeHouseKeyItemOffset
+import ffviirse.domain.model.mapper.shinra8TournamentTrophyOffset
+import ffviirse.domain.model.mapper.summerOrangeMemberOutfitOffset
+import ffviirse.domain.model.mapper.goldenPassportKeyItemOffset
+import ffviirse.domain.model.mapper.murasakiEmployeeIdCardOffset
+import ffviirse.domain.model.mapper.unknownKeyItem01Offset
+import ffviirse.domain.model.mapper.unknownKeyItem02Offset
+import ffviirse.domain.model.mapper.refurbishmentMaterialKeyItemOffset
+import ffviirse.domain.model.mapper.boilerValveKeyItemOffset
+import ffviirse.domain.model.mapper.marredCrownKeyItemOffset
+import ffviirse.domain.model.mapper.uvaFlashlightKeyItemOffset
+import ffviirse.domain.model.mapper.birdTrapKeyItemOffset
+import ffviirse.domain.model.mapper.conchShellKeyItemOffset
+import ffviirse.domain.model.mapper.scallopShellKeyItemOffset
+import ffviirse.domain.model.mapper.gigantopodShellKeyItemOffset
+import ffviirse.domain.model.mapper.pristineCrownKeyItemOffset
+import ffviirse.domain.model.mapper.premiumTicketKeyItemOffset
+import ffviirse.domain.model.mapper.keyOffLimitsBeachOffset
+import ffviirse.domain.model.mapper.legendaryBaitKeyItemOffset
+import ffviirse.domain.model.mapper.junonNavalUniformOutfitOffset
+import ffviirse.domain.model.mapper.caperCompassKeyItemOffset
+import ffviirse.domain.model.mapper.tropicalMeatKeyItemOffset
+import ffviirse.domain.model.mapper.caperCameraKeyItemOffset
+import ffviirse.domain.model.mapper.courtJesterMemberOutfitOffset
+import ffviirse.domain.model.mapper.hellHoundMemberOutfitOffset
+import ffviirse.domain.model.mapper.chocoGrassKeyItemOffset
+import ffviirse.domain.model.mapper.mainwrightsNoteKeyItemOffset
+import ffviirse.domain.model.mapper.driedDriftwoodKeyItemOffset
+import ffviirse.domain.model.mapper.carriageWheelKeyItemOffset
+import ffviirse.domain.model.mapper.carriageBedKeyItemOffset
+import ffviirse.domain.model.mapper.carriageBraceKeyItemOffset
+import ffviirse.domain.model.mapper.peculiarGreensKeyItemOffset
+import ffviirse.domain.model.mapper.monsterFleshKeyItemOffset
+import ffviirse.domain.model.mapper.bovineMeatKeyItemOffset
+import ffviirse.domain.model.mapper.ransomNoteKeyItemOffset
+import ffviirse.domain.model.mapper.storageShedKeyItemOffset
+import ffviirse.domain.model.mapper.draconiteMapKeyItemOffset
+import ffviirse.domain.model.mapper.draconiteOreKeyItemOffset
+import ffviirse.domain.model.mapper.torgansVegetablesKeyItemOffset
+import ffviirse.domain.model.mapper.plumpMagongaMushroomKeyOffset
+import ffviirse.domain.model.mapper.pureGongagaRockSaltOffset
+import ffviirse.domain.model.mapper.feedClangerKeyItemOffset
+import ffviirse.domain.model.mapper.cissneisBinocularsKeyItemOffset
+import ffviirse.domain.model.mapper.instantCameraKeyItemOffset
+import ffviirse.domain.model.mapper.celestioGraphKeyItemOffset
+import ffviirse.domain.model.mapper.phenomenaReportsKeyItemOffset
+import ffviirse.domain.model.mapper.celestialPhenomenaChocoboKeyOffset
+import ffviirse.domain.model.mapper.celestialPhenomenaMoogleKeyOffset
+import ffviirse.domain.model.mapper.celestialPhenomenaBahamutKeyOffset
+import ffviirse.domain.model.mapper.photographOfAerithPrayingOffset
+import ffviirse.domain.model.mapper.photographOfCloudAerithOffset
+import ffviirse.domain.model.mapper.makoMeterKeyItemOffset
+import ffviirse.domain.model.mapper.firstLifespringFieldReportOffset
+import ffviirse.domain.model.mapper.secondLifespringFieldReportOffset
+import ffviirse.domain.model.mapper.fourthLifespringFieldReportOffset
+import ffviirse.domain.model.mapper.fifthLifespringFieldReportOffset
+import ffviirse.domain.model.mapper.sixthLifespringFieldReportOffset
+import ffviirse.domain.model.mapper.vibroDetectorKeyItemOffset
+import ffviirse.domain.model.mapper.catFoodKeyItemOffset
+import ffviirse.domain.model.mapper.sheetMusicOurWayOffset
+import ffviirse.domain.model.mapper.sheetMusicTifaThemeOffset
+import ffviirse.domain.model.mapper.sheetMusicBarretThemeOffset
+import ffviirse.domain.model.mapper.sheetMusicCincoChocoboOffset
+import ffviirse.domain.model.mapper.securityCardKeyItemOffset
+import ffviirse.domain.model.mapper.upaChallengeKeyItemOffset
+import ffviirse.domain.model.mapper.rhondasMoneyKeyItemOffset
+import ffviirse.domain.model.mapper.blurryCondorPhotographKeyOffset
+import ffviirse.domain.model.mapper.niceCondorPhotographKeyOffset
+import ffviirse.domain.model.mapper.wellComposedCondorPhotographOffset
+import ffviirse.domain.model.mapper.sheetMusicTwoLegsOffset
+import ffviirse.domain.model.mapper.sheetMusicAerithThemeOffset
+import ffviirse.domain.model.mapper.sheetMusicBattlesBeginOffset
+import ffviirse.domain.model.mapper.swindlerChallengeKeyItemOffset
+import ffviirse.domain.model.mapper.birdhouseLocationsKeyItemOffset
+import ffviirse.domain.model.mapper.buggyKeyFobItemOffset
+import ffviirse.domain.model.mapper.photographOfAerithSmilingOffset
+import ffviirse.domain.model.mapper.photographOfAerithBeamingOffset
+import ffviirse.domain.model.mapper.photographOfAerithGlaringOffset
+import ffviirse.domain.model.mapper.loveliestOfLadiesKeyOffset
+import ffviirse.domain.model.mapper.celestialPhenomenaChocobo01Offset
+import ffviirse.domain.model.mapper.celestialPhenomenaChocobo02Offset
+import ffviirse.domain.model.mapper.celestialPhenomenaMoogle01Offset
+import ffviirse.domain.model.mapper.celestialPhenomenaMoogle02Offset
+import ffviirse.domain.model.mapper.celestialPhenomenaBahamut01Offset
+import ffviirse.domain.model.mapper.celestialPhenomenaBahamut02Offset
+import ffviirse.domain.model.mapper.resolveKeyItem01Offset
+import ffviirse.domain.model.mapper.resolveKeyItem02Offset
+import ffviirse.domain.model.mapper.resolveKeyItem03Offset
+import ffviirse.domain.model.mapper.sufferingKeyItem01Offset
+import ffviirse.domain.model.mapper.sufferingKeyItem02Offset
+import ffviirse.domain.model.mapper.sufferingKeyItem03Offset
+import ffviirse.domain.model.mapper.odysseyKeyItem01Offset
+import ffviirse.domain.model.mapper.odysseyKeyItem02Offset
+import ffviirse.domain.model.mapper.odysseyKeyItem03Offset
+import ffviirse.domain.model.mapper.flowerCrownDoodleKeyOffset
+import ffviirse.domain.model.mapper.daisiesFlowerKeyItemOffset
+import ffviirse.domain.model.mapper.calendulasFlowerKeyItemOffset
+import ffviirse.domain.model.mapper.redGerberaKeyItemOffset
+import ffviirse.domain.model.mapper.forgetMeNotsKeyOffset
+import ffviirse.domain.model.mapper.foxTailsKeyItemOffset
+import ffviirse.domain.model.mapper.chocoboMoogleCardKeyOffset
+import ffviirse.domain.model.mapper.kyriesMaintenanceNotesKeyOffset
+import ffviirse.domain.model.mapper.windmillGearKeyItemOffset
+import ffviirse.domain.model.mapper.gongagaRockSaltSketchOffset
+import ffviirse.domain.model.mapper.brokenMagongaMushroomKeyOffset
+import ffviirse.domain.model.mapper.magongaMushroomKeyItemOffset
+import ffviirse.domain.model.mapper.impureRockSaltKeyOffset
+import ffviirse.domain.model.mapper.gongagaRockSaltKeyOffset
+import ffviirse.domain.model.mapper.rustedSheetMetalKeyOffset
+import ffviirse.domain.model.mapper.corrodedNailKeyItemOffset
+import ffviirse.domain.model.mapper.sheetMusicOnewingedAngelOffset
+import ffviirse.domain.model.mapper.playArtsStarFighterOffset
+import ffviirse.domain.model.mapper.spacerangerPlayArtsFigureOffset
+import ffviirse.domain.model.mapper.diosAutographKeyItemOffset
+import ffviirse.domain.model.mapper.playArtsGBikeOffset
+import ffviirse.domain.model.mapper.queensBloodGameboardKeyOffset
+import ffviirse.domain.model.mapper.brawlerCloudFigurine3dOffset
+import ffviirse.domain.model.mapper.masamuneReplicaKeyItemOffset
+import ffviirse.domain.model.mapper.lovelessPosterKeyItemOffset
+import ffviirse.domain.model.mapper.rufusShinraCutoutKeyOffset
+import ffviirse.domain.model.mapper.saveCrystalKeyItemOffset
+import ffviirse.domain.model.mapper.playArtsBuggyFigureOffset
+import ffviirse.domain.model.mapper.playArtsTinyBroncoOffset
+import ffviirse.domain.model.mapper.playArtsTinyWheelieOffset
+import ffviirse.domain.model.mapper.stuffedChocoboKeyItemOffset
+import ffviirse.domain.model.mapper.stuffedMoogleKeyItemOffset
+import ffviirse.domain.model.mapper.stuffedCactuarKeyItemOffset
+import ffviirse.domain.model.mapper.stuffedBombKeyItemOffset
+import ffviirse.domain.model.mapper.stuffedFatChocoboKeyOffset
+import ffviirse.domain.model.mapper.stuffedStampKeyItemOffset
+import ffviirse.domain.model.mapper.stuffedTonberryKeyItemOffset
+import ffviirse.domain.model.mapper.stuffedFatMoogleKeyOffset
+import ffviirse.domain.model.mapper.playArtsSweeperFigureOffset
+import ffviirse.domain.model.mapper.brawlerPugilistFigurine3dOffset
+import ffviirse.domain.model.mapper.brawlerMoogleFigurine3dOffset
+import ffviirse.domain.model.mapper.brawlerDioFigurine3dOffset
+import ffviirse.domain.model.mapper.brawlerShivaFigurine3dOffset
+import ffviirse.domain.model.mapper.brawlerIfritFigurine3dOffset
+import ffviirse.domain.model.mapper.playArtsShinraBoxOffset
+import ffviirse.domain.model.mapper.playArtsRestSpotOffset
+import ffviirse.domain.model.mapper.fledglingChocoboJockeyItemOffset
+import ffviirse.domain.model.mapper.soaringChocoboJockeyItemOffset
+import ffviirse.domain.model.mapper.salientianSealOfMasteryOffset
+import ffviirse.domain.model.mapper.peerlessPolliowogTreasureTroveOffset
+import ffviirse.domain.model.mapper.dolphinStuntmanTreasureTroveOffset
+import ffviirse.domain.model.mapper.prideOfCondorCavalryOffset
+import ffviirse.domain.model.mapper.awardForOutstandingPerformanceOffset
+import ffviirse.domain.model.mapper.presidentialCommendationTreasureTroveOffset
+import ffviirse.domain.model.mapper.qbTournamentChampionTreasureOffset
+import ffviirse.domain.model.mapper.buccaneerBlasterTreasureTroveOffset
+import ffviirse.domain.model.mapper.pirateKingsMarksmanTreasureOffset
+import ffviirse.domain.model.mapper.legendaryCardCollectorTreasureOffset
+import ffviirse.domain.model.mapper.bloodyBrilliantCardSharpOffset
+import ffviirse.domain.model.mapper.neophyteQbStrategianTreasureOffset
+import ffviirse.domain.model.mapper.kingOfTheJungleOffset
+import ffviirse.domain.model.mapper.redBoltXiiiTreasureOffset
+import ffviirse.domain.model.mapper.abFabTreasureTroveOffset
+import ffviirse.domain.model.mapper.speedyMotorcyclistTreasureTroveOffset
+import ffviirse.domain.model.mapper.crazyMotorcyclistTreasureTroveOffset
+import ffviirse.domain.model.mapper.welterweightBrawlerTreasureTroveOffset
+import ffviirse.domain.model.mapper.heavyweightBrawlerTreasureTroveOffset
+import ffviirse.domain.model.mapper.superHeavyweightBrawlerTreasureOffset
+import ffviirse.domain.model.mapper.rookieRangerTreasureTroveOffset
+import ffviirse.domain.model.mapper.soldierGalaxyClassTreasureOffset
+import ffviirse.domain.model.mapper.chocoboWhispererTreasureTroveOffset
+import ffviirse.domain.model.mapper.fleetFootedJocketTreasureOffset
+import ffviirse.domain.model.mapper.chocoboBugBoyTreasureOffset
+import ffviirse.domain.model.mapper.chocoboJockeyTreasureTroveOffset
+import ffviirse.domain.model.mapper.cardWhizTreasureTroveOffset
+import ffviirse.domain.model.mapper.cardSavantTreasureTroveOffset
+import ffviirse.domain.model.mapper.cardSlayerTreasureTroveOffset
+import ffviirse.domain.model.mapper.muscleheadWarriorsTreasureTroveOffset
+import ffviirse.domain.model.mapper.twinMuscleheadsTreasureTroveOffset
+import ffviirse.domain.model.mapper.theSixMuscKeteersOffset
+import ffviirse.domain.model.mapper.twinTeamTitansTreasureOffset
+import ffviirse.domain.model.mapper.bestSupportingActorBarretOffset
+import ffviirse.domain.model.mapper.bestActressTifaTreasureOffset
+import ffviirse.domain.model.mapper.bestActressAerithTreasureOffset
+import ffviirse.domain.model.mapper.bestSupportingRedXiiiOffset
+import ffviirse.domain.model.mapper.bestActressYuffieTreasureOffset
+import ffviirse.domain.model.mapper.bestFelineNarrationCaitOffset
+import ffviirse.domain.model.mapper.bestActorCloudTreasureOffset
+import ffviirse.domain.model.mapper.dustbowlSmasherTreasureTroveOffset
+import ffviirse.domain.model.mapper.dustbowlDemolisherTreasureTroveOffset
+import ffviirse.domain.model.mapper.sylkisCupChampionTreasureOffset
+import ffviirse.domain.model.mapper.prisonTourneyChampionTreasureOffset
+import ffviirse.domain.model.mapper.wutaiPopStarTreasureOffset
+import ffviirse.domain.model.mapper.bellesOfTheBallOffset
+import ffviirse.domain.model.mapper.tenThousandNeedlePincushionOffset
+import ffviirse.domain.model.mapper.oneThousandNeedlePincushionOffset
+import ffviirse.domain.model.mapper.gambitTechnicianTreasureTroveOffset
+import ffviirse.domain.model.mapper.somewhatIntriguingSpecimenTreasureOffset
+import ffviirse.domain.model.mapper.adequatelyFunctionalSpecimenTreasureOffset
+import ffviirse.domain.model.mapper.trueUltimatePartyAnimalOffset
+import ffviirse.domain.model.mapper.peerlessPianistTreasureTroveOffset
+import ffviirse.domain.model.mapper.shutterbugSupremeTreasureTroveOffset
+import ffviirse.domain.model.mapper.bloodChampionTreasureTroveOffset
+import ffviirse.domain.model.mapper.maiParticipationAwardTreasureOffset
+import ffviirse.domain.model.mapper.maiGoldStarTreasureOffset
+import ffviirse.domain.model.mapper.madderMachinatorTreasureTroveOffset
+import ffviirse.domain.model.mapper.midgarInfantryUniformCloudOffset
+import ffviirse.domain.model.mapper.midgarInfantryUniformTifaOffset
+import ffviirse.domain.model.mapper.midgarInfantryUniformAerithOffset
+import ffviirse.domain.model.mapper.moogleHatCapeTreasureOffset
+import ffviirse.domain.model.mapper.keyBeckBadassesHideoutOffset
+import ffviirse.domain.model.mapper.beckProtorelicTreasureTroveOffset
+import ffviirse.domain.model.mapper.theCaptainProtorelicTreasureOffset
+import ffviirse.domain.model.mapper.kidGProtorelicTreasureOffset
+import ffviirse.domain.model.mapper.theTurkProtorelicTreasureOffset
+import ffviirse.domain.model.mapper.lifestreamFontsProtorelicTreasureOffset
+import ffviirse.domain.model.mapper.blackRobesProtorelicTreasureOffset
+import ffviirse.domain.model.mapper.unknownKeyItem03Offset
+import ffviirse.domain.model.mapper.unknownKeyItem04Offset
+import ffviirse.domain.model.mapper.unknownKeyItem05Offset
+import ffviirse.domain.model.mapper.unknownKeyItem06Offset
+import ffviirse.domain.model.mapper.unknownKeyItem07Offset
+import ffviirse.domain.model.mapper.unknownKeyItem08Offset
+import ffviirse.domain.model.mapper.unknownKeyItem09Offset
+import ffviirse.domain.model.mapper.unknownKeyItem10Offset
+import ffviirse.domain.model.mapper.unknownKeyItem11Offset
+import ffviirse.domain.model.mapper.unknownKeyItem12Offset
+import ffviirse.domain.model.mapper.unknownKeyItem13Offset
+import ffviirse.domain.model.mapper.unknownKeyItem14Offset
+import ffviirse.domain.model.mapper.unknownKeyItem15Offset
+import ffviirse.domain.model.mapper.unknownKeyItem16Offset
+import ffviirse.domain.model.mapper.unknownKeyItem17Offset
+import ffviirse.domain.model.mapper.unknownKeyItem18Offset
+import ffviirse.domain.model.mapper.unknownKeyItem19Offset
+import ffviirse.domain.model.mapper.unknownKeyItem20Offset
+import ffviirse.domain.model.mapper.cactuarStatueITreasureOffset
+import ffviirse.domain.model.mapper.cactuarStatueIiTreasureOffset
+import ffviirse.domain.model.mapper.cactuarStatueIiiTreasureOffset
+import ffviirse.domain.model.mapper.cactuarStatueIvTreasureOffset
+import ffviirse.domain.model.mapper.treasureSandsFragmentAlphaOffset
+import ffviirse.domain.model.mapper.treasureSandsFragmentBetaOffset
+import ffviirse.domain.model.mapper.treasureSandsFragmentGammaOffset
+import ffviirse.domain.model.mapper.protorelicFragmentAlphaTreasureOffset
+import ffviirse.domain.model.mapper.protorelicFragmentBetaTreasureOffset
+import ffviirse.domain.model.mapper.protorelicFragmentGammaTreasureOffset
+import ffviirse.domain.model.mapper.protorelicFragmentDeltaTreasureOffset
+import ffviirse.domain.model.mapper.protorelicFragmentEpsilonTreasureOffset
+import ffviirse.domain.model.mapper.pirateRelicTreasureMapOffset
+import ffviirse.domain.model.mapper.photoAlbumKeyItemOffset
+import ffviirse.domain.model.mapper.artSwordplayVolIOffset
+import ffviirse.domain.model.mapper.artSwordplayVolIiOffset
+import ffviirse.domain.model.mapper.artSwordplayVolIiiOffset
+import ffviirse.domain.model.mapper.artSwordplayVolIvOffset
+import ffviirse.domain.model.mapper.artSwordplayVolVOffset
+import ffviirse.domain.model.mapper.artSwordplayVolViOffset
+import ffviirse.domain.model.mapper.artSwordplayVolViiOffset
+import ffviirse.domain.model.mapper.artSwordplayVolViiiOffset
+import ffviirse.domain.model.mapper.artSwordplayVolIxOffset
+import ffviirse.domain.model.mapper.artSwordplayVolXOffset
+import ffviirse.domain.model.mapper.artSwordplayVolXiOffset
+import ffviirse.domain.model.mapper.artSwordplayVolXiiOffset
+import ffviirse.domain.model.mapper.artSwordplayVolXiiiOffset
+import ffviirse.domain.model.mapper.artSwordplayVolXivOffset
+import ffviirse.domain.model.mapper.artSwordplayVolXvOffset
+import ffviirse.domain.model.mapper.artSwordplayVolXviOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolIOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolIiOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolIiiOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolIvOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolVOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolViOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolViiOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolViiiOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolIxOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolXOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolXiOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolXiiOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolXiiiOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolXivOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolXvOffset
+import ffviirse.domain.model.mapper.sharpshooterCompanionVolXviOffset
+import ffviirse.domain.model.mapper.wayFistVolIOffset
+import ffviirse.domain.model.mapper.wayFistVolIiOffset
+import ffviirse.domain.model.mapper.wayFistVolIiiOffset
+import ffviirse.domain.model.mapper.wayFistVolIvOffset
+import ffviirse.domain.model.mapper.wayFistVolVOffset
+import ffviirse.domain.model.mapper.wayFistVolViOffset
+import ffviirse.domain.model.mapper.wayFistVolViiOffset
+import ffviirse.domain.model.mapper.wayFistVolViiiOffset
+import ffviirse.domain.model.mapper.wayFistVolIxOffset
+import ffviirse.domain.model.mapper.wayFistVolXOffset
+import ffviirse.domain.model.mapper.wayFistVolXiOffset
+import ffviirse.domain.model.mapper.wayFistVolXiiOffset
+import ffviirse.domain.model.mapper.wayFistVolXiiiOffset
+import ffviirse.domain.model.mapper.wayFistVolXivOffset
+import ffviirse.domain.model.mapper.wayFistVolXvOffset
+import ffviirse.domain.model.mapper.wayFistVolXviOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolIOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolIiOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolIiiOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolIvOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolVOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolViOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolViiOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolViiiOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolIxOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolXOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolXiOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolXiiOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolXiiiOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolXivOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolXvOffset
+import ffviirse.domain.model.mapper.telluricScripturesVolXviOffset
+import ffviirse.domain.model.mapper.taleRedVolIOffset
+import ffviirse.domain.model.mapper.taleRedVolIiOffset
+import ffviirse.domain.model.mapper.taleRedVolIiiOffset
+import ffviirse.domain.model.mapper.taleRedVolIvOffset
+import ffviirse.domain.model.mapper.taleRedVolVOffset
+import ffviirse.domain.model.mapper.taleRedVolViOffset
+import ffviirse.domain.model.mapper.taleRedVolViiOffset
+import ffviirse.domain.model.mapper.taleRedVolViiiOffset
+import ffviirse.domain.model.mapper.taleRedVolIxOffset
+import ffviirse.domain.model.mapper.taleRedVolXOffset
+import ffviirse.domain.model.mapper.taleRedVolXiOffset
+import ffviirse.domain.model.mapper.taleRedVolXiiOffset
+import ffviirse.domain.model.mapper.taleRedVolXiiiOffset
+import ffviirse.domain.model.mapper.taleRedVolXivOffset
+import ffviirse.domain.model.mapper.taleRedVolXvOffset
+import ffviirse.domain.model.mapper.taleRedVolXviOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolIOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolIiOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolIiiOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolIvOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolVOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolViOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolViiOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolViiiOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolIxOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolXOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolXiOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolXiiOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolXiiiOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolXivOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolXvOffset
+import ffviirse.domain.model.mapper.secretsNinjaVolXviOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolIOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolIiOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolIiiOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolIvOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolVOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolViOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolViiOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolViiiOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolIxOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolXOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolXiOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolXiiOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolXiiiOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolXivOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolXvOffset
+import ffviirse.domain.model.mapper.fortunesUntoldVolXviOffset
+import ffviirse.domain.model.mapper.powerWristguardsMemberAccessoryOffset
+import ffviirse.domain.model.mapper.bulletproofVestMemberAccessoryOffset
+import ffviirse.domain.model.mapper.earringsEquipmentMemberAccessoryOffset
+import ffviirse.domain.model.mapper.talismanEquipmentMemberAccessoryOffset
+import ffviirse.domain.model.mapper.headbandEquipmentMemberAccessoryOffset
+import ffviirse.domain.model.mapper.starPendantMemberAccessoryOffset
+import ffviirse.domain.model.mapper.furyRingMemberAccessoryOffset
+import ffviirse.domain.model.mapper.revivalEarringsMemberAccessoryOffset
+import ffviirse.domain.model.mapper.whistlewindScarfMemberAccessoryOffset
+import ffviirse.domain.model.mapper.mythicalAmuletMemberAccessoryOffset
+import ffviirse.domain.model.mapper.healingCarcanetMemberAccessoryOffset
+import ffviirse.domain.model.mapper.transferenceModuleMemberAccessoryOffset
+import ffviirse.domain.model.mapper.spectralCogwheelMemberAccessoryOffset
+import ffviirse.domain.model.mapper.moogleAmuletMemberAccessoryOffset
+import ffviirse.domain.model.mapper.enfeeblementRingMemberAccessoryOffset
+import ffviirse.domain.model.mapper.crescentMoonCharmAccessoryOffset
+import ffviirse.domain.model.mapper.championBeltMemberAccessoryOffset
+import ffviirse.domain.model.mapper.protectiveBootsMemberAccessoryOffset
+import ffviirse.domain.model.mapper.circletEquipmentMemberAccessoryOffset
+import ffviirse.domain.model.mapper.tarotCardsMemberAccessoryOffset
+import ffviirse.domain.model.mapper.otherwordlyCrystalMemberAccessoryOffset
+import ffviirse.domain.model.mapper.salvationBadgeMemberAccessoryOffset
+import ffviirse.domain.model.mapper.enchantedRingMemberAccessoryOffset
+import ffviirse.domain.model.mapper.supernaturalWristguardsMemberAccessoryOffset
+import ffviirse.domain.model.mapper.survivalVestMemberAccessoryOffset
+import ffviirse.domain.model.mapper.platinumEarringsMemberAccessoryOffset
+import ffviirse.domain.model.mapper.timewornTalismanMemberAccessoryOffset
+import ffviirse.domain.model.mapper.gotterdammerungEquipmentMemberAccessoryOffset
+import ffviirse.domain.model.mapper.ribbonEquipmentMemberAccessoryOffset
+import ffviirse.domain.model.mapper.hiPowerWristguardsAccessoryOffset
+import ffviirse.domain.model.mapper.bulletproofVestMkIiOffset
+import ffviirse.domain.model.mapper.magicalEarringsMemberAccessoryOffset
+import ffviirse.domain.model.mapper.talismanFocusMemberAccessoryOffset
+import ffviirse.domain.model.mapper.fullThrottleWristguardsAccessoryOffset
+import ffviirse.domain.model.mapper.riotVestMemberAccessoryOffset
+import ffviirse.domain.model.mapper.sorcerersEarringsMemberAccessoryOffset
+import ffviirse.domain.model.mapper.cetraTalismanMemberAccessoryOffset
+import ffviirse.domain.model.mapper.jeweledRingMemberAccessoryOffset
+import ffviirse.domain.model.mapper.whiteCapMemberAccessoryOffset
+import ffviirse.domain.model.mapper.genjiGlovesMemberAccessoryOffset
+import ffviirse.domain.model.mapper.aureatePinionMemberAccessoryOffset
+import ffviirse.domain.model.mapper.luckyAmuletMemberAccessoryOffset
+import ffviirse.domain.model.mapper.fortitudeRingMemberAccessoryOffset
+import ffviirse.domain.model.mapper.safetyBitMemberAccessoryOffset
+import ffviirse.domain.model.mapper.nobleThiefsGlovesAccessoryOffset
+import ffviirse.domain.model.mapper.karmicCowlMemberAccessoryOffset
+import ffviirse.domain.model.mapper.expeditionaryMedalMemberAccessoryOffset
+import ffviirse.domain.model.mapper.psychicCharmMemberAccessoryOffset
+import ffviirse.domain.model.mapper.draconicRingMemberAccessoryOffset
+import ffviirse.domain.model.mapper.malboroOrbMemberAccessoryOffset
+import ffviirse.domain.model.mapper.speedDemonKeychainAccessoryOffset
+import ffviirse.domain.model.mapper.pedometerPinMemberAccessoryOffset
+import ffviirse.domain.model.mapper.giWarriorCharmAccessoryOffset
+import ffviirse.domain.model.mapper.camaraderieEarringsMemberAccessoryOffset
+import ffviirse.domain.model.mapper.genjiEarringsMemberAccessoryOffset
+import ffviirse.domain.model.mapper.genjiRingMemberAccessoryOffset
+import ffviirse.domain.model.mapper.silverBrawlerGlovesAccessoryOffset
+import ffviirse.domain.model.mapper.goldenBrawlerGlovesAccessoryOffset
+import ffviirse.domain.model.mapper.spaceRangerServiceMedalOffset
+import ffviirse.domain.model.mapper.spaceRangerMedalHonorOffset
+import ffviirse.domain.model.mapper.hermesShoesMemberAccessoryOffset
+import ffviirse.domain.model.mapper.chocokingCapeMemberAccessoryOffset
+import ffviirse.domain.model.mapper.beastkillerBadgeMemberAccessoryOffset
+import ffviirse.domain.model.mapper.boxcrusherKeychainMemberAccessoryOffset
+import ffviirse.domain.model.mapper.assessMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.revivalMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.hpUpMateriaEarringsOffset
+import ffviirse.domain.model.mapper.limitBoosterMemberAccessoryOffset
+import ffviirse.domain.model.mapper.chakraMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.prayerMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.mpUpMateriaEarringsOffset
+import ffviirse.domain.model.mapper.luckUpMateriaEarringsOffset
+import ffviirse.domain.model.mapper.steadfastBlockMateriaEarringsOffset
+import ffviirse.domain.model.mapper.itemMasterMateriaEarringsOffset
+import ffviirse.domain.model.mapper.precisionDefenseFocusEarringsOffset
+import ffviirse.domain.model.mapper.fireMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.iceMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.lightningMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.windMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.healingMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.cleansingMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.poisonMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.bindingMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.timeMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.barrierMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.subversionMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.empowermentMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.fortificationMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.disempowermentMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.enervationMateriaEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.enhancedCamaraderieEarringsAccessoryOffset
+import ffviirse.domain.model.mapper.enhancedPsychicCharmAccessoryOffset
+import ffviirse.domain.model.mapper.enhancedKarmicCowlAccessoryOffset
+import ffviirse.domain.model.mapper.enhancedMalboroOrbAccessoryOffset
+import ffviirse.domain.model.mapper.enhancedDraconicRingAccessoryOffset
+import ffviirse.domain.model.mapper.enhancedExpeditionaryMedalAccessoryOffset
+import ffviirse.domain.model.mapper.corsairCompassMemberAccessoryOffset
+import ffviirse.domain.model.mapper.kupoCharmMemberAccessoryOffset
+import ffviirse.domain.model.mapper.reclaimantChokerMemberAccessoryOffset
+import ffviirse.domain.model.mapper.transmuterChipArmor1Offset
+import ffviirse.domain.model.mapper.transmuterChipArmor2Offset
+import ffviirse.domain.model.mapper.transmuterChipArmor3Offset
+import ffviirse.domain.model.mapper.transmuterChipArmor4Offset
+import ffviirse.domain.model.mapper.transmuterChipArmor5Offset
+import ffviirse.domain.model.mapper.transmuterChipArmor6Offset
+import ffviirse.domain.model.mapper.transmuterChipArmor7Offset
+import ffviirse.domain.model.mapper.transmuterChipArmor8Offset
+import ffviirse.domain.model.mapper.transmuterChipArmor9Offset
+import ffviirse.domain.model.mapper.transmuterChipArmor10Offset
+import ffviirse.domain.model.mapper.transmuterChipArmor11Offset
+import ffviirse.domain.model.mapper.transmuterChipArmor12Offset
+import ffviirse.domain.model.mapper.transmuterChipBasicAccessoriesOffset
+import ffviirse.domain.model.mapper.transmuterChipAdvancedAccessoriesOffset
+import ffviirse.domain.model.mapper.transmuterChipAdvancedItemsOffset
+import ffviirse.domain.model.mapper.transmuterChipCamaraderieEarringsOffset
+import ffviirse.domain.model.mapper.transmuterChipPsychicCharmOffset
+import ffviirse.domain.model.mapper.transmuterChipKarmicCowlOffset
+import ffviirse.domain.model.mapper.transmuterChipMalboroOrbOffset
+import ffviirse.domain.model.mapper.transmuterChipDraconicRingOffset
+import ffviirse.domain.model.mapper.transmuterChipExpeditionaryMedalOffset
+import ffviirse.domain.model.mapper.transmuterChipCushionChipOffset
+import ffviirse.domain.model.mapper.transmuterChipWindmillGearOffset
+import ffviirse.domain.model.mapper.transmuterChipBoilerValveOffset
+import ffviirse.domain.model.mapper.transmuterChipBirdTrapOffset
+import ffviirse.domain.model.mapper.transmuterChipLegendaryBaitOffset
+import ffviirse.domain.model.mapper.transmuterChipSupremeAccessoriesOffset
+import ffviirse.domain.model.mapper.transmuterChipImmunityAccessoriesOffset
+import ffviirse.domain.model.mapper.transmuterChipHealingCarcanetOffset
+import ffviirse.domain.model.mapper.transmuterChipSaferyBitOffset
+import ffviirse.domain.model.mapper.transmuterChipGenjiArmamentsOffset
+import ffviirse.domain.model.mapper.transmuterChipUltimateAccessoriesOffset
+import ffviirse.domain.model.mapper.transmuterChipCorsairCompassOffset
+import ffviirse.domain.model.mapper.shinraAvianHelmetGearOffset
+import ffviirse.domain.model.mapper.shinraAvianBreastplateGearOffset
+import ffviirse.domain.model.mapper.shinraAvianGreavesGearOffset
+import ffviirse.domain.model.mapper.scorpionHelmetChocoboGearOffset
+import ffviirse.domain.model.mapper.scorpionBreastplateChocoboGearOffset
+import ffviirse.domain.model.mapper.scorpionGreavesChocoboGearOffset
+import ffviirse.domain.model.mapper.rodeoHatChocoboGearOffset
+import ffviirse.domain.model.mapper.rodeoPonchoChocoboGearOffset
+import ffviirse.domain.model.mapper.rodeoLegwrapsChocoboGearOffset
+import ffviirse.domain.model.mapper.treasureHunterVisorGearOffset
+import ffviirse.domain.model.mapper.treasureHunterSaddleGearOffset
+import ffviirse.domain.model.mapper.treasureHunterGaitersGearOffset
+import ffviirse.domain.model.mapper.mysticalHeaddressChocoboGearOffset
+import ffviirse.domain.model.mapper.mysticalNeckwrapChocoboGearOffset
+import ffviirse.domain.model.mapper.mysticalAnkletsChocoboGearOffset
+import ffviirse.domain.model.mapper.saurianHelmChocoboGearOffset
+import ffviirse.domain.model.mapper.saurianArmorChocoboGearOffset
+import ffviirse.domain.model.mapper.saurianGreavesChocoboGearOffset
+import ffviirse.domain.model.mapper.debonairHatChocoboGearOffset
+import ffviirse.domain.model.mapper.debonairWaistcoatChocoboGearOffset
+import ffviirse.domain.model.mapper.debonairAnkletsChocoboGearOffset
+import ffviirse.domain.model.mapper.giHeaddressChocoboGearOffset
+import ffviirse.domain.model.mapper.giCloakChocoboGearOffset
+import ffviirse.domain.model.mapper.giLegwrapsChocoboGearOffset
+import ffviirse.domain.model.mapper.hyperionHelmChocoboGearOffset
+import ffviirse.domain.model.mapper.hyperionArmorChocoboGearOffset
+import ffviirse.domain.model.mapper.hyperionShinChocoboGearOffset
+import ffviirse.domain.model.mapper.tropicalVisorChocoboGearOffset
+import ffviirse.domain.model.mapper.tropicalShawlChocoboGearOffset
+import ffviirse.domain.model.mapper.tropicalAnkletsChocoboGearOffset
+import ffviirse.domain.model.mapper.mercCapChocoboGearOffset
+import ffviirse.domain.model.mapper.mercOverallsChocoboGearOffset
+import ffviirse.domain.model.mapper.mercLegwrapsChocoboGearOffset
+import ffviirse.domain.model.mapper.card001SecurityOfficerOffset
+import ffviirse.domain.model.mapper.card002RiotTrooperOffset
+import ffviirse.domain.model.mapper.card005QueenBeeOffset
+import ffviirse.domain.model.mapper.card016DevilRiderOffset
+import ffviirse.domain.model.mapper.card004JunitSweeperOffset
+import ffviirse.domain.model.mapper.card006ToxiratQbOffset
+import ffviirse.domain.model.mapper.card007LevikronQbOffset
+import ffviirse.domain.model.mapper.card008GrasslandsWolfOffset
+import ffviirse.domain.model.mapper.card009MuQbOffset
+import ffviirse.domain.model.mapper.card010MandragoraQbOffset
+import ffviirse.domain.model.mapper.card011ElphadunkQbOffset
+import ffviirse.domain.model.mapper.card014QuetzalcoatlQbOffset
+import ffviirse.domain.model.mapper.card018FlanQbOffset
+import ffviirse.domain.model.mapper.card012CactuarQbOffset
+import ffviirse.domain.model.mapper.card012CrystallineCrabOffset
+import ffviirse.domain.model.mapper.card017ScreamerQbOffset
+import ffviirse.domain.model.mapper.card003GrenadierQbOffset
+import ffviirse.domain.model.mapper.card015ZuQbOffset
+import ffviirse.domain.model.mapper.card019CrawlerQbOffset
+import ffviirse.domain.model.mapper.card020ArchdragonQbOffset
+import ffviirse.domain.model.mapper.card021OgreQbOffset
+import ffviirse.domain.model.mapper.card114MythrilGolemOffset
+import ffviirse.domain.model.mapper.card024ZemzelettQbOffset
+import ffviirse.domain.model.mapper.card025IgniliskQbOffset
+import ffviirse.domain.model.mapper.card023FleetwingQbOffset
+import ffviirse.domain.model.mapper.card026CapparwireQbOffset
+import ffviirse.domain.model.mapper.card029HellriderIiOffset
+import ffviirse.domain.model.mapper.card027MindflayerQbOffset
+import ffviirse.domain.model.mapper.card022DeathwheelQbOffset
+import ffviirse.domain.model.mapper.card028ScrutineyeQbOffset
+import ffviirse.domain.model.mapper.card115TerrorDeepOffset
+import ffviirse.domain.model.mapper.card030FlametrooperQbOffset
+import ffviirse.domain.model.mapper.card033ShoalopodQbOffset
+import ffviirse.domain.model.mapper.card034CrownLanceOffset
+import ffviirse.domain.model.mapper.card031SpearhawkQbOffset
+import ffviirse.domain.model.mapper.card032SeaDevilOffset
+import ffviirse.domain.model.mapper.card035TonberryKingOffset
+import ffviirse.domain.model.mapper.card040HeatseekerQbOffset
+import ffviirse.domain.model.mapper.card037BloatfloatQbOffset
+import ffviirse.domain.model.mapper.card038BagnadranaQbOffset
+import ffviirse.domain.model.mapper.card039CockatriceQbOffset
+import ffviirse.domain.model.mapper.card041BombQbOffset
+import ffviirse.domain.model.mapper.card036SandhogPieOffset
+import ffviirse.domain.model.mapper.card117CustomValkyrieOffset
+import ffviirse.domain.model.mapper.card118GigatriceQbOffset
+import ffviirse.domain.model.mapper.card042ThugQbOffset
+import ffviirse.domain.model.mapper.card043DeathClawOffset
+import ffviirse.domain.model.mapper.card044LandwormQbOffset
+import ffviirse.domain.model.mapper.card045SandspitterQbOffset
+import ffviirse.domain.model.mapper.card046ChimeraQbOffset
+import ffviirse.domain.model.mapper.card047JokerQbOffset
+import ffviirse.domain.model.mapper.card054GrandhornQbOffset
+import ffviirse.domain.model.mapper.card050GagighandiQbOffset
+import ffviirse.domain.model.mapper.card048AmphidexQbOffset
+import ffviirse.domain.model.mapper.card049FrightflowerQbOffset
+import ffviirse.domain.model.mapper.card056GrangalanQbOffset
+import ffviirse.domain.model.mapper.card051InsectoidChimeraOffset
+import ffviirse.domain.model.mapper.card052GigantoadQbOffset
+import ffviirse.domain.model.mapper.card053MalocerosQbOffset
+import ffviirse.domain.model.mapper.card055GreatMalboroOffset
+import ffviirse.domain.model.mapper.card057AmalgamQbOffset
+import ffviirse.domain.model.mapper.card121SpecimenH1024Offset
+import ffviirse.domain.model.mapper.card058SkeeskeeQbOffset
+import ffviirse.domain.model.mapper.card059GriffonQbOffset
+import ffviirse.domain.model.mapper.card065StoneGolemOffset
+import ffviirse.domain.model.mapper.card060BasiliskQbOffset
+import ffviirse.domain.model.mapper.card063DesertSahaginOffset
+import ffviirse.domain.model.mapper.card061ReapertailQbOffset
+import ffviirse.domain.model.mapper.card062JabberwockQbOffset
+import ffviirse.domain.model.mapper.card064CavestalkerQbOffset
+import ffviirse.domain.model.mapper.card067GiSpecterOffset
+import ffviirse.domain.model.mapper.card066TwoFaceOffset
+import ffviirse.domain.model.mapper.card068ValronQbOffset
+import ffviirse.domain.model.mapper.card069DisgorgonQbOffset
+import ffviirse.domain.model.mapper.card071TwinBrainOffset
+import ffviirse.domain.model.mapper.card070DragonQbOffset
+import ffviirse.domain.model.mapper.card077DiabolicVariantOffset
+import ffviirse.domain.model.mapper.card073BahbaVelamyuOffset
+import ffviirse.domain.model.mapper.card074RictusQbOffset
+import ffviirse.domain.model.mapper.card072BlackBatOffset
+import ffviirse.domain.model.mapper.card076YinYangOffset
+import ffviirse.domain.model.mapper.card075AdjudicatorQbOffset
+import ffviirse.domain.model.mapper.card124ForgottenSpecimenOffset
+import ffviirse.domain.model.mapper.card078SpecialForcesOffset
+import ffviirse.domain.model.mapper.card0792cSoldierOffset
+import ffviirse.domain.model.mapper.card080KelzmelzerQbOffset
+import ffviirse.domain.model.mapper.card081PantheraProtectorOffset
+import ffviirse.domain.model.mapper.card082HecteyesQbOffset
+import ffviirse.domain.model.mapper.card085MossgrownAdamantoiseOffset
+import ffviirse.domain.model.mapper.card084IroncladQbOffset
+import ffviirse.domain.model.mapper.card083FloatingDeathOffset
+import ffviirse.domain.model.mapper.card126RedDragonOffset
+import ffviirse.domain.model.mapper.card127DemonGateOffset
+import ffviirse.domain.model.mapper.card086CloudQbOffset
+import ffviirse.domain.model.mapper.card087BarretQbOffset
+import ffviirse.domain.model.mapper.card088TifaQbOffset
+import ffviirse.domain.model.mapper.card089AerithQbOffset
+import ffviirse.domain.model.mapper.card090RedXiiiOffset
+import ffviirse.domain.model.mapper.card091YuffieQbOffset
+import ffviirse.domain.model.mapper.card092CaitSithOffset
+import ffviirse.domain.model.mapper.card093CidQbOffset
+import ffviirse.domain.model.mapper.card094VincentQbOffset
+import ffviirse.domain.model.mapper.card095IfritQbOffset
+import ffviirse.domain.model.mapper.card096ShivaQbOffset
+import ffviirse.domain.model.mapper.card107ChocoboMoogleOffset
+import ffviirse.domain.model.mapper.card108FatChocoboOffset
+import ffviirse.domain.model.mapper.card102LeviathanQbOffset
+import ffviirse.domain.model.mapper.card104BahamutQbOffset
+import ffviirse.domain.model.mapper.card109PoshChocoboOffset
+import ffviirse.domain.model.mapper.card111MagicPotOffset
+import ffviirse.domain.model.mapper.card110MoogleTrioOffset
+import ffviirse.domain.model.mapper.card097RamuhQbOffset
+import ffviirse.domain.model.mapper.card098TitanQbOffset
+import ffviirse.domain.model.mapper.card099KujataQbOffset
+import ffviirse.domain.model.mapper.card100OdinQbOffset
+import ffviirse.domain.model.mapper.card101PhoenixQbOffset
+import ffviirse.domain.model.mapper.card103AlexanderQbOffset
+import ffviirse.domain.model.mapper.card105BahamutArisenOffset
+import ffviirse.domain.model.mapper.card106GilgameshQbOffset
+import ffviirse.domain.model.mapper.card143SephirothQbOffset
+import ffviirse.domain.model.mapper.card128RenoQbOffset
+import ffviirse.domain.model.mapper.card129RudeQbOffset
+import ffviirse.domain.model.mapper.card130ElenaQbOffset
+import ffviirse.domain.model.mapper.card131TsengQbOffset
+import ffviirse.domain.model.mapper.card132RufusQbOffset
+import ffviirse.domain.model.mapper.card116GrasptropodQbOffset
+import ffviirse.domain.model.mapper.card120AnuranSuppressorOffset
+import ffviirse.domain.model.mapper.card122CrimsonMkiiOffset
+import ffviirse.domain.model.mapper.card125DonCorneoOffset
+import ffviirse.domain.model.mapper.card119DyneQbOffset
+import ffviirse.domain.model.mapper.card123GiNattakOffset
+import ffviirse.domain.model.mapper.card112MateriaGuardianOffset
+import ffviirse.domain.model.mapper.card113MidgardsomrQbOffset
+import ffviirse.domain.model.mapper.card133RocheQbOffset
+import ffviirse.domain.model.mapper.card134JSquadOffset
+import ffviirse.domain.model.mapper.card144EmeraldWitchOffset
+import ffviirse.domain.model.mapper.card145ShadowbloodQueenOffset
+import ffviirse.domain.model.mapper.card135ChocoboJockeyOffset
+import ffviirse.domain.model.mapper.card136SpaceRangerOffset
+import ffviirse.domain.model.mapper.card137HauntedHotelOffset
+import ffviirse.domain.model.mapper.card141DioQbOffset
+import ffviirse.domain.model.mapper.card138SkywheelQbOffset
+import ffviirse.domain.model.mapper.card139LovelessQbOffset
+import ffviirse.domain.model.mapper.card140SaucerSquadOffset
+import ffviirse.domain.model.mapper.card142UltimateAnimalOffset
+import ffviirse.domain.model.mapper.qbBoosterSuppressiveStrikersOffset
+import ffviirse.domain.model.mapper.qbBoosterRuffiansPackOffset
+import ffviirse.domain.model.mapper.qbBoosterWeirdWickedOffset
+import ffviirse.domain.model.mapper.qbBoosterShutupDriveOffset
+import ffviirse.domain.model.mapper.qbBoosterHighseasHorrorOffset
+import ffviirse.domain.model.mapper.qbBoosterUncannyTerrorsOffset
+import ffviirse.domain.model.mapper.qbBoosterHeavyHittersOffset
+import ffviirse.domain.model.mapper.qbBoosterJungleArcanumOffset
+import ffviirse.domain.model.mapper.qbBoosterChimericalCreaturesOffset
+import ffviirse.domain.model.mapper.qbBoosterStrangerFictionOffset
+import ffviirse.domain.model.mapper.qbBoosterPrehistoricBeastsOffset
+import ffviirse.domain.model.mapper.qbBoosterCarnivalCarnageOffset
+import ffviirse.domain.model.mapper.qbBoosterAncientStewardsOffset
+import ffviirse.domain.model.mapper.qbBoosterChtonicSentinelsOffset
+import ffviirse.domain.model.mapper.qbBoosterTheTurksOffset
+import ffviirse.domain.model.mapper.qbBoosterEndgameBaddiesOffset
+import ffviirse.domain.model.value.ItemType.ALL_TYPE
+import ffviirse.domain.model.value.ItemType.ITEM_COMMON
+import ffviirse.domain.model.value.ItemType.TRANSMMUTER_MATERIAL
+import ffviirse.domain.model.value.ItemType.KEY_ITEMS
+import ffviirse.domain.model.value.ItemType.MEMBER_WEAPON
+import ffviirse.domain.model.value.ItemType.MEMBER_ARMOR
+import ffviirse.domain.model.value.ItemType.MEMBER_ACCESSORY
+import ffviirse.domain.model.value.ItemType.MATERIA_ITEM
+import ffviirse.domain.model.value.ItemType.TRADING_TOKEN
+import ffviirse.domain.model.value.ItemType.MEMBER_OUTFIT
+import ffviirse.domain.model.value.ItemType.TRANSMUTER_CHIP
+import ffviirse.domain.model.value.ItemType.FOLIO_MANUSCRIPT
+import ffviirse.domain.model.value.ItemType.CHOCOBO_GEAR
+import ffviirse.domain.model.value.ItemType.QB_CARD
+import ffviirse.domain.model.value.ItemType.TREASURE_TROVE
+
+enum class InventoryItem(
+    val displayOrder: Int,
+    val fileValue: Int,
+    val itemType: ItemType,
+    val typeName: () -> String,
+) : Labeled {
+
+    GIL_MONEY_DATA_ITEM(0, gilMoneyDataItemOffset, TRADING_TOKEN, { bundlePartyTab.tradingTokenLabels.gilMoneyDataItemLabel }),
+    MOOGLE_MEDAL_MINIGAME_TOKEN(1, moogleMedalMinigameTokenOffset, TRADING_TOKEN, { bundlePartyTab.tradingTokenLabels.moogleMedalMinigameTokenLabel }),
+    GOLDEN_PLUME_CHOCOBO_TOKEN(2, goldenPlumeChocoboTokenOffset, TRADING_TOKEN, { bundlePartyTab.tradingTokenLabels.goldenPlumeChocoboTokenLabel }),
+    GRASSLANDS_AREA_DATA_POINTS(3, grasslandsAreaDataPointsOffset, TRADING_TOKEN, { bundlePartyTab.tradingTokenLabels.grasslandsAreaDataPointsLabel }),
+    JUNON_REGION_DATA_POINTS(4, junonRegionDataPointsOffset, TRADING_TOKEN, { bundlePartyTab.tradingTokenLabels.junonRegionDataPointsLabel }),
+    COREL_REGION_DATA_POINTS(5, corelRegionDataPointsOffset, TRADING_TOKEN, { bundlePartyTab.tradingTokenLabels.corelRegionDataPointsLabel }),
+    GONGAGA_REGION_DATA_POINTS(6, gongagaRegionDataPointsOffset, TRADING_TOKEN, { bundlePartyTab.tradingTokenLabels.gongagaRegionDataPointsLabel }),
+    COSMO_REGION_DATA_POINTS(7, cosmoRegionDataPointsOffset, TRADING_TOKEN, { bundlePartyTab.tradingTokenLabels.cosmoRegionDataPointsLabel }),
+    NIBEL_REGION_DATA_POINTS(8, nibelRegionDataPointsOffset, TRADING_TOKEN, { bundlePartyTab.tradingTokenLabels.nibelRegionDataPointsLabel }),
+    MERIDIAN_OCEAN_DATA_POINTS(9, meridianOceanDataPointsOffset, TRADING_TOKEN, { bundlePartyTab.tradingTokenLabels.meridianOceanDataPointsLabel }),
+    GOLD_SAUCER_AREA_POINT(10, goldSaucerAreaPointOffset, TRADING_TOKEN, { bundlePartyTab.tradingTokenLabels.goldSaucerAreaPointLabel }),
+    POTION_HP_COMMON_ITEM(11, potionHpCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.potionHpCommonItemLabel }),
+    HI_POTION_COMMON_ITEM(12, hiPotionCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.hiPotionCommonItemLabel }),
+    MEGA_POTION_COMMON_ITEM(13, megaPotionCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.megaPotionCommonItemLabel }),
+    GIGA_POTION_COMMON_ITEM(14, gigaPotionCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.gigaPotionCommonItemLabel }),
+    X_POTION_COMMON_ITEM(15, xPotionCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.xPotionCommonItemLabel }),
+    MIXED_POTION_COMMON_ITEM(16, mixedPotionCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.mixedPotionCommonItemLabel }),
+    MIXED_HI_POTION_ITEM(17, mixedHiPotionItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.mixedHiPotionItemLabel }),
+    MIST_POTION_COMMON_ITEM(18, mistPotionCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.mistPotionCommonItemLabel }),
+    MIST_HI_POTION_ITEM(19, mistHiPotionItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.mistHiPotionItemLabel }),
+    MIST_MEGA_POTION_ITEM(20, mistMegaPotionItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.mistMegaPotionItemLabel }),
+    MIST_GIGA_POTION_ITEM(21, mistGigaPotionItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.mistGigaPotionItemLabel }),
+    ETHER_MP_COMMON_ITEM(22, etherMpCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.etherMpCommonItemLabel }),
+    HI_ETHER_COMMON_ITEM(23, hiEtherCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.hiEtherCommonItemLabel }),
+    DRY_ETHER_COMMON_ITEM(24, dryEtherCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.dryEtherCommonItemLabel }),
+    TURBO_ETHER_COMMON_ITEM(25, turboEtherCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.turboEtherCommonItemLabel }),
+    ELIXIR_ALL_COMMON_ITEM(26, elixirAllCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.elixirAllCommonItemLabel }),
+    PHOENIX_DOWN_COMMON_ITEM(27, phoenixDownCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.phoenixDownCommonItemLabel }),
+    PHOENIX_DRAFT_COMMON_ITEM(28, phoenixDraftCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.phoenixDraftCommonItemLabel }),
+    MAIDENS_KISS_COMMON_ITEM(29, maidensKissCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.maidensKissCommonItemLabel }),
+    ANTIDOTE_STATUS_COMMON_ITEM(30, antidoteStatusCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.antidoteStatusCommonItemLabel }),
+    SMELLING_SALTS_COMMON_ITEM(31, smellingSaltsCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.smellingSaltsCommonItemLabel }),
+    ECHO_MIST_COMMON_ITEM(32, echoMistCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.echoMistCommonItemLabel }),
+    GOLD_NEEDLE_COMMON_ITEM(33, goldNeedleCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.goldNeedleCommonItemLabel }),
+    ADRENALINE_STATUS_COMMON_ITEM(34, adrenalineStatusCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.adrenalineStatusCommonItemLabel }),
+    SEDATIVE_STATUS_COMMON_ITEM(35, sedativeStatusCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.sedativeStatusCommonItemLabel }),
+    REMEDY_STATUS_COMMON_ITEM(36, remedyStatusCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.remedyStatusCommonItemLabel }),
+    CELERIS_STATUS_COMMON_ITEM(37, celerisStatusCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.celerisStatusCommonItemLabel }),
+    GRENADE_ATTACK_USABLE_ITEM(38, grenadeAttackUsableItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.grenadeAttackUsableItemLabel }),
+    ARMOR_PIERCING_GRENADE_ITEM(39, armorPiercingGrenadeItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.armorPiercingGrenadeItemLabel }),
+    HAZARDOUS_MATERIAL_COMMON_ITEM(40, hazardousMaterialCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.hazardousMaterialCommonItemLabel }),
+    SPIDERWEB_STATUS_COMMON_ITEM(41, spiderwebStatusCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.spiderwebStatusCommonItemLabel }),
+    MOLOTOV_COCKTAIL_COMMON_ITEM(42, molotovCocktailCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.molotovCocktailCommonItemLabel }),
+    ORB_GRAVITY_COMMON_ITEM(43, orbGravityCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.orbGravityCommonItemLabel }),
+    CUSHION_REST_COMMON_ITEM(44, cushionRestCommonItemOffset, ITEM_COMMON, { bundlePartyTab.itemCommonLabels.cushionRestCommonItemLabel }),
+    SAGE_MATERIAL_TRANSMMUTER_ITEM(45, sageMaterialTransmmuterItemOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.sageMaterialTransmmuterItemLabel }),
+    OREGANO_MATERIAL_TRANSMMUTER_ITEM(46, oreganoMaterialTransmmuterItemOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.oreganoMaterialTransmmuterItemLabel }),
+    SAINT_LUCHE_LEAF_MATERIAL(47, saintLucheLeafMaterialOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.saintLucheLeafMaterialLabel }),
+    PEARL_GINGER_ROOT_MATERIAL(48, pearlGingerRootMaterialOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.pearlGingerRootMaterialLabel }),
+    MARJORAM_MATERIAL_TRANSMMUTER_ITEM(49, marjoramMaterialTransmmuterItemOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.marjoramMaterialTransmmuterItemLabel }),
+    IRON_ORE_MATERIAL_TRANSMMUTER(50, ironOreMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.ironOreMaterialTransmmuterLabel }),
+    ZINC_ORE_MATERIAL_TRANSMMUTER(51, zincOreMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.zincOreMaterialTransmmuterLabel }),
+    CHROMITE_ORE_MATERIAL_TRANSMMUTER(52, chromiteOreMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.chromiteOreMaterialTransmmuterLabel }),
+    LEA_TITANIUM_MATERIAL_TRANSMMUTER(53, leaTitaniumMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.leaTitaniumMaterialTransmmuterLabel }),
+    TOURMALINE_MATERIAL_TRANSMMUTER_ITEM(54, tourmalineMaterialTransmmuterItemOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.tourmalineMaterialTransmmuterItemLabel }),
+    AMETHYST_MATERIAL_TRANSMMUTER_ITEM(55, amethystMaterialTransmmuterItemOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.amethystMaterialTransmmuterItemLabel }),
+    MOSS_AGATE_MATERIAL_TRANSMMUTER(56, mossAgateMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.mossAgateMaterialTransmmuterLabel }),
+    CRIMSONITE_CRYSTAL_MATERIAL_TRANSMMUTER(57, crimsoniteCrystalMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.crimsoniteCrystalMaterialTransmmuterLabel }),
+    MOONSTONE_MATERIAL_TRANSMMUTER_ITEM(58, moonstoneMaterialTransmmuterItemOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.moonstoneMaterialTransmmuterItemLabel }),
+    MYTHRIL_ORE_MATERIAL_TRANSMMUTER(59, mythrilOreMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.mythrilOreMaterialTransmmuterLabel }),
+    NUMINOUS_ASHES_MATERIAL_TRANSMMUTER(60, numinousAshesMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.numinousAshesMaterialTransmmuterLabel }),
+    COSMOTITE_ORE_MATERIAL_TRANSMMUTER(61, cosmotiteOreMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.cosmotiteOreMaterialTransmmuterLabel }),
+    GOLD_DUST_MATERIAL_TRANSMMUTER(62, goldDustMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.goldDustMaterialTransmmuterLabel }),
+    TIMBER_MATERIAL_TRANSMMUTER_ITEM(63, timberMaterialTransmmuterItemOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.timberMaterialTransmmuterItemLabel }),
+    ANCIENT_BARK_MATERIAL_TRANSMMUTER(64, ancientBarkMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.ancientBarkMaterialTransmmuterLabel }),
+    DIVINE_HEARTWOOD_MATERIAL_TRANSMMUTER(65, divineHeartwoodMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.divineHeartwoodMaterialTransmmuterLabel }),
+    MELLOW_OAK_MATERIAL_TRANSMMUTER(66, mellowOakMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.mellowOakMaterialTransmmuterLabel }),
+    CONDOR_CEDAR_MATERIAL_TRANSMMUTER(67, condorCedarMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.condorCedarMaterialTransmmuterLabel }),
+    SYCAMORE_WOOD_MATERIAL_TRANSMMUTER(68, sycamoreWoodMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.sycamoreWoodMaterialTransmmuterLabel }),
+    GONGAGA_PINE_MATERIAL_TRANSMMUTER(69, gongagaPineMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.gongagaPineMaterialTransmmuterLabel }),
+    BAOBAB_WOOD_MATERIAL_TRANSMMUTER(70, baobabWoodMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.baobabWoodMaterialTransmmuterLabel }),
+    ASH_WOOD_MATERIAL_TRANSMMUTER(71, ashWoodMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.ashWoodMaterialTransmmuterLabel }),
+    LAUREL_MATERIAL_TRANSMMUTER_ITEM(72, laurelMaterialTransmmuterItemOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.laurelMaterialTransmmuterItemLabel }),
+    MIST_SEEDS_MATERIAL_TRANSMMUTER(73, mistSeedsMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.mistSeedsMaterialTransmmuterLabel }),
+    BEAST_PELT_MATERIAL_TRANSMMUTER(74, beastPeltMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.beastPeltMaterialTransmmuterLabel }),
+    EXQUISITE_BEAST_HIDE_MATERIAL(75, exquisiteBeastHideMaterialOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.exquisiteBeastHideMaterialLabel }),
+    BEAST_BONE_MATERIAL_TRANSMMUTER(76, beastBoneMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.beastBoneMaterialTransmmuterLabel }),
+    EXQUISITE_BEAST_SPINE_MATERIAL(77, exquisiteBeastSpineMaterialOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.exquisiteBeastSpineMaterialLabel }),
+    PLANETS_BLESSING_MATERIAL_TRANSMMUTER(78, planetsBlessingMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.planetsBlessingMaterialTransmmuterLabel }),
+    PLANETS_FAVOR_MATERIAL_TRANSMMUTER(79, planetsFavorMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.planetsFavorMaterialTransmmuterLabel }),
+    PLANETS_BENISON_MATERIAL_TRANSMMUTER(80, planetsBenisonMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.planetsBenisonMaterialTransmmuterLabel }),
+    PLANETS_SPLENDOR_MATERIAL_TRANSMMUTER(81, planetsSplendorMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.planetsSplendorMaterialTransmmuterLabel }),
+    ETHER_ONION_MATERIAL_TRANSMMUTER(82, etherOnionMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.etherOnionMaterialTransmmuterLabel }),
+    PLANETS_MERCY_MATERIAL_TRANSMMUTER(83, planetsMercyMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.planetsMercyMaterialTransmmuterLabel }),
+    PLANETS_SPIRIT_MATERIAL_TRANSMMUTER(84, planetsSpiritMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.planetsSpiritMaterialTransmmuterLabel }),
+    RUBY_MATERIAL_TRANSMMUTER_ITEM(85, rubyMaterialTransmmuterItemOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.rubyMaterialTransmmuterItemLabel }),
+    EMERALD_MATERIAL_TRANSMMUTER_ITEM(86, emeraldMaterialTransmmuterItemOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.emeraldMaterialTransmmuterItemLabel }),
+    SAPPHIRE_MATERIAL_TRANSMMUTER_ITEM(87, sapphireMaterialTransmmuterItemOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.sapphireMaterialTransmmuterItemLabel }),
+    BEAST_TALON_MATERIAL_TRANSMMUTER(88, beastTalonMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.beastTalonMaterialTransmmuterLabel }),
+    ASTRAL_REMNANT_MATERIAL_TRANSMMUTER(89, astralRemnantMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.astralRemnantMaterialTransmmuterLabel }),
+    SLIMY_MALBORO_TENDRIL_TRANSMMUTER(90, slimyMalboroTendrilTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.slimyMalboroTendrilTransmmuterLabel }),
+    HEAVY_JABBERWOCK_HORN_TRANSMMUTER(91, heavyJabberwockHornTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.heavyJabberwockHornTransmmuterLabel }),
+    ARGENT_KING_ZU_FEATHER(92, argentKingZuFeatherOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.argentKingZuFeatherLabel }),
+    QUETZALCOATL_TALON_MATERIAL_TRANSMMUTER(93, quetzalcoatlTalonMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.quetzalcoatlTalonMaterialTransmmuterLabel }),
+    MINDFLAYER_CROWN_MATERIAL_TRANSMMUTER(94, mindflayerCrownMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.mindflayerCrownMaterialTransmmuterLabel }),
+    TONBERRY_KINGS_ROBE_TRANSMMUTER(95, tonberryKingsRobeTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.tonberryKingsRobeTransmmuterLabel }),
+    GREAT_MALBORO_TENDRIL_TRANSMMUTER(96, greatMalboroTendrilTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.greatMalboroTendrilTransmmuterLabel }),
+    JABBERWOCK_HORN_MATERIAL_TRANSMMUTER(97, jabberwockHornMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.jabberwockHornMaterialTransmmuterLabel }),
+    KING_ZU_FEATHER_TRANSMMUTER(98, kingZuFeatherTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.kingZuFeatherTransmmuterLabel }),
+    SINISTER_QUETZALCOATL_TALON_TRANSMMUTER(99, sinisterQuetzalcoatlTalonTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.sinisterQuetzalcoatlTalonTransmmuterLabel }),
+    VILE_MINDLAYER_CROWN_TRANSMMUTER(100, vileMindlayerCrownTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.vileMindlayerCrownTransmmuterLabel }),
+    TONBERRY_KINGS_WRETCHED_ROBE(101, tonberryKingsWretchedRobeOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.tonberryKingsWretchedRobeLabel }),
+    GOLD_TALON_MATERIAL_TRANSMMUTER(102, goldTalonMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.goldTalonMaterialTransmmuterLabel }),
+    BURNISHED_CROWN_MATERIAL_TRANSMMUTER(103, burnishedCrownMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.burnishedCrownMaterialTransmmuterLabel }),
+    RESPLENDENT_ROBE_MATERIAL_TRANSMMUTER(104, resplendentRobeMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.resplendentRobeMaterialTransmmuterLabel }),
+    GILDED_TENTACLE_MATERIAL_TRANSMMUTER(105, gildedTentacleMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.gildedTentacleMaterialTransmmuterLabel }),
+    AUREATE_HORN_MATERIAL_TRANSMMUTER(106, aureateHornMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.aureateHornMaterialTransmmuterLabel }),
+    LUSTROUS_FEATHER_MATERIAL_TRANSMMUTER(107, lustrousFeatherMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.lustrousFeatherMaterialTransmmuterLabel }),
+    DARK_MATTER_MATERIAL_TRANSMMUTER(108, darkMatterMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.darkMatterMaterialTransmmuterLabel }),
+    PIRATE_RELIC_ALPHA_TRANSMMUTER(109, pirateRelicAlphaTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.pirateRelicAlphaTransmmuterLabel }),
+    PIRATE_RELIC_BETA_TRANSMMUTER(110, pirateRelicBetaTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.pirateRelicBetaTransmmuterLabel }),
+    PIRATE_RELIC_GAMMA_TRANSMMUTER(111, pirateRelicGammaTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.pirateRelicGammaTransmmuterLabel }),
+    PIRATE_RELIC_DELTA_TRANSMMUTER(112, pirateRelicDeltaTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.pirateRelicDeltaTransmmuterLabel }),
+    PIRATE_JETSAM_MATERIAL_TRANSMMUTER(113, pirateJetsamMaterialTransmmuterOffset, TRANSMMUTER_MATERIAL, { bundlePartyTab.transmmuterMaterialLabels.pirateJetsamMaterialTransmmuterLabel }),
+    METAL_BRACER_MEMBER_ARMOR(114, metalBracerMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.metalBracerMemberArmorLabel }),
+    LEATHER_BANGLE_MEMBER_ARMOR(115, leatherBangleMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.leatherBangleMemberArmorLabel }),
+    COPPER_BRACER_MEMBER_ARMOR(116, copperBracerMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.copperBracerMemberArmorLabel }),
+    HUNTERS_BANGLE_MEMBER_ARMOR(117, huntersBangleMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.huntersBangleMemberArmorLabel }),
+    BONE_BRACELET_MEMBER_ARMOR(118, boneBraceletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.boneBraceletMemberArmorLabel }),
+    WOODSPRITE_ARMLET_MEMBER_ARMOR(119, woodspriteArmletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.woodspriteArmletMemberArmorLabel }),
+    ENHANCED_COPPER_BRACER_ARMOR(120, enhancedCopperBracerArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedCopperBracerArmorLabel }),
+    ENHANCED_HUNTERS_BANGLE_ARMOR(121, enhancedHuntersBangleArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedHuntersBangleArmorLabel }),
+    ENHANCED_BONE_BRACELET_ARMOR(122, enhancedBoneBraceletArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedBoneBraceletArmorLabel }),
+    ENHANCED_WOODSPRITE_ARMLET_ARMOR(123, enhancedWoodspriteArmletArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedWoodspriteArmletArmorLabel }),
+    OWL_BRACER_MEMBER_ARMOR(124, owlBracerMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.owlBracerMemberArmorLabel }),
+    BEASTMAN_ARMBAND_MEMBER_ARMOR(125, beastmanArmbandMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.beastmanArmbandMemberArmorLabel }),
+    SAILORS_BRACER_MEMBER_ARMOR(126, sailorsBracerMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.sailorsBracerMemberArmorLabel }),
+    ELPHADUNK_BANGLE_MEMBER_ARMOR(127, elphadunkBangleMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.elphadunkBangleMemberArmorLabel }),
+    WISEFOX_BRACELET_MEMBER_ARMOR(128, wisefoxBraceletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.wisefoxBraceletMemberArmorLabel }),
+    GOLD_CORAL_ARMLET_ARMOR(129, goldCoralArmletArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.goldCoralArmletArmorLabel }),
+    ENHANCED_SAILORS_BRACER_ARMOR(130, enhancedSailorsBracerArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedSailorsBracerArmorLabel }),
+    ENHANCED_ELPHADUNK_BANGLE_ARMOR(131, enhancedElphadunkBangleArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedElphadunkBangleArmorLabel }),
+    ENHANCED_WISEFOX_BRACELET_ARMOR(132, enhancedWisefoxBraceletArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedWisefoxBraceletArmorLabel }),
+    ENHANCED_GOLD_CORAL_ARMLET(133, enhancedGoldCoralArmletOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedGoldCoralArmletLabel }),
+    QUEENSGUARD_BANGLE_MEMBER_ARMOR(134, queensguardBangleMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.queensguardBangleMemberArmorLabel }),
+    WARMAGES_ARMBAND_MEMBER_ARMOR(135, warmagesArmbandMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.warmagesArmbandMemberArmorLabel }),
+    FORTRESS_BRACER_MEMBER_ARMOR(136, fortressBracerMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.fortressBracerMemberArmorLabel }),
+    ABYSSAL_BANGLE_MEMBER_ARMOR(137, abyssalBangleMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.abyssalBangleMemberArmorLabel }),
+    OLDEBEAST_BRACELET_MEMBER_ARMOR(138, oldebeastBraceletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.oldebeastBraceletMemberArmorLabel }),
+    BEGUILING_ARMLET_MEMBER_ARMOR(139, beguilingArmletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.beguilingArmletMemberArmorLabel }),
+    ENHANCED_FORTRESS_BRACER_ARMOR(140, enhancedFortressBracerArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedFortressBracerArmorLabel }),
+    ENHANCED_ABYSSAL_BANGLE_ARMOR(141, enhancedAbyssalBangleArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedAbyssalBangleArmorLabel }),
+    ENHANCED_OLDEBEAST_BRACELET_ARMOR(142, enhancedOldebeastBraceletArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedOldebeastBraceletArmorLabel }),
+    ENHANCED_BEGUILING_ARMLET_ARMOR(143, enhancedBeguilingArmletArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedBeguilingArmletArmorLabel }),
+    SWALLOWSONG_BRACER_MEMBER_ARMOR(144, swallowsongBracerMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.swallowsongBracerMemberArmorLabel }),
+    ILLUSIONISTS_ARMBAND_MEMBER_ARMOR(145, illusionistsArmbandMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.illusionistsArmbandMemberArmorLabel }),
+    CRUCIBLE_BRACER_MEMBER_ARMOR(146, crucibleBracerMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.crucibleBracerMemberArmorLabel }),
+    OUTLAW_BANGLE_MEMBER_ARMOR(147, outlawBangleMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.outlawBangleMemberArmorLabel }),
+    CROCODILE_BRACELET_MEMBER_ARMOR(148, crocodileBraceletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.crocodileBraceletMemberArmorLabel }),
+    WITCHS_ARMLET_MEMBER_ARMOR(149, witchsArmletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.witchsArmletMemberArmorLabel }),
+    ENHANCED_CRUCIBLE_BRACER_ARMOR(150, enhancedCrucibleBracerArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedCrucibleBracerArmorLabel }),
+    ENHANCED_OUTLAW_BANGLE_ARMOR(151, enhancedOutlawBangleArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedOutlawBangleArmorLabel }),
+    ENHANCED_CROCODILE_BRACELET_ARMOR(152, enhancedCrocodileBraceletArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedCrocodileBraceletArmorLabel }),
+    ENHANCED_WITCHS_ARMLET_ARMOR(153, enhancedWitchsArmletArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedWitchsArmletArmorLabel }),
+    SAGE_ARMBAND_MEMBER_ARMOR(154, sageArmbandMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.sageArmbandMemberArmorLabel }),
+    BIG_HORN_BRACELET_ARMOR(155, bigHornBraceletArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.bigHornBraceletArmorLabel }),
+    COMMANDERS_BRACER_MEMBER_ARMOR(156, commandersBracerMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.commandersBracerMemberArmorLabel }),
+    ROAD_WARRIOR_BANGLE_ARMOR(157, roadWarriorBangleArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.roadWarriorBangleArmorLabel }),
+    SNAILSHELL_BRACELET_MEMBER_ARMOR(158, snailshellBraceletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.snailshellBraceletMemberArmorLabel }),
+    SPIRITHOUND_ARMLET_MEMBER_ARMOR(159, spirithoundArmletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.spirithoundArmletMemberArmorLabel }),
+    ENHANCED_COMMANDERS_BRACER_ARMOR(160, enhancedCommandersBracerArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedCommandersBracerArmorLabel }),
+    ENHANCED_ROAD_WARRIOR_BANGLE(161, enhancedRoadWarriorBangleOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedRoadWarriorBangleLabel }),
+    ENHANCED_SNAILSHELL_BRACELET_ARMOR(162, enhancedSnailshellBraceletArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedSnailshellBraceletArmorLabel }),
+    ENHANCED_SPIRITHOUND_ARMLET_ARMOR(163, enhancedSpirithoundArmletArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedSpirithoundArmletArmorLabel }),
+    BACKBONE_BRACELET_MEMBER_ARMOR(164, backboneBraceletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.backboneBraceletMemberArmorLabel }),
+    CELESTIAL_BANGLE_MEMBER_ARMOR(165, celestialBangleMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.celestialBangleMemberArmorLabel }),
+    RESPLENDENT_BRACER_MEMBER_ARMOR(166, resplendentBracerMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.resplendentBracerMemberArmorLabel }),
+    GARM_BANGLE_MEMBER_ARMOR(167, garmBangleMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.garmBangleMemberArmorLabel }),
+    VARVADOS_BRACELET_MEMBER_ARMOR(168, varvadosBraceletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.varvadosBraceletMemberArmorLabel }),
+    YGGDRASIL_ARMLET_MEMBER_ARMOR(169, yggdrasilArmletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.yggdrasilArmletMemberArmorLabel }),
+    ENHANCED_RESPLENDENT_BRACER_ARMOR(170, enhancedResplendentBracerArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedResplendentBracerArmorLabel }),
+    ENHANCED_GARM_BANGLE_ARMOR(171, enhancedGarmBangleArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedGarmBangleArmorLabel }),
+    ENHANCED_VARVADOS_BRACELET_ARMOR(172, enhancedVarvadosBraceletArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedVarvadosBraceletArmorLabel }),
+    ENHANCED_YGGDRASIL_ARMLET_ARMOR(173, enhancedYggdrasilArmletArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.enhancedYggdrasilArmletArmorLabel }),
+    VALKYRIAN_BANGLE_MEMBER_ARMOR(174, valkyrianBangleMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.valkyrianBangleMemberArmorLabel }),
+    HADES_ARMLET_MEMBER_ARMOR(175, hadesArmletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.hadesArmletMemberArmorLabel }),
+    CETRAN_BRACER_MEMBER_ARMOR(176, cetranBracerMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.cetranBracerMemberArmorLabel }),
+    CETRAN_BANGLE_MEMBER_ARMOR(177, cetranBangleMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.cetranBangleMemberArmorLabel }),
+    CETRAN_ARMBAND_MEMBER_ARMOR(178, cetranArmbandMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.cetranArmbandMemberArmorLabel }),
+    CETRAN_ARMLET_MEMBER_ARMOR(179, cetranArmletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.cetranArmletMemberArmorLabel }),
+    CHOCOBO_ARMBAND_MEMBER_ARMOR(180, chocoboArmbandMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.chocoboArmbandMemberArmorLabel }),
+    MIDGAR_BANGLE_MK_II(181, midgarBangleMkIiOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.midgarBangleMkIiLabel }),
+    ORCHID_BRACELET_MEMBER_ARMOR(182, orchidBraceletMemberArmorOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.orchidBraceletMemberArmorLabel }),
+    SHINRA_BANGLE_MK_II(183, shinraBangleMkIiOffset, MEMBER_ARMOR, { bundlePartyTab.memberArmorLabels.shinraBangleMkIiLabel }),
+    ITEM_TRANSMUTER_KEY_ITEM(184, itemTransmuterKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.itemTransmuterKeyItemLabel }),
+    CHAD_MODULE_KEY_ITEM(185, chadModuleKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.chadModuleKeyItemLabel }),
+    ITEM_CHOCOWHISTLE_KEY_ITEM(186, itemChocowhistleKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.itemChocowhistleKeyItemLabel }),
+    MAJESTIC_GLAMOUR_MEMBER_OUTFIT(187, majesticGlamourMemberOutfitOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.majesticGlamourMemberOutfitLabel }),
+    SHINING_SPIRIT_MEMBER_OUTFIT(188, shiningSpiritMemberOutfitOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.shiningSpiritMemberOutfitLabel }),
+    PINK_MERMAID_MEMBER_OUTFIT(189, pinkMermaidMemberOutfitOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.pinkMermaidMemberOutfitLabel }),
+    OCEAN_CHOCOBO_MEMBER_OUTFIT(190, oceanChocoboMemberOutfitOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.oceanChocoboMemberOutfitLabel }),
+    WILD_SURF_MEMBER_OUTFIT(191, wildSurfMemberOutfitOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.wildSurfMemberOutfitLabel }),
+    FLORAL_DELIGHT_MEMBER_OUTFIT(192, floralDelightMemberOutfitOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.floralDelightMemberOutfitLabel }),
+    RENT_BIRD_MEMBERSHIP_KEY(193, rentBirdMembershipKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.rentBirdMembershipKeyLabel }),
+    COMPANION_CARD_FOR_CLOUD(194, companionCardForCloudOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.companionCardForCloudLabel }),
+    COMPANION_CARD_FOR_AERITH(195, companionCardForAerithOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.companionCardForAerithLabel }),
+    COMPANION_CARD_FOR_TIFA(196, companionCardForTifaOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.companionCardForTifaLabel }),
+    TICKET_DEL_AMOR_7(197, ticketDelAmor7Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.ticketDelAmor7Label }),
+    TICKET_DEL_AMOR_77(198, ticketDelAmor77Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.ticketDelAmor77Label }),
+    GYSAHL_GREENS_KEY_ITEM(199, gysahlGreensKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.gysahlGreensKeyItemLabel }),
+    GRAPPLING_HOOK_KEY_ITEM(200, grapplingHookKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.grapplingHookKeyItemLabel }),
+    SYLKIS_GREENS_KEY_ITEM(201, sylkisGreensKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.sylkisGreensKeyItemLabel }),
+    CLIFF_SIDE_KEY_ITEM(202, cliffSideKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.cliffSideKeyItemLabel }),
+    GRAPPLING_GUN_KEY_ITEM(203, grapplingGunKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.grapplingGunKeyItemLabel }),
+    CLOUD_STRIGE_FOLIO_ITEM(204, cloudStrigeFolioItemOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.cloudStrigeFolioItemLabel }),
+    BARRET_WALLACE_FOLIO_ITEM(205, barretWallaceFolioItemOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.barretWallaceFolioItemLabel }),
+    TIFA_LOCKHART_FOLIO_ITEM(206, tifaLockhartFolioItemOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.tifaLockhartFolioItemLabel }),
+    AERITH_GAINSBOROUGH_FOLIO_ITEM(207, aerithGainsboroughFolioItemOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.aerithGainsboroughFolioItemLabel }),
+    RED_XIII_FOLIO_ITEM(208, redXiiiFolioItemOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.redXiiiFolioItemLabel }),
+    YUFFIE_KISARAGI_FOLIO_ITEM(209, yuffieKisaragiFolioItemOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.yuffieKisaragiFolioItemLabel }),
+    CAIT_SITH_FOLIO_ITEM(210, caitSithFolioItemOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.caitSithFolioItemLabel }),
+    STORE_HOUSE_KEY_ITEM(211, storeHouseKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.storeHouseKeyItemLabel }),
+    SHINRA_8_TOURNAMENT_TROPHY(212, shinra8TournamentTrophyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.shinra8TournamentTrophyLabel }),
+    SUMMER_ORANGE_MEMBER_OUTFIT(213, summerOrangeMemberOutfitOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.summerOrangeMemberOutfitLabel }),
+    GOLDEN_PASSPORT_KEY_ITEM(214, goldenPassportKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.goldenPassportKeyItemLabel }),
+    MURASAKI_EMPLOYEE_ID_CARD(215, murasakiEmployeeIdCardOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.murasakiEmployeeIdCardLabel }),
+    UNKNOWN_KEY_ITEM_01(216, unknownKeyItem01Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem01Label }),
+    UNKNOWN_KEY_ITEM_02(217, unknownKeyItem02Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem02Label }),
+    REFURBISHMENT_MATERIAL_KEY_ITEM(218, refurbishmentMaterialKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.refurbishmentMaterialKeyItemLabel }),
+    BOILER_VALVE_KEY_ITEM(219, boilerValveKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.boilerValveKeyItemLabel }),
+    MARRED_CROWN_KEY_ITEM(220, marredCrownKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.marredCrownKeyItemLabel }),
+    UVA_FLASHLIGHT_KEY_ITEM(221, uvaFlashlightKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.uvaFlashlightKeyItemLabel }),
+    BIRD_TRAP_KEY_ITEM(222, birdTrapKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.birdTrapKeyItemLabel }),
+    CONCH_SHELL_KEY_ITEM(223, conchShellKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.conchShellKeyItemLabel }),
+    SCALLOP_SHELL_KEY_ITEM(224, scallopShellKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.scallopShellKeyItemLabel }),
+    GIGANTOPOD_SHELL_KEY_ITEM(225, gigantopodShellKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.gigantopodShellKeyItemLabel }),
+    PRISTINE_CROWN_KEY_ITEM(226, pristineCrownKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.pristineCrownKeyItemLabel }),
+    PREMIUM_TICKET_KEY_ITEM(227, premiumTicketKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.premiumTicketKeyItemLabel }),
+    KEY_OFF_LIMITS_BEACH(228, keyOffLimitsBeachOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.keyOffLimitsBeachLabel }),
+    LEGENDARY_BAIT_KEY_ITEM(229, legendaryBaitKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.legendaryBaitKeyItemLabel }),
+    JUNON_NAVAL_UNIFORM_OUTFIT(230, junonNavalUniformOutfitOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.junonNavalUniformOutfitLabel }),
+    CAPER_COMPASS_KEY_ITEM(231, caperCompassKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.caperCompassKeyItemLabel }),
+    TROPICAL_MEAT_KEY_ITEM(232, tropicalMeatKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.tropicalMeatKeyItemLabel }),
+    CAPER_CAMERA_KEY_ITEM(233, caperCameraKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.caperCameraKeyItemLabel }),
+    COURT_JESTER_MEMBER_OUTFIT(234, courtJesterMemberOutfitOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.courtJesterMemberOutfitLabel }),
+    HELL_HOUND_MEMBER_OUTFIT(235, hellHoundMemberOutfitOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.hellHoundMemberOutfitLabel }),
+    CHOCO_GRASS_KEY_ITEM(236, chocoGrassKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.chocoGrassKeyItemLabel }),
+    MAINWRIGHTS_NOTE_KEY_ITEM(237, mainwrightsNoteKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.mainwrightsNoteKeyItemLabel }),
+    DRIED_DRIFTWOOD_KEY_ITEM(238, driedDriftwoodKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.driedDriftwoodKeyItemLabel }),
+    CARRIAGE_WHEEL_KEY_ITEM(239, carriageWheelKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.carriageWheelKeyItemLabel }),
+    CARRIAGE_BED_KEY_ITEM(240, carriageBedKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.carriageBedKeyItemLabel }),
+    CARRIAGE_BRACE_KEY_ITEM(241, carriageBraceKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.carriageBraceKeyItemLabel }),
+    PECULIAR_GREENS_KEY_ITEM(242, peculiarGreensKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.peculiarGreensKeyItemLabel }),
+    MONSTER_FLESH_KEY_ITEM(243, monsterFleshKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.monsterFleshKeyItemLabel }),
+    BOVINE_MEAT_KEY_ITEM(244, bovineMeatKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.bovineMeatKeyItemLabel }),
+    RANSOM_NOTE_KEY_ITEM(245, ransomNoteKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.ransomNoteKeyItemLabel }),
+    STORAGE_SHED_KEY_ITEM(246, storageShedKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.storageShedKeyItemLabel }),
+    DRACONITE_MAP_KEY_ITEM(247, draconiteMapKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.draconiteMapKeyItemLabel }),
+    DRACONITE_ORE_KEY_ITEM(248, draconiteOreKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.draconiteOreKeyItemLabel }),
+    TORGANS_VEGETABLES_KEY_ITEM(249, torgansVegetablesKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.torgansVegetablesKeyItemLabel }),
+    PLUMP_MAGONGA_MUSHROOM_KEY(250, plumpMagongaMushroomKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.plumpMagongaMushroomKeyLabel }),
+    PURE_GONGAGA_ROCK_SALT(251, pureGongagaRockSaltOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.pureGongagaRockSaltLabel }),
+    FEED_CLANGER_KEY_ITEM(252, feedClangerKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.feedClangerKeyItemLabel }),
+    CISSNEIS_BINOCULARS_KEY_ITEM(253, cissneisBinocularsKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.cissneisBinocularsKeyItemLabel }),
+    INSTANT_CAMERA_KEY_ITEM(254, instantCameraKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.instantCameraKeyItemLabel }),
+    CELESTIO_GRAPH_KEY_ITEM(255, celestioGraphKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.celestioGraphKeyItemLabel }),
+    PHENOMENA_REPORTS_KEY_ITEM(256, phenomenaReportsKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.phenomenaReportsKeyItemLabel }),
+    CELESTIAL_PHENOMENA_CHOCOBO_KEY(257, celestialPhenomenaChocoboKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.celestialPhenomenaChocoboKeyLabel }),
+    CELESTIAL_PHENOMENA_MOOGLE_KEY(258, celestialPhenomenaMoogleKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.celestialPhenomenaMoogleKeyLabel }),
+    CELESTIAL_PHENOMENA_BAHAMUT_KEY(259, celestialPhenomenaBahamutKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.celestialPhenomenaBahamutKeyLabel }),
+    PHOTOGRAPH_OF_AERITH_PRAYING(260, photographOfAerithPrayingOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.photographOfAerithPrayingLabel }),
+    PHOTOGRAPH_OF_CLOUD_AERITH(261, photographOfCloudAerithOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.photographOfCloudAerithLabel }),
+    MAKO_METER_KEY_ITEM(262, makoMeterKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.makoMeterKeyItemLabel }),
+    FIRST_LIFESPRING_FIELD_REPORT(263, firstLifespringFieldReportOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.firstLifespringFieldReportLabel }),
+    SECOND_LIFESPRING_FIELD_REPORT(264, secondLifespringFieldReportOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.secondLifespringFieldReportLabel }),
+    FOURTH_LIFESPRING_FIELD_REPORT(265, fourthLifespringFieldReportOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.fourthLifespringFieldReportLabel }),
+    FIFTH_LIFESPRING_FIELD_REPORT(266, fifthLifespringFieldReportOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.fifthLifespringFieldReportLabel }),
+    SIXTH_LIFESPRING_FIELD_REPORT(267, sixthLifespringFieldReportOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.sixthLifespringFieldReportLabel }),
+    VIBRO_DETECTOR_KEY_ITEM(268, vibroDetectorKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.vibroDetectorKeyItemLabel }),
+    CAT_FOOD_KEY_ITEM(269, catFoodKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.catFoodKeyItemLabel }),
+    SHEET_MUSIC_OUR_WAY(270, sheetMusicOurWayOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.sheetMusicOurWayLabel }),
+    SHEET_MUSIC_TIFA_THEME(271, sheetMusicTifaThemeOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.sheetMusicTifaThemeLabel }),
+    SHEET_MUSIC_BARRET_THEME(272, sheetMusicBarretThemeOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.sheetMusicBarretThemeLabel }),
+    SHEET_MUSIC_CINCO_CHOCOBO(273, sheetMusicCincoChocoboOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.sheetMusicCincoChocoboLabel }),
+    SECURITY_CARD_KEY_ITEM(274, securityCardKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.securityCardKeyItemLabel }),
+    UPA_CHALLENGE_KEY_ITEM(275, upaChallengeKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.upaChallengeKeyItemLabel }),
+    RHONDAS_MONEY_KEY_ITEM(276, rhondasMoneyKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.rhondasMoneyKeyItemLabel }),
+    BLURRY_CONDOR_PHOTOGRAPH_KEY(277, blurryCondorPhotographKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.blurryCondorPhotographKeyLabel }),
+    NICE_CONDOR_PHOTOGRAPH_KEY(278, niceCondorPhotographKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.niceCondorPhotographKeyLabel }),
+    WELL_COMPOSED_CONDOR_PHOTOGRAPH(279, wellComposedCondorPhotographOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.wellComposedCondorPhotographLabel }),
+    SHEET_MUSIC_TWO_LEGS(280, sheetMusicTwoLegsOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.sheetMusicTwoLegsLabel }),
+    SHEET_MUSIC_AERITH_THEME(281, sheetMusicAerithThemeOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.sheetMusicAerithThemeLabel }),
+    SHEET_MUSIC_BATTLES_BEGIN(282, sheetMusicBattlesBeginOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.sheetMusicBattlesBeginLabel }),
+    SWINDLER_CHALLENGE_KEY_ITEM(283, swindlerChallengeKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.swindlerChallengeKeyItemLabel }),
+    BIRDHOUSE_LOCATIONS_KEY_ITEM(284, birdhouseLocationsKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.birdhouseLocationsKeyItemLabel }),
+    BUGGY_KEY_FOB_ITEM(285, buggyKeyFobItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.buggyKeyFobItemLabel }),
+    PHOTOGRAPH_OF_AERITH_SMILING(286, photographOfAerithSmilingOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.photographOfAerithSmilingLabel }),
+    PHOTOGRAPH_OF_AERITH_BEAMING(287, photographOfAerithBeamingOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.photographOfAerithBeamingLabel }),
+    PHOTOGRAPH_OF_AERITH_GLARING(288, photographOfAerithGlaringOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.photographOfAerithGlaringLabel }),
+    LOVELIEST_OF_LADIES_KEY(289, loveliestOfLadiesKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.loveliestOfLadiesKeyLabel }),
+    CELESTIAL_PHENOMENA_CHOCOBO_01(290, celestialPhenomenaChocobo01Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.celestialPhenomenaChocobo01Label }),
+    CELESTIAL_PHENOMENA_CHOCOBO_02(291, celestialPhenomenaChocobo02Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.celestialPhenomenaChocobo02Label }),
+    CELESTIAL_PHENOMENA_MOOGLE_01(292, celestialPhenomenaMoogle01Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.celestialPhenomenaMoogle01Label }),
+    CELESTIAL_PHENOMENA_MOOGLE_02(293, celestialPhenomenaMoogle02Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.celestialPhenomenaMoogle02Label }),
+    CELESTIAL_PHENOMENA_BAHAMUT_01(294, celestialPhenomenaBahamut01Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.celestialPhenomenaBahamut01Label }),
+    CELESTIAL_PHENOMENA_BAHAMUT_02(295, celestialPhenomenaBahamut02Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.celestialPhenomenaBahamut02Label }),
+    RESOLVE_KEY_ITEM_01(296, resolveKeyItem01Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.resolveKeyItem01Label }),
+    RESOLVE_KEY_ITEM_02(297, resolveKeyItem02Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.resolveKeyItem02Label }),
+    RESOLVE_KEY_ITEM_03(298, resolveKeyItem03Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.resolveKeyItem03Label }),
+    SUFFERING_KEY_ITEM_01(299, sufferingKeyItem01Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.sufferingKeyItem01Label }),
+    SUFFERING_KEY_ITEM_02(300, sufferingKeyItem02Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.sufferingKeyItem02Label }),
+    SUFFERING_KEY_ITEM_03(301, sufferingKeyItem03Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.sufferingKeyItem03Label }),
+    ODYSSEY_KEY_ITEM_01(302, odysseyKeyItem01Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.odysseyKeyItem01Label }),
+    ODYSSEY_KEY_ITEM_02(303, odysseyKeyItem02Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.odysseyKeyItem02Label }),
+    ODYSSEY_KEY_ITEM_03(304, odysseyKeyItem03Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.odysseyKeyItem03Label }),
+    FLOWER_CROWN_DOODLE_KEY(305, flowerCrownDoodleKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.flowerCrownDoodleKeyLabel }),
+    DAISIES_FLOWER_KEY_ITEM(306, daisiesFlowerKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.daisiesFlowerKeyItemLabel }),
+    CALENDULAS_FLOWER_KEY_ITEM(307, calendulasFlowerKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.calendulasFlowerKeyItemLabel }),
+    RED_GERBERA_KEY_ITEM(308, redGerberaKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.redGerberaKeyItemLabel }),
+    FORGET_ME_NOTS_KEY(309, forgetMeNotsKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.forgetMeNotsKeyLabel }),
+    FOX_TAILS_KEY_ITEM(310, foxTailsKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.foxTailsKeyItemLabel }),
+    CHOCOBO_MOOGLE_CARD_KEY(311, chocoboMoogleCardKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.chocoboMoogleCardKeyLabel }),
+    KYRIES_MAINTENANCE_NOTES_KEY(312, kyriesMaintenanceNotesKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.kyriesMaintenanceNotesKeyLabel }),
+    WINDMILL_GEAR_KEY_ITEM(313, windmillGearKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.windmillGearKeyItemLabel }),
+    GONGAGA_ROCK_SALT_SKETCH(314, gongagaRockSaltSketchOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.gongagaRockSaltSketchLabel }),
+    BROKEN_MAGONGA_MUSHROOM_KEY(315, brokenMagongaMushroomKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.brokenMagongaMushroomKeyLabel }),
+    MAGONGA_MUSHROOM_KEY_ITEM(316, magongaMushroomKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.magongaMushroomKeyItemLabel }),
+    IMPURE_ROCK_SALT_KEY(317, impureRockSaltKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.impureRockSaltKeyLabel }),
+    GONGAGA_ROCK_SALT_KEY(318, gongagaRockSaltKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.gongagaRockSaltKeyLabel }),
+    RUSTED_SHEET_METAL_KEY(319, rustedSheetMetalKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.rustedSheetMetalKeyLabel }),
+    CORRODED_NAIL_KEY_ITEM(320, corrodedNailKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.corrodedNailKeyItemLabel }),
+    SHEET_MUSIC_ONEWINGED_ANGEL(321, sheetMusicOnewingedAngelOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.sheetMusicOnewingedAngelLabel }),
+    PLAY_ARTS_STAR_FIGHTER(322, playArtsStarFighterOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.playArtsStarFighterLabel }),
+    SPACERANGER_PLAY_ARTS_FIGURE(323, spacerangerPlayArtsFigureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.spacerangerPlayArtsFigureLabel }),
+    DIOS_AUTOGRAPH_KEY_ITEM(324, diosAutographKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.diosAutographKeyItemLabel }),
+    PLAY_ARTS_G_BIKE(325, playArtsGBikeOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.playArtsGBikeLabel }),
+    QUEENS_BLOOD_GAMEBOARD_KEY(326, queensBloodGameboardKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.queensBloodGameboardKeyLabel }),
+    BRAWLER_CLOUD_FIGURINE_3D(327, brawlerCloudFigurine3dOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.brawlerCloudFigurine3dLabel }),
+    MASAMUNE_REPLICA_KEY_ITEM(328, masamuneReplicaKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.masamuneReplicaKeyItemLabel }),
+    LOVELESS_POSTER_KEY_ITEM(329, lovelessPosterKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.lovelessPosterKeyItemLabel }),
+    RUFUS_SHINRA_CUTOUT_KEY(330, rufusShinraCutoutKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.rufusShinraCutoutKeyLabel }),
+    SAVE_CRYSTAL_KEY_ITEM(331, saveCrystalKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.saveCrystalKeyItemLabel }),
+    PLAY_ARTS_BUGGY_FIGURE(332, playArtsBuggyFigureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.playArtsBuggyFigureLabel }),
+    PLAY_ARTS_TINY_BRONCO(333, playArtsTinyBroncoOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.playArtsTinyBroncoLabel }),
+    PLAY_ARTS_TINY_WHEELIE(334, playArtsTinyWheelieOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.playArtsTinyWheelieLabel }),
+    STUFFED_CHOCOBO_KEY_ITEM(335, stuffedChocoboKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.stuffedChocoboKeyItemLabel }),
+    STUFFED_MOOGLE_KEY_ITEM(336, stuffedMoogleKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.stuffedMoogleKeyItemLabel }),
+    STUFFED_CACTUAR_KEY_ITEM(337, stuffedCactuarKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.stuffedCactuarKeyItemLabel }),
+    STUFFED_BOMB_KEY_ITEM(338, stuffedBombKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.stuffedBombKeyItemLabel }),
+    STUFFED_FAT_CHOCOBO_KEY(339, stuffedFatChocoboKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.stuffedFatChocoboKeyLabel }),
+    STUFFED_STAMP_KEY_ITEM(340, stuffedStampKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.stuffedStampKeyItemLabel }),
+    STUFFED_TONBERRY_KEY_ITEM(341, stuffedTonberryKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.stuffedTonberryKeyItemLabel }),
+    STUFFED_FAT_MOOGLE_KEY(342, stuffedFatMoogleKeyOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.stuffedFatMoogleKeyLabel }),
+    PLAY_ARTS_SWEEPER_FIGURE(343, playArtsSweeperFigureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.playArtsSweeperFigureLabel }),
+    BRAWLER_PUGILIST_FIGURINE_3D(344, brawlerPugilistFigurine3dOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.brawlerPugilistFigurine3dLabel }),
+    BRAWLER_MOOGLE_FIGURINE_3D(345, brawlerMoogleFigurine3dOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.brawlerMoogleFigurine3dLabel }),
+    BRAWLER_DIO_FIGURINE_3D(346, brawlerDioFigurine3dOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.brawlerDioFigurine3dLabel }),
+    BRAWLER_SHIVA_FIGURINE_3D(347, brawlerShivaFigurine3dOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.brawlerShivaFigurine3dLabel }),
+    BRAWLER_IFRIT_FIGURINE_3D(348, brawlerIfritFigurine3dOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.brawlerIfritFigurine3dLabel }),
+    PLAY_ARTS_SHINRA_BOX(349, playArtsShinraBoxOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.playArtsShinraBoxLabel }),
+    PLAY_ARTS_REST_SPOT(350, playArtsRestSpotOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.playArtsRestSpotLabel }),
+    FLEDGLING_CHOCOBO_JOCKEY_ITEM(351, fledglingChocoboJockeyItemOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.fledglingChocoboJockeyItemLabel }),
+    SOARING_CHOCOBO_JOCKEY_ITEM(352, soaringChocoboJockeyItemOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.soaringChocoboJockeyItemLabel }),
+    SALIENTIAN_SEAL_OF_MASTERY(353, salientianSealOfMasteryOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.salientianSealOfMasteryLabel }),
+    PEERLESS_POLLIOWOG_TREASURE_TROVE(354, peerlessPolliowogTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.peerlessPolliowogTreasureTroveLabel }),
+    DOLPHIN_STUNTMAN_TREASURE_TROVE(355, dolphinStuntmanTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.dolphinStuntmanTreasureTroveLabel }),
+    PRIDE_OF_CONDOR_CAVALRY(356, prideOfCondorCavalryOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.prideOfCondorCavalryLabel }),
+    AWARD_FOR_OUTSTANDING_PERFORMANCE(357, awardForOutstandingPerformanceOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.awardForOutstandingPerformanceLabel }),
+    PRESIDENTIAL_COMMENDATION_TREASURE_TROVE(358, presidentialCommendationTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.presidentialCommendationTreasureTroveLabel }),
+    QB_TOURNAMENT_CHAMPION_TREASURE(359, qbTournamentChampionTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.qbTournamentChampionTreasureLabel }),
+    BUCCANEER_BLASTER_TREASURE_TROVE(360, buccaneerBlasterTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.buccaneerBlasterTreasureTroveLabel }),
+    PIRATE_KINGS_MARKSMAN_TREASURE(361, pirateKingsMarksmanTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.pirateKingsMarksmanTreasureLabel }),
+    LEGENDARY_CARD_COLLECTOR_TREASURE(362, legendaryCardCollectorTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.legendaryCardCollectorTreasureLabel }),
+    BLOODY_BRILLIANT_CARD_SHARP(363, bloodyBrilliantCardSharpOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.bloodyBrilliantCardSharpLabel }),
+    NEOPHYTE_QB_STRATEGIAN_TREASURE(364, neophyteQbStrategianTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.neophyteQbStrategianTreasureLabel }),
+    KING_OF_THE_JUNGLE(365, kingOfTheJungleOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.kingOfTheJungleLabel }),
+    RED_BOLT_XIII_TREASURE(366, redBoltXiiiTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.redBoltXiiiTreasureLabel }),
+    AB_FAB_TREASURE_TROVE(367, abFabTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.abFabTreasureTroveLabel }),
+    SPEEDY_MOTORCYCLIST_TREASURE_TROVE(368, speedyMotorcyclistTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.speedyMotorcyclistTreasureTroveLabel }),
+    CRAZY_MOTORCYCLIST_TREASURE_TROVE(369, crazyMotorcyclistTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.crazyMotorcyclistTreasureTroveLabel }),
+    WELTERWEIGHT_BRAWLER_TREASURE_TROVE(370, welterweightBrawlerTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.welterweightBrawlerTreasureTroveLabel }),
+    HEAVYWEIGHT_BRAWLER_TREASURE_TROVE(371, heavyweightBrawlerTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.heavyweightBrawlerTreasureTroveLabel }),
+    SUPER_HEAVYWEIGHT_BRAWLER_TREASURE(372, superHeavyweightBrawlerTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.superHeavyweightBrawlerTreasureLabel }),
+    ROOKIE_RANGER_TREASURE_TROVE(373, rookieRangerTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.rookieRangerTreasureTroveLabel }),
+    SOLDIER_GALAXY_CLASS_TREASURE(374, soldierGalaxyClassTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.soldierGalaxyClassTreasureLabel }),
+    CHOCOBO_WHISPERER_TREASURE_TROVE(375, chocoboWhispererTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.chocoboWhispererTreasureTroveLabel }),
+    FLEET_FOOTED_JOCKET_TREASURE(376, fleetFootedJocketTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.fleetFootedJocketTreasureLabel }),
+    CHOCOBO_BUG_BOY_TREASURE(377, chocoboBugBoyTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.chocoboBugBoyTreasureLabel }),
+    CHOCOBO_JOCKEY_TREASURE_TROVE(378, chocoboJockeyTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.chocoboJockeyTreasureTroveLabel }),
+    CARD_WHIZ_TREASURE_TROVE(379, cardWhizTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.cardWhizTreasureTroveLabel }),
+    CARD_SAVANT_TREASURE_TROVE(380, cardSavantTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.cardSavantTreasureTroveLabel }),
+    CARD_SLAYER_TREASURE_TROVE(381, cardSlayerTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.cardSlayerTreasureTroveLabel }),
+    MUSCLEHEAD_WARRIORS_TREASURE_TROVE(382, muscleheadWarriorsTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.muscleheadWarriorsTreasureTroveLabel }),
+    TWIN_MUSCLEHEADS_TREASURE_TROVE(383, twinMuscleheadsTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.twinMuscleheadsTreasureTroveLabel }),
+    THE_SIX_MUSC_KETEERS(384, theSixMuscKeteersOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.theSixMuscKeteersLabel }),
+    TWIN_TEAM_TITANS_TREASURE(385, twinTeamTitansTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.twinTeamTitansTreasureLabel }),
+    BEST_SUPPORTING_ACTOR_BARRET(386, bestSupportingActorBarretOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.bestSupportingActorBarretLabel }),
+    BEST_ACTRESS_TIFA_TREASURE(387, bestActressTifaTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.bestActressTifaTreasureLabel }),
+    BEST_ACTRESS_AERITH_TREASURE(388, bestActressAerithTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.bestActressAerithTreasureLabel }),
+    BEST_SUPPORTING_RED_XIII(389, bestSupportingRedXiiiOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.bestSupportingRedXiiiLabel }),
+    BEST_ACTRESS_YUFFIE_TREASURE(390, bestActressYuffieTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.bestActressYuffieTreasureLabel }),
+    BEST_FELINE_NARRATION_CAIT(391, bestFelineNarrationCaitOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.bestFelineNarrationCaitLabel }),
+    BEST_ACTOR_CLOUD_TREASURE(392, bestActorCloudTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.bestActorCloudTreasureLabel }),
+    DUSTBOWL_SMASHER_TREASURE_TROVE(393, dustbowlSmasherTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.dustbowlSmasherTreasureTroveLabel }),
+    DUSTBOWL_DEMOLISHER_TREASURE_TROVE(394, dustbowlDemolisherTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.dustbowlDemolisherTreasureTroveLabel }),
+    SYLKIS_CUP_CHAMPION_TREASURE(395, sylkisCupChampionTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.sylkisCupChampionTreasureLabel }),
+    PRISON_TOURNEY_CHAMPION_TREASURE(396, prisonTourneyChampionTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.prisonTourneyChampionTreasureLabel }),
+    WUTAI_POP_STAR_TREASURE(397, wutaiPopStarTreasureOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.wutaiPopStarTreasureLabel }),
+    BELLES_OF_THE_BALL(398, bellesOfTheBallOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.bellesOfTheBallLabel }),
+    TEN_THOUSAND_NEEDLE_PINCUSHION(399, tenThousandNeedlePincushionOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.tenThousandNeedlePincushionLabel }),
+    ONE_THOUSAND_NEEDLE_PINCUSHION(400, oneThousandNeedlePincushionOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.oneThousandNeedlePincushionLabel }),
+    GAMBIT_TECHNICIAN_TREASURE_TROVE(401, gambitTechnicianTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.gambitTechnicianTreasureTroveLabel }),
+    SOMEWHAT_INTRIGUING_SPECIMEN_TREASURE(402, somewhatIntriguingSpecimenTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.somewhatIntriguingSpecimenTreasureLabel }),
+    ADEQUATELY_FUNCTIONAL_SPECIMEN_TREASURE(403, adequatelyFunctionalSpecimenTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.adequatelyFunctionalSpecimenTreasureLabel }),
+    TRUE_ULTIMATE_PARTY_ANIMAL(404, trueUltimatePartyAnimalOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.trueUltimatePartyAnimalLabel }),
+    PEERLESS_PIANIST_TREASURE_TROVE(405, peerlessPianistTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.peerlessPianistTreasureTroveLabel }),
+    SHUTTERBUG_SUPREME_TREASURE_TROVE(406, shutterbugSupremeTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.shutterbugSupremeTreasureTroveLabel }),
+    BLOOD_CHAMPION_TREASURE_TROVE(407, bloodChampionTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.bloodChampionTreasureTroveLabel }),
+    MAI_PARTICIPATION_AWARD_TREASURE(408, maiParticipationAwardTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.maiParticipationAwardTreasureLabel }),
+    MAI_GOLD_STAR_TREASURE(409, maiGoldStarTreasureOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.maiGoldStarTreasureLabel }),
+    MADDER_MACHINATOR_TREASURE_TROVE(410, madderMachinatorTreasureTroveOffset, TREASURE_TROVE, { bundlePartyTab.treasureTroveLabels.madderMachinatorTreasureTroveLabel }),
+    MIDGAR_INFANTRY_UNIFORM_CLOUD(411, midgarInfantryUniformCloudOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.midgarInfantryUniformCloudLabel }),
+    MIDGAR_INFANTRY_UNIFORM_TIFA(412, midgarInfantryUniformTifaOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.midgarInfantryUniformTifaLabel }),
+    MIDGAR_INFANTRY_UNIFORM_AERITH(413, midgarInfantryUniformAerithOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.midgarInfantryUniformAerithLabel }),
+    MOOGLE_HAT_CAPE_TREASURE(414, moogleHatCapeTreasureOffset, MEMBER_OUTFIT, { bundlePartyTab.memberOutfitLabels.moogleHatCapeTreasureLabel }),
+    KEY_BECK_BADASSES_HIDEOUT(415, keyBeckBadassesHideoutOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.keyBeckBadassesHideoutLabel }),
+    BECK_PROTORELIC_TREASURE_TROVE(416, beckProtorelicTreasureTroveOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.beckProtorelicTreasureTroveLabel }),
+    THE_CAPTAIN_PROTORELIC_TREASURE(417, theCaptainProtorelicTreasureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.theCaptainProtorelicTreasureLabel }),
+    KID_G_PROTORELIC_TREASURE(418, kidGProtorelicTreasureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.kidGProtorelicTreasureLabel }),
+    THE_TURK_PROTORELIC_TREASURE(419, theTurkProtorelicTreasureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.theTurkProtorelicTreasureLabel }),
+    LIFESTREAM_FONTS_PROTORELIC_TREASURE(420, lifestreamFontsProtorelicTreasureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.lifestreamFontsProtorelicTreasureLabel }),
+    BLACK_ROBES_PROTORELIC_TREASURE(421, blackRobesProtorelicTreasureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.blackRobesProtorelicTreasureLabel }),
+    UNKNOWN_KEY_ITEM_03(422, unknownKeyItem03Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem03Label }),
+    UNKNOWN_KEY_ITEM_04(423, unknownKeyItem04Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem04Label }),
+    UNKNOWN_KEY_ITEM_05(424, unknownKeyItem05Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem05Label }),
+    UNKNOWN_KEY_ITEM_06(425, unknownKeyItem06Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem06Label }),
+    UNKNOWN_KEY_ITEM_07(426, unknownKeyItem07Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem07Label }),
+    UNKNOWN_KEY_ITEM_08(427, unknownKeyItem08Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem08Label }),
+    UNKNOWN_KEY_ITEM_09(428, unknownKeyItem09Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem09Label }),
+    UNKNOWN_KEY_ITEM_10(429, unknownKeyItem10Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem10Label }),
+    UNKNOWN_KEY_ITEM_11(430, unknownKeyItem11Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem11Label }),
+    UNKNOWN_KEY_ITEM_12(431, unknownKeyItem12Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem12Label }),
+    UNKNOWN_KEY_ITEM_13(432, unknownKeyItem13Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem13Label }),
+    UNKNOWN_KEY_ITEM_14(433, unknownKeyItem14Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem14Label }),
+    UNKNOWN_KEY_ITEM_15(434, unknownKeyItem15Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem15Label }),
+    UNKNOWN_KEY_ITEM_16(435, unknownKeyItem16Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem16Label }),
+    UNKNOWN_KEY_ITEM_17(436, unknownKeyItem17Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem17Label }),
+    UNKNOWN_KEY_ITEM_18(437, unknownKeyItem18Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem18Label }),
+    UNKNOWN_KEY_ITEM_19(438, unknownKeyItem19Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem19Label }),
+    UNKNOWN_KEY_ITEM_20(439, unknownKeyItem20Offset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.unknownKeyItem20Label }),
+    CACTUAR_STATUE_I_TREASURE(440, cactuarStatueITreasureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.cactuarStatueITreasureLabel }),
+    CACTUAR_STATUE_II_TREASURE(441, cactuarStatueIiTreasureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.cactuarStatueIiTreasureLabel }),
+    CACTUAR_STATUE_III_TREASURE(442, cactuarStatueIiiTreasureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.cactuarStatueIiiTreasureLabel }),
+    CACTUAR_STATUE_IV_TREASURE(443, cactuarStatueIvTreasureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.cactuarStatueIvTreasureLabel }),
+    TREASURE_SANDS_FRAGMENT_ALPHA(444, treasureSandsFragmentAlphaOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.treasureSandsFragmentAlphaLabel }),
+    TREASURE_SANDS_FRAGMENT_BETA(445, treasureSandsFragmentBetaOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.treasureSandsFragmentBetaLabel }),
+    TREASURE_SANDS_FRAGMENT_GAMMA(446, treasureSandsFragmentGammaOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.treasureSandsFragmentGammaLabel }),
+    PROTORELIC_FRAGMENT_ALPHA_TREASURE(447, protorelicFragmentAlphaTreasureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.protorelicFragmentAlphaTreasureLabel }),
+    PROTORELIC_FRAGMENT_BETA_TREASURE(448, protorelicFragmentBetaTreasureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.protorelicFragmentBetaTreasureLabel }),
+    PROTORELIC_FRAGMENT_GAMMA_TREASURE(449, protorelicFragmentGammaTreasureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.protorelicFragmentGammaTreasureLabel }),
+    PROTORELIC_FRAGMENT_DELTA_TREASURE(450, protorelicFragmentDeltaTreasureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.protorelicFragmentDeltaTreasureLabel }),
+    PROTORELIC_FRAGMENT_EPSILON_TREASURE(451, protorelicFragmentEpsilonTreasureOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.protorelicFragmentEpsilonTreasureLabel }),
+    PIRATE_RELIC_TREASURE_MAP(452, pirateRelicTreasureMapOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.pirateRelicTreasureMapLabel }),
+    PHOTO_ALBUM_KEY_ITEM(453, photoAlbumKeyItemOffset, KEY_ITEMS, { bundlePartyTab.keyItemsLabels.photoAlbumKeyItemLabel }),
+    ART_SWORDPLAY_VOL_I(454, artSwordplayVolIOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolILabel }),
+    ART_SWORDPLAY_VOL_II(455, artSwordplayVolIiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolIiLabel }),
+    ART_SWORDPLAY_VOL_III(456, artSwordplayVolIiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolIiiLabel }),
+    ART_SWORDPLAY_VOL_IV(457, artSwordplayVolIvOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolIvLabel }),
+    ART_SWORDPLAY_VOL_V(458, artSwordplayVolVOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolVLabel }),
+    ART_SWORDPLAY_VOL_VI(459, artSwordplayVolViOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolViLabel }),
+    ART_SWORDPLAY_VOL_VII(460, artSwordplayVolViiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolViiLabel }),
+    ART_SWORDPLAY_VOL_VIII(461, artSwordplayVolViiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolViiiLabel }),
+    ART_SWORDPLAY_VOL_IX(462, artSwordplayVolIxOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolIxLabel }),
+    ART_SWORDPLAY_VOL_X(463, artSwordplayVolXOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolXLabel }),
+    ART_SWORDPLAY_VOL_XI(464, artSwordplayVolXiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolXiLabel }),
+    ART_SWORDPLAY_VOL_XII(465, artSwordplayVolXiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolXiiLabel }),
+    ART_SWORDPLAY_VOL_XIII(466, artSwordplayVolXiiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolXiiiLabel }),
+    ART_SWORDPLAY_VOL_XIV(467, artSwordplayVolXivOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolXivLabel }),
+    ART_SWORDPLAY_VOL_XV(468, artSwordplayVolXvOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolXvLabel }),
+    ART_SWORDPLAY_VOL_XVI(469, artSwordplayVolXviOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.artSwordplayVolXviLabel }),
+    SHARPSHOOTER_COMPANION_VOL_I(470, sharpshooterCompanionVolIOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolILabel }),
+    SHARPSHOOTER_COMPANION_VOL_II(471, sharpshooterCompanionVolIiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolIiLabel }),
+    SHARPSHOOTER_COMPANION_VOL_III(472, sharpshooterCompanionVolIiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolIiiLabel }),
+    SHARPSHOOTER_COMPANION_VOL_IV(473, sharpshooterCompanionVolIvOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolIvLabel }),
+    SHARPSHOOTER_COMPANION_VOL_V(474, sharpshooterCompanionVolVOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolVLabel }),
+    SHARPSHOOTER_COMPANION_VOL_VI(475, sharpshooterCompanionVolViOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolViLabel }),
+    SHARPSHOOTER_COMPANION_VOL_VII(476, sharpshooterCompanionVolViiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolViiLabel }),
+    SHARPSHOOTER_COMPANION_VOL_VIII(477, sharpshooterCompanionVolViiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolViiiLabel }),
+    SHARPSHOOTER_COMPANION_VOL_IX(478, sharpshooterCompanionVolIxOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolIxLabel }),
+    SHARPSHOOTER_COMPANION_VOL_X(479, sharpshooterCompanionVolXOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolXLabel }),
+    SHARPSHOOTER_COMPANION_VOL_XI(480, sharpshooterCompanionVolXiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolXiLabel }),
+    SHARPSHOOTER_COMPANION_VOL_XII(481, sharpshooterCompanionVolXiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolXiiLabel }),
+    SHARPSHOOTER_COMPANION_VOL_XIII(482, sharpshooterCompanionVolXiiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolXiiiLabel }),
+    SHARPSHOOTER_COMPANION_VOL_XIV(483, sharpshooterCompanionVolXivOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolXivLabel }),
+    SHARPSHOOTER_COMPANION_VOL_XV(484, sharpshooterCompanionVolXvOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolXvLabel }),
+    SHARPSHOOTER_COMPANION_VOL_XVI(485, sharpshooterCompanionVolXviOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.sharpshooterCompanionVolXviLabel }),
+    WAY_FIST_VOL_I(486, wayFistVolIOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolILabel }),
+    WAY_FIST_VOL_II(487, wayFistVolIiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolIiLabel }),
+    WAY_FIST_VOL_III(488, wayFistVolIiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolIiiLabel }),
+    WAY_FIST_VOL_IV(489, wayFistVolIvOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolIvLabel }),
+    WAY_FIST_VOL_V(490, wayFistVolVOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolVLabel }),
+    WAY_FIST_VOL_VI(491, wayFistVolViOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolViLabel }),
+    WAY_FIST_VOL_VII(492, wayFistVolViiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolViiLabel }),
+    WAY_FIST_VOL_VIII(493, wayFistVolViiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolViiiLabel }),
+    WAY_FIST_VOL_IX(494, wayFistVolIxOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolIxLabel }),
+    WAY_FIST_VOL_X(495, wayFistVolXOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolXLabel }),
+    WAY_FIST_VOL_XI(496, wayFistVolXiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolXiLabel }),
+    WAY_FIST_VOL_XII(497, wayFistVolXiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolXiiLabel }),
+    WAY_FIST_VOL_XIII(498, wayFistVolXiiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolXiiiLabel }),
+    WAY_FIST_VOL_XIV(499, wayFistVolXivOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolXivLabel }),
+    WAY_FIST_VOL_XV(500, wayFistVolXvOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolXvLabel }),
+    WAY_FIST_VOL_XVI(501, wayFistVolXviOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.wayFistVolXviLabel }),
+    TELLURIC_SCRIPTURES_VOL_I(502, telluricScripturesVolIOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolILabel }),
+    TELLURIC_SCRIPTURES_VOL_II(503, telluricScripturesVolIiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolIiLabel }),
+    TELLURIC_SCRIPTURES_VOL_III(504, telluricScripturesVolIiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolIiiLabel }),
+    TELLURIC_SCRIPTURES_VOL_IV(505, telluricScripturesVolIvOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolIvLabel }),
+    TELLURIC_SCRIPTURES_VOL_V(506, telluricScripturesVolVOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolVLabel }),
+    TELLURIC_SCRIPTURES_VOL_VI(507, telluricScripturesVolViOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolViLabel }),
+    TELLURIC_SCRIPTURES_VOL_VII(508, telluricScripturesVolViiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolViiLabel }),
+    TELLURIC_SCRIPTURES_VOL_VIII(509, telluricScripturesVolViiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolViiiLabel }),
+    TELLURIC_SCRIPTURES_VOL_IX(510, telluricScripturesVolIxOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolIxLabel }),
+    TELLURIC_SCRIPTURES_VOL_X(511, telluricScripturesVolXOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolXLabel }),
+    TELLURIC_SCRIPTURES_VOL_XI(512, telluricScripturesVolXiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolXiLabel }),
+    TELLURIC_SCRIPTURES_VOL_XII(513, telluricScripturesVolXiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolXiiLabel }),
+    TELLURIC_SCRIPTURES_VOL_XIII(514, telluricScripturesVolXiiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolXiiiLabel }),
+    TELLURIC_SCRIPTURES_VOL_XIV(515, telluricScripturesVolXivOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolXivLabel }),
+    TELLURIC_SCRIPTURES_VOL_XV(516, telluricScripturesVolXvOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolXvLabel }),
+    TELLURIC_SCRIPTURES_VOL_XVI(517, telluricScripturesVolXviOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.telluricScripturesVolXviLabel }),
+    TALE_RED_VOL_I(518, taleRedVolIOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolILabel }),
+    TALE_RED_VOL_II(519, taleRedVolIiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolIiLabel }),
+    TALE_RED_VOL_III(520, taleRedVolIiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolIiiLabel }),
+    TALE_RED_VOL_IV(521, taleRedVolIvOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolIvLabel }),
+    TALE_RED_VOL_V(522, taleRedVolVOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolVLabel }),
+    TALE_RED_VOL_VI(523, taleRedVolViOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolViLabel }),
+    TALE_RED_VOL_VII(524, taleRedVolViiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolViiLabel }),
+    TALE_RED_VOL_VIII(525, taleRedVolViiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolViiiLabel }),
+    TALE_RED_VOL_IX(526, taleRedVolIxOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolIxLabel }),
+    TALE_RED_VOL_X(527, taleRedVolXOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolXLabel }),
+    TALE_RED_VOL_XI(528, taleRedVolXiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolXiLabel }),
+    TALE_RED_VOL_XII(529, taleRedVolXiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolXiiLabel }),
+    TALE_RED_VOL_XIII(530, taleRedVolXiiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolXiiiLabel }),
+    TALE_RED_VOL_XIV(531, taleRedVolXivOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolXivLabel }),
+    TALE_RED_VOL_XV(532, taleRedVolXvOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolXvLabel }),
+    TALE_RED_VOL_XVI(533, taleRedVolXviOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.taleRedVolXviLabel }),
+    SECRETS_NINJA_VOL_I(534, secretsNinjaVolIOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolILabel }),
+    SECRETS_NINJA_VOL_II(535, secretsNinjaVolIiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolIiLabel }),
+    SECRETS_NINJA_VOL_III(536, secretsNinjaVolIiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolIiiLabel }),
+    SECRETS_NINJA_VOL_IV(537, secretsNinjaVolIvOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolIvLabel }),
+    SECRETS_NINJA_VOL_V(538, secretsNinjaVolVOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolVLabel }),
+    SECRETS_NINJA_VOL_VI(539, secretsNinjaVolViOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolViLabel }),
+    SECRETS_NINJA_VOL_VII(540, secretsNinjaVolViiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolViiLabel }),
+    SECRETS_NINJA_VOL_VIII(541, secretsNinjaVolViiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolViiiLabel }),
+    SECRETS_NINJA_VOL_IX(542, secretsNinjaVolIxOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolIxLabel }),
+    SECRETS_NINJA_VOL_X(543, secretsNinjaVolXOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolXLabel }),
+    SECRETS_NINJA_VOL_XI(544, secretsNinjaVolXiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolXiLabel }),
+    SECRETS_NINJA_VOL_XII(545, secretsNinjaVolXiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolXiiLabel }),
+    SECRETS_NINJA_VOL_XIII(546, secretsNinjaVolXiiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolXiiiLabel }),
+    SECRETS_NINJA_VOL_XIV(547, secretsNinjaVolXivOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolXivLabel }),
+    SECRETS_NINJA_VOL_XV(548, secretsNinjaVolXvOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolXvLabel }),
+    SECRETS_NINJA_VOL_XVI(549, secretsNinjaVolXviOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.secretsNinjaVolXviLabel }),
+    FORTUNES_UNTOLD_VOL_I(550, fortunesUntoldVolIOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolILabel }),
+    FORTUNES_UNTOLD_VOL_II(551, fortunesUntoldVolIiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolIiLabel }),
+    FORTUNES_UNTOLD_VOL_III(552, fortunesUntoldVolIiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolIiiLabel }),
+    FORTUNES_UNTOLD_VOL_IV(553, fortunesUntoldVolIvOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolIvLabel }),
+    FORTUNES_UNTOLD_VOL_V(554, fortunesUntoldVolVOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolVLabel }),
+    FORTUNES_UNTOLD_VOL_VI(555, fortunesUntoldVolViOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolViLabel }),
+    FORTUNES_UNTOLD_VOL_VII(556, fortunesUntoldVolViiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolViiLabel }),
+    FORTUNES_UNTOLD_VOL_VIII(557, fortunesUntoldVolViiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolViiiLabel }),
+    FORTUNES_UNTOLD_VOL_IX(558, fortunesUntoldVolIxOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolIxLabel }),
+    FORTUNES_UNTOLD_VOL_X(559, fortunesUntoldVolXOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolXLabel }),
+    FORTUNES_UNTOLD_VOL_XI(560, fortunesUntoldVolXiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolXiLabel }),
+    FORTUNES_UNTOLD_VOL_XII(561, fortunesUntoldVolXiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolXiiLabel }),
+    FORTUNES_UNTOLD_VOL_XIII(562, fortunesUntoldVolXiiiOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolXiiiLabel }),
+    FORTUNES_UNTOLD_VOL_XIV(563, fortunesUntoldVolXivOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolXivLabel }),
+    FORTUNES_UNTOLD_VOL_XV(564, fortunesUntoldVolXvOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolXvLabel }),
+    FORTUNES_UNTOLD_VOL_XVI(565, fortunesUntoldVolXviOffset, FOLIO_MANUSCRIPT, { bundlePartyTab.folioManuscriptLabels.fortunesUntoldVolXviLabel }),
+    POWER_WRISTGUARDS_MEMBER_ACCESSORY(566, powerWristguardsMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.powerWristguardsMemberAccessoryLabel }),
+    BULLETPROOF_VEST_MEMBER_ACCESSORY(567, bulletproofVestMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.bulletproofVestMemberAccessoryLabel }),
+    EARRINGS_EQUIPMENT_MEMBER_ACCESSORY(568, earringsEquipmentMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.earringsEquipmentMemberAccessoryLabel }),
+    TALISMAN_EQUIPMENT_MEMBER_ACCESSORY(569, talismanEquipmentMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.talismanEquipmentMemberAccessoryLabel }),
+    HEADBAND_EQUIPMENT_MEMBER_ACCESSORY(570, headbandEquipmentMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.headbandEquipmentMemberAccessoryLabel }),
+    STAR_PENDANT_MEMBER_ACCESSORY(571, starPendantMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.starPendantMemberAccessoryLabel }),
+    FURY_RING_MEMBER_ACCESSORY(572, furyRingMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.furyRingMemberAccessoryLabel }),
+    REVIVAL_EARRINGS_MEMBER_ACCESSORY(573, revivalEarringsMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.revivalEarringsMemberAccessoryLabel }),
+    WHISTLEWIND_SCARF_MEMBER_ACCESSORY(574, whistlewindScarfMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.whistlewindScarfMemberAccessoryLabel }),
+    MYTHICAL_AMULET_MEMBER_ACCESSORY(575, mythicalAmuletMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.mythicalAmuletMemberAccessoryLabel }),
+    HEALING_CARCANET_MEMBER_ACCESSORY(576, healingCarcanetMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.healingCarcanetMemberAccessoryLabel }),
+    TRANSFERENCE_MODULE_MEMBER_ACCESSORY(577, transferenceModuleMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.transferenceModuleMemberAccessoryLabel }),
+    SPECTRAL_COGWHEEL_MEMBER_ACCESSORY(578, spectralCogwheelMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.spectralCogwheelMemberAccessoryLabel }),
+    MOOGLE_AMULET_MEMBER_ACCESSORY(579, moogleAmuletMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.moogleAmuletMemberAccessoryLabel }),
+    ENFEEBLEMENT_RING_MEMBER_ACCESSORY(580, enfeeblementRingMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.enfeeblementRingMemberAccessoryLabel }),
+    CRESCENT_MOON_CHARM_ACCESSORY(581, crescentMoonCharmAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.crescentMoonCharmAccessoryLabel }),
+    CHAMPION_BELT_MEMBER_ACCESSORY(582, championBeltMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.championBeltMemberAccessoryLabel }),
+    PROTECTIVE_BOOTS_MEMBER_ACCESSORY(583, protectiveBootsMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.protectiveBootsMemberAccessoryLabel }),
+    CIRCLET_EQUIPMENT_MEMBER_ACCESSORY(584, circletEquipmentMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.circletEquipmentMemberAccessoryLabel }),
+    TAROT_CARDS_MEMBER_ACCESSORY(585, tarotCardsMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.tarotCardsMemberAccessoryLabel }),
+    OTHERWORDLY_CRYSTAL_MEMBER_ACCESSORY(586, otherwordlyCrystalMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.otherwordlyCrystalMemberAccessoryLabel }),
+    SALVATION_BADGE_MEMBER_ACCESSORY(587, salvationBadgeMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.salvationBadgeMemberAccessoryLabel }),
+    ENCHANTED_RING_MEMBER_ACCESSORY(588, enchantedRingMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.enchantedRingMemberAccessoryLabel }),
+    SUPERNATURAL_WRISTGUARDS_MEMBER_ACCESSORY(589, supernaturalWristguardsMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.supernaturalWristguardsMemberAccessoryLabel }),
+    SURVIVAL_VEST_MEMBER_ACCESSORY(590, survivalVestMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.survivalVestMemberAccessoryLabel }),
+    PLATINUM_EARRINGS_MEMBER_ACCESSORY(591, platinumEarringsMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.platinumEarringsMemberAccessoryLabel }),
+    TIMEWORN_TALISMAN_MEMBER_ACCESSORY(592, timewornTalismanMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.timewornTalismanMemberAccessoryLabel }),
+    GOTTERDAMMERUNG_EQUIPMENT_MEMBER_ACCESSORY(593, gotterdammerungEquipmentMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.gotterdammerungEquipmentMemberAccessoryLabel }),
+    RIBBON_EQUIPMENT_MEMBER_ACCESSORY(594, ribbonEquipmentMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.ribbonEquipmentMemberAccessoryLabel }),
+    HI_POWER_WRISTGUARDS_ACCESSORY(595, hiPowerWristguardsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.hiPowerWristguardsAccessoryLabel }),
+    BULLETPROOF_VEST_MK_II(596, bulletproofVestMkIiOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.bulletproofVestMkIiLabel }),
+    MAGICAL_EARRINGS_MEMBER_ACCESSORY(597, magicalEarringsMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.magicalEarringsMemberAccessoryLabel }),
+    TALISMAN_FOCUS_MEMBER_ACCESSORY(598, talismanFocusMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.talismanFocusMemberAccessoryLabel }),
+    FULL_THROTTLE_WRISTGUARDS_ACCESSORY(599, fullThrottleWristguardsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.fullThrottleWristguardsAccessoryLabel }),
+    RIOT_VEST_MEMBER_ACCESSORY(600, riotVestMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.riotVestMemberAccessoryLabel }),
+    SORCERERS_EARRINGS_MEMBER_ACCESSORY(601, sorcerersEarringsMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.sorcerersEarringsMemberAccessoryLabel }),
+    CETRA_TALISMAN_MEMBER_ACCESSORY(602, cetraTalismanMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.cetraTalismanMemberAccessoryLabel }),
+    JEWELED_RING_MEMBER_ACCESSORY(603, jeweledRingMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.jeweledRingMemberAccessoryLabel }),
+    WHITE_CAP_MEMBER_ACCESSORY(604, whiteCapMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.whiteCapMemberAccessoryLabel }),
+    GENJI_GLOVES_MEMBER_ACCESSORY(605, genjiGlovesMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.genjiGlovesMemberAccessoryLabel }),
+    AUREATE_PINION_MEMBER_ACCESSORY(606, aureatePinionMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.aureatePinionMemberAccessoryLabel }),
+    LUCKY_AMULET_MEMBER_ACCESSORY(607, luckyAmuletMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.luckyAmuletMemberAccessoryLabel }),
+    FORTITUDE_RING_MEMBER_ACCESSORY(608, fortitudeRingMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.fortitudeRingMemberAccessoryLabel }),
+    SAFETY_BIT_MEMBER_ACCESSORY(609, safetyBitMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.safetyBitMemberAccessoryLabel }),
+    NOBLE_THIEFS_GLOVES_ACCESSORY(610, nobleThiefsGlovesAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.nobleThiefsGlovesAccessoryLabel }),
+    KARMIC_COWL_MEMBER_ACCESSORY(611, karmicCowlMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.karmicCowlMemberAccessoryLabel }),
+    EXPEDITIONARY_MEDAL_MEMBER_ACCESSORY(612, expeditionaryMedalMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.expeditionaryMedalMemberAccessoryLabel }),
+    PSYCHIC_CHARM_MEMBER_ACCESSORY(613, psychicCharmMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.psychicCharmMemberAccessoryLabel }),
+    DRACONIC_RING_MEMBER_ACCESSORY(614, draconicRingMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.draconicRingMemberAccessoryLabel }),
+    MALBORO_ORB_MEMBER_ACCESSORY(615, malboroOrbMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.malboroOrbMemberAccessoryLabel }),
+    SPEED_DEMON_KEYCHAIN_ACCESSORY(616, speedDemonKeychainAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.speedDemonKeychainAccessoryLabel }),
+    PEDOMETER_PIN_MEMBER_ACCESSORY(617, pedometerPinMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.pedometerPinMemberAccessoryLabel }),
+    GI_WARRIOR_CHARM_ACCESSORY(618, giWarriorCharmAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.giWarriorCharmAccessoryLabel }),
+    CAMARADERIE_EARRINGS_MEMBER_ACCESSORY(619, camaraderieEarringsMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.camaraderieEarringsMemberAccessoryLabel }),
+    GENJI_EARRINGS_MEMBER_ACCESSORY(620, genjiEarringsMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.genjiEarringsMemberAccessoryLabel }),
+    GENJI_RING_MEMBER_ACCESSORY(621, genjiRingMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.genjiRingMemberAccessoryLabel }),
+    SILVER_BRAWLER_GLOVES_ACCESSORY(622, silverBrawlerGlovesAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.silverBrawlerGlovesAccessoryLabel }),
+    GOLDEN_BRAWLER_GLOVES_ACCESSORY(623, goldenBrawlerGlovesAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.goldenBrawlerGlovesAccessoryLabel }),
+    SPACE_RANGER_SERVICE_MEDAL(624, spaceRangerServiceMedalOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.spaceRangerServiceMedalLabel }),
+    SPACE_RANGER_MEDAL_HONOR(625, spaceRangerMedalHonorOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.spaceRangerMedalHonorLabel }),
+    HERMES_SHOES_MEMBER_ACCESSORY(626, hermesShoesMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.hermesShoesMemberAccessoryLabel }),
+    CHOCOKING_CAPE_MEMBER_ACCESSORY(627, chocokingCapeMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.chocokingCapeMemberAccessoryLabel }),
+    BEASTKILLER_BADGE_MEMBER_ACCESSORY(628, beastkillerBadgeMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.beastkillerBadgeMemberAccessoryLabel }),
+    BOXCRUSHER_KEYCHAIN_MEMBER_ACCESSORY(629, boxcrusherKeychainMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.boxcrusherKeychainMemberAccessoryLabel }),
+    ASSESS_MATERIA_EARRINGS_ACCESSORY(630, assessMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.assessMateriaEarringsAccessoryLabel }),
+    REVIVAL_MATERIA_EARRINGS_ACCESSORY(631, revivalMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.revivalMateriaEarringsAccessoryLabel }),
+    HP_UP_MATERIA_EARRINGS(632, hpUpMateriaEarringsOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.hpUpMateriaEarringsLabel }),
+    LIMIT_BOOSTER_MEMBER_ACCESSORY(633, limitBoosterMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.limitBoosterMemberAccessoryLabel }),
+    CHAKRA_MATERIA_EARRINGS_ACCESSORY(634, chakraMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.chakraMateriaEarringsAccessoryLabel }),
+    PRAYER_MATERIA_EARRINGS_ACCESSORY(635, prayerMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.prayerMateriaEarringsAccessoryLabel }),
+    MP_UP_MATERIA_EARRINGS(636, mpUpMateriaEarringsOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.mpUpMateriaEarringsLabel }),
+    LUCK_UP_MATERIA_EARRINGS(637, luckUpMateriaEarringsOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.luckUpMateriaEarringsLabel }),
+    STEADFAST_BLOCK_MATERIA_EARRINGS(638, steadfastBlockMateriaEarringsOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.steadfastBlockMateriaEarringsLabel }),
+    ITEM_MASTER_MATERIA_EARRINGS(639, itemMasterMateriaEarringsOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.itemMasterMateriaEarringsLabel }),
+    PRECISION_DEFENSE_FOCUS_EARRINGS(640, precisionDefenseFocusEarringsOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.precisionDefenseFocusEarringsLabel }),
+    FIRE_MATERIA_EARRINGS_ACCESSORY(641, fireMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.fireMateriaEarringsAccessoryLabel }),
+    ICE_MATERIA_EARRINGS_ACCESSORY(642, iceMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.iceMateriaEarringsAccessoryLabel }),
+    LIGHTNING_MATERIA_EARRINGS_ACCESSORY(643, lightningMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.lightningMateriaEarringsAccessoryLabel }),
+    WIND_MATERIA_EARRINGS_ACCESSORY(644, windMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.windMateriaEarringsAccessoryLabel }),
+    HEALING_MATERIA_EARRINGS_ACCESSORY(645, healingMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.healingMateriaEarringsAccessoryLabel }),
+    CLEANSING_MATERIA_EARRINGS_ACCESSORY(646, cleansingMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.cleansingMateriaEarringsAccessoryLabel }),
+    POISON_MATERIA_EARRINGS_ACCESSORY(647, poisonMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.poisonMateriaEarringsAccessoryLabel }),
+    BINDING_MATERIA_EARRINGS_ACCESSORY(648, bindingMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.bindingMateriaEarringsAccessoryLabel }),
+    TIME_MATERIA_EARRINGS_ACCESSORY(649, timeMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.timeMateriaEarringsAccessoryLabel }),
+    BARRIER_MATERIA_EARRINGS_ACCESSORY(650, barrierMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.barrierMateriaEarringsAccessoryLabel }),
+    SUBVERSION_MATERIA_EARRINGS_ACCESSORY(651, subversionMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.subversionMateriaEarringsAccessoryLabel }),
+    EMPOWERMENT_MATERIA_EARRINGS_ACCESSORY(652, empowermentMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.empowermentMateriaEarringsAccessoryLabel }),
+    FORTIFICATION_MATERIA_EARRINGS_ACCESSORY(653, fortificationMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.fortificationMateriaEarringsAccessoryLabel }),
+    DISEMPOWERMENT_MATERIA_EARRINGS_ACCESSORY(654, disempowermentMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.disempowermentMateriaEarringsAccessoryLabel }),
+    ENERVATION_MATERIA_EARRINGS_ACCESSORY(655, enervationMateriaEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.enervationMateriaEarringsAccessoryLabel }),
+    ENHANCED_CAMARADERIE_EARRINGS_ACCESSORY(656, enhancedCamaraderieEarringsAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.enhancedCamaraderieEarringsAccessoryLabel }),
+    ENHANCED_PSYCHIC_CHARM_ACCESSORY(657, enhancedPsychicCharmAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.enhancedPsychicCharmAccessoryLabel }),
+    ENHANCED_KARMIC_COWL_ACCESSORY(658, enhancedKarmicCowlAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.enhancedKarmicCowlAccessoryLabel }),
+    ENHANCED_MALBORO_ORB_ACCESSORY(659, enhancedMalboroOrbAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.enhancedMalboroOrbAccessoryLabel }),
+    ENHANCED_DRACONIC_RING_ACCESSORY(660, enhancedDraconicRingAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.enhancedDraconicRingAccessoryLabel }),
+    ENHANCED_EXPEDITIONARY_MEDAL_ACCESSORY(661, enhancedExpeditionaryMedalAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.enhancedExpeditionaryMedalAccessoryLabel }),
+    CORSAIR_COMPASS_MEMBER_ACCESSORY(662, corsairCompassMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.corsairCompassMemberAccessoryLabel }),
+    KUPO_CHARM_MEMBER_ACCESSORY(663, kupoCharmMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.kupoCharmMemberAccessoryLabel }),
+    RECLAIMANT_CHOKER_MEMBER_ACCESSORY(664, reclaimantChokerMemberAccessoryOffset, MEMBER_ACCESSORY, { bundlePartyTab.memberAccessoryLabels.reclaimantChokerMemberAccessoryLabel }),
+    TRANSMUTER_CHIP_ARMOR_1(665, transmuterChipArmor1Offset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipArmor1Label }),
+    TRANSMUTER_CHIP_ARMOR_2(666, transmuterChipArmor2Offset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipArmor2Label }),
+    TRANSMUTER_CHIP_ARMOR_3(667, transmuterChipArmor3Offset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipArmor3Label }),
+    TRANSMUTER_CHIP_ARMOR_4(668, transmuterChipArmor4Offset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipArmor4Label }),
+    TRANSMUTER_CHIP_ARMOR_5(669, transmuterChipArmor5Offset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipArmor5Label }),
+    TRANSMUTER_CHIP_ARMOR_6(670, transmuterChipArmor6Offset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipArmor6Label }),
+    TRANSMUTER_CHIP_ARMOR_7(671, transmuterChipArmor7Offset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipArmor7Label }),
+    TRANSMUTER_CHIP_ARMOR_8(672, transmuterChipArmor8Offset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipArmor8Label }),
+    TRANSMUTER_CHIP_ARMOR_9(673, transmuterChipArmor9Offset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipArmor9Label }),
+    TRANSMUTER_CHIP_ARMOR_10(674, transmuterChipArmor10Offset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipArmor10Label }),
+    TRANSMUTER_CHIP_ARMOR_11(675, transmuterChipArmor11Offset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipArmor11Label }),
+    TRANSMUTER_CHIP_ARMOR_12(676, transmuterChipArmor12Offset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipArmor12Label }),
+    TRANSMUTER_CHIP_BASIC_ACCESSORIES(677, transmuterChipBasicAccessoriesOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipBasicAccessoriesLabel }),
+    TRANSMUTER_CHIP_ADVANCED_ACCESSORIES(678, transmuterChipAdvancedAccessoriesOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipAdvancedAccessoriesLabel }),
+    TRANSMUTER_CHIP_ADVANCED_ITEMS(679, transmuterChipAdvancedItemsOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipAdvancedItemsLabel }),
+    TRANSMUTER_CHIP_CAMARADERIE_EARRINGS(680, transmuterChipCamaraderieEarringsOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipCamaraderieEarringsLabel }),
+    TRANSMUTER_CHIP_PSYCHIC_CHARM(681, transmuterChipPsychicCharmOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipPsychicCharmLabel }),
+    TRANSMUTER_CHIP_KARMIC_COWL(682, transmuterChipKarmicCowlOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipKarmicCowlLabel }),
+    TRANSMUTER_CHIP_MALBORO_ORB(683, transmuterChipMalboroOrbOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipMalboroOrbLabel }),
+    TRANSMUTER_CHIP_DRACONIC_RING(684, transmuterChipDraconicRingOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipDraconicRingLabel }),
+    TRANSMUTER_CHIP_EXPEDITIONARY_MEDAL(685, transmuterChipExpeditionaryMedalOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipExpeditionaryMedalLabel }),
+    TRANSMUTER_CHIP_CUSHION_CHIP(686, transmuterChipCushionChipOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipCushionChipLabel }),
+    TRANSMUTER_CHIP_WINDMILL_GEAR(687, transmuterChipWindmillGearOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipWindmillGearLabel }),
+    TRANSMUTER_CHIP_BOILER_VALVE(688, transmuterChipBoilerValveOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipBoilerValveLabel }),
+    TRANSMUTER_CHIP_BIRD_TRAP(689, transmuterChipBirdTrapOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipBirdTrapLabel }),
+    TRANSMUTER_CHIP_LEGENDARY_BAIT(690, transmuterChipLegendaryBaitOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipLegendaryBaitLabel }),
+    TRANSMUTER_CHIP_SUPREME_ACCESSORIES(691, transmuterChipSupremeAccessoriesOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipSupremeAccessoriesLabel }),
+    TRANSMUTER_CHIP_IMMUNITY_ACCESSORIES(692, transmuterChipImmunityAccessoriesOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipImmunityAccessoriesLabel }),
+    TRANSMUTER_CHIP_HEALING_CARCANET(693, transmuterChipHealingCarcanetOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipHealingCarcanetLabel }),
+    TRANSMUTER_CHIP_SAFERY_BIT(694, transmuterChipSaferyBitOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipSaferyBitLabel }),
+    TRANSMUTER_CHIP_GENJI_ARMAMENTS(695, transmuterChipGenjiArmamentsOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipGenjiArmamentsLabel }),
+    TRANSMUTER_CHIP_ULTIMATE_ACCESSORIES(696, transmuterChipUltimateAccessoriesOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipUltimateAccessoriesLabel }),
+    TRANSMUTER_CHIP_CORSAIR_COMPASS(697, transmuterChipCorsairCompassOffset, TRANSMUTER_CHIP, { bundlePartyTab.transmuterChipLabels.transmuterChipCorsairCompassLabel }),
+    SHINRA_AVIAN_HELMET_GEAR(698, shinraAvianHelmetGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.shinraAvianHelmetGearLabel }),
+    SHINRA_AVIAN_BREASTPLATE_GEAR(699, shinraAvianBreastplateGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.shinraAvianBreastplateGearLabel }),
+    SHINRA_AVIAN_GREAVES_GEAR(700, shinraAvianGreavesGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.shinraAvianGreavesGearLabel }),
+    SCORPION_HELMET_CHOCOBO_GEAR(701, scorpionHelmetChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.scorpionHelmetChocoboGearLabel }),
+    SCORPION_BREASTPLATE_CHOCOBO_GEAR(702, scorpionBreastplateChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.scorpionBreastplateChocoboGearLabel }),
+    SCORPION_GREAVES_CHOCOBO_GEAR(703, scorpionGreavesChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.scorpionGreavesChocoboGearLabel }),
+    RODEO_HAT_CHOCOBO_GEAR(704, rodeoHatChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.rodeoHatChocoboGearLabel }),
+    RODEO_PONCHO_CHOCOBO_GEAR(705, rodeoPonchoChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.rodeoPonchoChocoboGearLabel }),
+    RODEO_LEGWRAPS_CHOCOBO_GEAR(706, rodeoLegwrapsChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.rodeoLegwrapsChocoboGearLabel }),
+    TREASURE_HUNTER_VISOR_GEAR(707, treasureHunterVisorGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.treasureHunterVisorGearLabel }),
+    TREASURE_HUNTER_SADDLE_GEAR(708, treasureHunterSaddleGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.treasureHunterSaddleGearLabel }),
+    TREASURE_HUNTER_GAITERS_GEAR(709, treasureHunterGaitersGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.treasureHunterGaitersGearLabel }),
+    MYSTICAL_HEADDRESS_CHOCOBO_GEAR(710, mysticalHeaddressChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.mysticalHeaddressChocoboGearLabel }),
+    MYSTICAL_NECKWRAP_CHOCOBO_GEAR(711, mysticalNeckwrapChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.mysticalNeckwrapChocoboGearLabel }),
+    MYSTICAL_ANKLETS_CHOCOBO_GEAR(712, mysticalAnkletsChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.mysticalAnkletsChocoboGearLabel }),
+    SAURIAN_HELM_CHOCOBO_GEAR(713, saurianHelmChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.saurianHelmChocoboGearLabel }),
+    SAURIAN_ARMOR_CHOCOBO_GEAR(714, saurianArmorChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.saurianArmorChocoboGearLabel }),
+    SAURIAN_GREAVES_CHOCOBO_GEAR(715, saurianGreavesChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.saurianGreavesChocoboGearLabel }),
+    DEBONAIR_HAT_CHOCOBO_GEAR(716, debonairHatChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.debonairHatChocoboGearLabel }),
+    DEBONAIR_WAISTCOAT_CHOCOBO_GEAR(717, debonairWaistcoatChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.debonairWaistcoatChocoboGearLabel }),
+    DEBONAIR_ANKLETS_CHOCOBO_GEAR(718, debonairAnkletsChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.debonairAnkletsChocoboGearLabel }),
+    GI_HEADDRESS_CHOCOBO_GEAR(719, giHeaddressChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.giHeaddressChocoboGearLabel }),
+    GI_CLOAK_CHOCOBO_GEAR(720, giCloakChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.giCloakChocoboGearLabel }),
+    GI_LEGWRAPS_CHOCOBO_GEAR(721, giLegwrapsChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.giLegwrapsChocoboGearLabel }),
+    HYPERION_HELM_CHOCOBO_GEAR(722, hyperionHelmChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.hyperionHelmChocoboGearLabel }),
+    HYPERION_ARMOR_CHOCOBO_GEAR(723, hyperionArmorChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.hyperionArmorChocoboGearLabel }),
+    HYPERION_SHIN_CHOCOBO_GEAR(724, hyperionShinChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.hyperionShinChocoboGearLabel }),
+    TROPICAL_VISOR_CHOCOBO_GEAR(725, tropicalVisorChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.tropicalVisorChocoboGearLabel }),
+    TROPICAL_SHAWL_CHOCOBO_GEAR(726, tropicalShawlChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.tropicalShawlChocoboGearLabel }),
+    TROPICAL_ANKLETS_CHOCOBO_GEAR(727, tropicalAnkletsChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.tropicalAnkletsChocoboGearLabel }),
+    MERC_CAP_CHOCOBO_GEAR(728, mercCapChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.mercCapChocoboGearLabel }),
+    MERC_OVERALLS_CHOCOBO_GEAR(729, mercOverallsChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.mercOverallsChocoboGearLabel }),
+    MERC_LEGWRAPS_CHOCOBO_GEAR(730, mercLegwrapsChocoboGearOffset, CHOCOBO_GEAR, { bundlePartyTab.chocoboGearLabels.mercLegwrapsChocoboGearLabel }),
+    CARD_001_SECURITY_OFFICER(731, card001SecurityOfficerOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card001SecurityOfficerLabel }),
+    CARD_002_RIOT_TROOPER(732, card002RiotTrooperOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card002RiotTrooperLabel }),
+    CARD_005_QUEEN_BEE(733, card005QueenBeeOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card005QueenBeeLabel }),
+    CARD_016_DEVIL_RIDER(734, card016DevilRiderOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card016DevilRiderLabel }),
+    CARD_004_JUNIT_SWEEPER(735, card004JunitSweeperOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card004JunitSweeperLabel }),
+    CARD_006_TOXIRAT_QB(736, card006ToxiratQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card006ToxiratQbLabel }),
+    CARD_007_LEVIKRON_QB(737, card007LevikronQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card007LevikronQbLabel }),
+    CARD_008_GRASSLANDS_WOLF(738, card008GrasslandsWolfOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card008GrasslandsWolfLabel }),
+    CARD_009_MU_QB(739, card009MuQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card009MuQbLabel }),
+    CARD_010_MANDRAGORA_QB(740, card010MandragoraQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card010MandragoraQbLabel }),
+    CARD_011_ELPHADUNK_QB(741, card011ElphadunkQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card011ElphadunkQbLabel }),
+    CARD_014_QUETZALCOATL_QB(742, card014QuetzalcoatlQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card014QuetzalcoatlQbLabel }),
+    CARD_018_FLAN_QB(743, card018FlanQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card018FlanQbLabel }),
+    CARD_012_CACTUAR_QB(744, card012CactuarQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card012CactuarQbLabel }),
+    CARD_012_CRYSTALLINE_CRAB(745, card012CrystallineCrabOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card012CrystallineCrabLabel }),
+    CARD_017_SCREAMER_QB(746, card017ScreamerQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card017ScreamerQbLabel }),
+    CARD_003_GRENADIER_QB(747, card003GrenadierQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card003GrenadierQbLabel }),
+    CARD_015_ZU_QB(748, card015ZuQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card015ZuQbLabel }),
+    CARD_019_CRAWLER_QB(749, card019CrawlerQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card019CrawlerQbLabel }),
+    CARD_020_ARCHDRAGON_QB(750, card020ArchdragonQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card020ArchdragonQbLabel }),
+    CARD_021_OGRE_QB(751, card021OgreQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card021OgreQbLabel }),
+    CARD_114_MYTHRIL_GOLEM(752, card114MythrilGolemOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card114MythrilGolemLabel }),
+    CARD_024_ZEMZELETT_QB(753, card024ZemzelettQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card024ZemzelettQbLabel }),
+    CARD_025_IGNILISK_QB(754, card025IgniliskQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card025IgniliskQbLabel }),
+    CARD_023_FLEETWING_QB(755, card023FleetwingQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card023FleetwingQbLabel }),
+    CARD_026_CAPPARWIRE_QB(756, card026CapparwireQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card026CapparwireQbLabel }),
+    CARD_029_HELLRIDER_II(757, card029HellriderIiOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card029HellriderIiLabel }),
+    CARD_027_MINDFLAYER_QB(758, card027MindflayerQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card027MindflayerQbLabel }),
+    CARD_022_DEATHWHEEL_QB(759, card022DeathwheelQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card022DeathwheelQbLabel }),
+    CARD_028_SCRUTINEYE_QB(760, card028ScrutineyeQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card028ScrutineyeQbLabel }),
+    CARD_115_TERROR_DEEP(761, card115TerrorDeepOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card115TerrorDeepLabel }),
+    CARD_030_FLAMETROOPER_QB(762, card030FlametrooperQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card030FlametrooperQbLabel }),
+    CARD_033_SHOALOPOD_QB(763, card033ShoalopodQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card033ShoalopodQbLabel }),
+    CARD_034_CROWN_LANCE(764, card034CrownLanceOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card034CrownLanceLabel }),
+    CARD_031_SPEARHAWK_QB(765, card031SpearhawkQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card031SpearhawkQbLabel }),
+    CARD_032_SEA_DEVIL(766, card032SeaDevilOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card032SeaDevilLabel }),
+    CARD_035_TONBERRY_KING(767, card035TonberryKingOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card035TonberryKingLabel }),
+    CARD_040_HEATSEEKER_QB(768, card040HeatseekerQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card040HeatseekerQbLabel }),
+    CARD_037_BLOATFLOAT_QB(769, card037BloatfloatQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card037BloatfloatQbLabel }),
+    CARD_038_BAGNADRANA_QB(770, card038BagnadranaQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card038BagnadranaQbLabel }),
+    CARD_039_COCKATRICE_QB(771, card039CockatriceQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card039CockatriceQbLabel }),
+    CARD_041_BOMB_QB(772, card041BombQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card041BombQbLabel }),
+    CARD_036_SANDHOG_PIE(773, card036SandhogPieOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card036SandhogPieLabel }),
+    CARD_117_CUSTOM_VALKYRIE(774, card117CustomValkyrieOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card117CustomValkyrieLabel }),
+    CARD_118_GIGATRICE_QB(775, card118GigatriceQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card118GigatriceQbLabel }),
+    CARD_042_THUG_QB(776, card042ThugQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card042ThugQbLabel }),
+    CARD_043_DEATH_CLAW(777, card043DeathClawOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card043DeathClawLabel }),
+    CARD_044_LANDWORM_QB(778, card044LandwormQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card044LandwormQbLabel }),
+    CARD_045_SANDSPITTER_QB(779, card045SandspitterQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card045SandspitterQbLabel }),
+    CARD_046_CHIMERA_QB(780, card046ChimeraQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card046ChimeraQbLabel }),
+    CARD_047_JOKER_QB(781, card047JokerQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card047JokerQbLabel }),
+    CARD_054_GRANDHORN_QB(782, card054GrandhornQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card054GrandhornQbLabel }),
+    CARD_050_GAGIGHANDI_QB(783, card050GagighandiQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card050GagighandiQbLabel }),
+    CARD_048_AMPHIDEX_QB(784, card048AmphidexQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card048AmphidexQbLabel }),
+    CARD_049_FRIGHTFLOWER_QB(785, card049FrightflowerQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card049FrightflowerQbLabel }),
+    CARD_056_GRANGALAN_QB(786, card056GrangalanQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card056GrangalanQbLabel }),
+    CARD_051_INSECTOID_CHIMERA(787, card051InsectoidChimeraOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card051InsectoidChimeraLabel }),
+    CARD_052_GIGANTOAD_QB(788, card052GigantoadQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card052GigantoadQbLabel }),
+    CARD_053_MALOCEROS_QB(789, card053MalocerosQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card053MalocerosQbLabel }),
+    CARD_055_GREAT_MALBORO(790, card055GreatMalboroOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card055GreatMalboroLabel }),
+    CARD_057_AMALGAM_QB(791, card057AmalgamQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card057AmalgamQbLabel }),
+    CARD_121_SPECIMEN_H1024(792, card121SpecimenH1024Offset, QB_CARD, { bundlePartyTab.qbCardLabels.card121SpecimenH1024Label }),
+    CARD_058_SKEESKEE_QB(793, card058SkeeskeeQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card058SkeeskeeQbLabel }),
+    CARD_059_GRIFFON_QB(794, card059GriffonQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card059GriffonQbLabel }),
+    CARD_065_STONE_GOLEM(795, card065StoneGolemOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card065StoneGolemLabel }),
+    CARD_060_BASILISK_QB(796, card060BasiliskQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card060BasiliskQbLabel }),
+    CARD_063_DESERT_SAHAGIN(797, card063DesertSahaginOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card063DesertSahaginLabel }),
+    CARD_061_REAPERTAIL_QB(798, card061ReapertailQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card061ReapertailQbLabel }),
+    CARD_062_JABBERWOCK_QB(799, card062JabberwockQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card062JabberwockQbLabel }),
+    CARD_064_CAVESTALKER_QB(800, card064CavestalkerQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card064CavestalkerQbLabel }),
+    CARD_067_GI_SPECTER(801, card067GiSpecterOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card067GiSpecterLabel }),
+    CARD_066_TWO_FACE(802, card066TwoFaceOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card066TwoFaceLabel }),
+    CARD_068_VALRON_QB(803, card068ValronQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card068ValronQbLabel }),
+    CARD_069_DISGORGON_QB(804, card069DisgorgonQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card069DisgorgonQbLabel }),
+    CARD_071_TWIN_BRAIN(805, card071TwinBrainOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card071TwinBrainLabel }),
+    CARD_070_DRAGON_QB(806, card070DragonQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card070DragonQbLabel }),
+    CARD_077_DIABOLIC_VARIANT(807, card077DiabolicVariantOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card077DiabolicVariantLabel }),
+    CARD_073_BAHBA_VELAMYU(808, card073BahbaVelamyuOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card073BahbaVelamyuLabel }),
+    CARD_074_RICTUS_QB(809, card074RictusQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card074RictusQbLabel }),
+    CARD_072_BLACK_BAT(810, card072BlackBatOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card072BlackBatLabel }),
+    CARD_076_YIN_YANG(811, card076YinYangOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card076YinYangLabel }),
+    CARD_075_ADJUDICATOR_QB(812, card075AdjudicatorQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card075AdjudicatorQbLabel }),
+    CARD_124_FORGOTTEN_SPECIMEN(813, card124ForgottenSpecimenOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card124ForgottenSpecimenLabel }),
+    CARD_078_SPECIAL_FORCES(814, card078SpecialForcesOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card078SpecialForcesLabel }),
+    CARD_079_2C_SOLDIER(815, card0792cSoldierOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card0792cSoldierLabel }),
+    CARD_080_KELZMELZER_QB(816, card080KelzmelzerQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card080KelzmelzerQbLabel }),
+    CARD_081_PANTHERA_PROTECTOR(817, card081PantheraProtectorOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card081PantheraProtectorLabel }),
+    CARD_082_HECTEYES_QB(818, card082HecteyesQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card082HecteyesQbLabel }),
+    CARD_085_MOSSGROWN_ADAMANTOISE(819, card085MossgrownAdamantoiseOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card085MossgrownAdamantoiseLabel }),
+    CARD_084_IRONCLAD_QB(820, card084IroncladQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card084IroncladQbLabel }),
+    CARD_083_FLOATING_DEATH(821, card083FloatingDeathOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card083FloatingDeathLabel }),
+    CARD_126_RED_DRAGON(822, card126RedDragonOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card126RedDragonLabel }),
+    CARD_127_DEMON_GATE(823, card127DemonGateOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card127DemonGateLabel }),
+    CARD_086_CLOUD_QB(824, card086CloudQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card086CloudQbLabel }),
+    CARD_087_BARRET_QB(825, card087BarretQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card087BarretQbLabel }),
+    CARD_088_TIFA_QB(826, card088TifaQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card088TifaQbLabel }),
+    CARD_089_AERITH_QB(827, card089AerithQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card089AerithQbLabel }),
+    CARD_090_RED_XIII(828, card090RedXiiiOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card090RedXiiiLabel }),
+    CARD_091_YUFFIE_QB(829, card091YuffieQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card091YuffieQbLabel }),
+    CARD_092_CAIT_SITH(830, card092CaitSithOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card092CaitSithLabel }),
+    CARD_093_CID_QB(831, card093CidQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card093CidQbLabel }),
+    CARD_094_VINCENT_QB(832, card094VincentQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card094VincentQbLabel }),
+    CARD_095_IFRIT_QB(833, card095IfritQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card095IfritQbLabel }),
+    CARD_096_SHIVA_QB(834, card096ShivaQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card096ShivaQbLabel }),
+    CARD_107_CHOCOBO_MOOGLE(835, card107ChocoboMoogleOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card107ChocoboMoogleLabel }),
+    CARD_108_FAT_CHOCOBO(836, card108FatChocoboOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card108FatChocoboLabel }),
+    CARD_102_LEVIATHAN_QB(837, card102LeviathanQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card102LeviathanQbLabel }),
+    CARD_104_BAHAMUT_QB(838, card104BahamutQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card104BahamutQbLabel }),
+    CARD_109_POSH_CHOCOBO(839, card109PoshChocoboOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card109PoshChocoboLabel }),
+    CARD_111_MAGIC_POT(840, card111MagicPotOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card111MagicPotLabel }),
+    CARD_110_MOOGLE_TRIO(841, card110MoogleTrioOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card110MoogleTrioLabel }),
+    CARD_097_RAMUH_QB(842, card097RamuhQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card097RamuhQbLabel }),
+    CARD_098_TITAN_QB(843, card098TitanQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card098TitanQbLabel }),
+    CARD_099_KUJATA_QB(844, card099KujataQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card099KujataQbLabel }),
+    CARD_100_ODIN_QB(845, card100OdinQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card100OdinQbLabel }),
+    CARD_101_PHOENIX_QB(846, card101PhoenixQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card101PhoenixQbLabel }),
+    CARD_103_ALEXANDER_QB(847, card103AlexanderQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card103AlexanderQbLabel }),
+    CARD_105_BAHAMUT_ARISEN(848, card105BahamutArisenOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card105BahamutArisenLabel }),
+    CARD_106_GILGAMESH_QB(849, card106GilgameshQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card106GilgameshQbLabel }),
+    CARD_143_SEPHIROTH_QB(850, card143SephirothQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card143SephirothQbLabel }),
+    CARD_128_RENO_QB(851, card128RenoQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card128RenoQbLabel }),
+    CARD_129_RUDE_QB(852, card129RudeQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card129RudeQbLabel }),
+    CARD_130_ELENA_QB(853, card130ElenaQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card130ElenaQbLabel }),
+    CARD_131_TSENG_QB(854, card131TsengQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card131TsengQbLabel }),
+    CARD_132_RUFUS_QB(855, card132RufusQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card132RufusQbLabel }),
+    CARD_116_GRASPTROPOD_QB(856, card116GrasptropodQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card116GrasptropodQbLabel }),
+    CARD_120_ANURAN_SUPPRESSOR(857, card120AnuranSuppressorOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card120AnuranSuppressorLabel }),
+    CARD_122_CRIMSON_MKII(858, card122CrimsonMkiiOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card122CrimsonMkiiLabel }),
+    CARD_125_DON_CORNEO(859, card125DonCorneoOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card125DonCorneoLabel }),
+    CARD_119_DYNE_QB(860, card119DyneQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card119DyneQbLabel }),
+    CARD_123_GI_NATTAK(861, card123GiNattakOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card123GiNattakLabel }),
+    CARD_112_MATERIA_GUARDIAN(862, card112MateriaGuardianOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card112MateriaGuardianLabel }),
+    CARD_113_MIDGARDSOMR_QB(863, card113MidgardsomrQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card113MidgardsomrQbLabel }),
+    CARD_133_ROCHE_QB(864, card133RocheQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card133RocheQbLabel }),
+    CARD_134_J_SQUAD(865, card134JSquadOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card134JSquadLabel }),
+    CARD_144_EMERALD_WITCH(866, card144EmeraldWitchOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card144EmeraldWitchLabel }),
+    CARD_145_SHADOWBLOOD_QUEEN(867, card145ShadowbloodQueenOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card145ShadowbloodQueenLabel }),
+    CARD_135_CHOCOBO_JOCKEY(868, card135ChocoboJockeyOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card135ChocoboJockeyLabel }),
+    CARD_136_SPACE_RANGER(869, card136SpaceRangerOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card136SpaceRangerLabel }),
+    CARD_137_HAUNTED_HOTEL(870, card137HauntedHotelOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card137HauntedHotelLabel }),
+    CARD_141_DIO_QB(871, card141DioQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card141DioQbLabel }),
+    CARD_138_SKYWHEEL_QB(872, card138SkywheelQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card138SkywheelQbLabel }),
+    CARD_139_LOVELESS_QB(873, card139LovelessQbOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card139LovelessQbLabel }),
+    CARD_140_SAUCER_SQUAD(874, card140SaucerSquadOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card140SaucerSquadLabel }),
+    CARD_142_ULTIMATE_ANIMAL(875, card142UltimateAnimalOffset, QB_CARD, { bundlePartyTab.qbCardLabels.card142UltimateAnimalLabel }),
+    QB_BOOSTER_SUPPRESSIVE_STRIKERS(876, qbBoosterSuppressiveStrikersOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterSuppressiveStrikersLabel }),
+    QB_BOOSTER_RUFFIANS_PACK(877, qbBoosterRuffiansPackOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterRuffiansPackLabel }),
+    QB_BOOSTER_WEIRD_WICKED(878, qbBoosterWeirdWickedOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterWeirdWickedLabel }),
+    QB_BOOSTER_SHUTUP_DRIVE(879, qbBoosterShutupDriveOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterShutupDriveLabel }),
+    QB_BOOSTER_HIGHSEAS_HORROR(880, qbBoosterHighseasHorrorOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterHighseasHorrorLabel }),
+    QB_BOOSTER_UNCANNY_TERRORS(881, qbBoosterUncannyTerrorsOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterUncannyTerrorsLabel }),
+    QB_BOOSTER_HEAVY_HITTERS(882, qbBoosterHeavyHittersOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterHeavyHittersLabel }),
+    QB_BOOSTER_JUNGLE_ARCANUM(883, qbBoosterJungleArcanumOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterJungleArcanumLabel }),
+    QB_BOOSTER_CHIMERICAL_CREATURES(884, qbBoosterChimericalCreaturesOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterChimericalCreaturesLabel }),
+    QB_BOOSTER_STRANGER_FICTION(885, qbBoosterStrangerFictionOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterStrangerFictionLabel }),
+    QB_BOOSTER_PREHISTORIC_BEASTS(886, qbBoosterPrehistoricBeastsOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterPrehistoricBeastsLabel }),
+    QB_BOOSTER_CARNIVAL_CARNAGE(887, qbBoosterCarnivalCarnageOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterCarnivalCarnageLabel }),
+    QB_BOOSTER_ANCIENT_STEWARDS(888, qbBoosterAncientStewardsOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterAncientStewardsLabel }),
+    QB_BOOSTER_CHTONIC_SENTINELS(889, qbBoosterChtonicSentinelsOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterChtonicSentinelsLabel }),
+    QB_BOOSTER_THE_TURKS(890, qbBoosterTheTurksOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterTheTurksLabel }),
+    QB_BOOSTER_ENDGAME_BADDIES(891, qbBoosterEndgameBaddiesOffset, QB_CARD, { bundlePartyTab.qbCardLabels.qbBoosterEndgameBaddiesLabel }),
+
+}

@@ -92,3 +92,4 @@ test-output/
 /application.config
 /backup/
 /.output.txt
+/src/test/resources/item-result.txt
